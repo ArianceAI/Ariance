@@ -2,7 +2,6 @@ import './globals.css';
 import type { Metadata } from 'next';
 import Navbar from '@/components/layout/navbar';
 import Footer from '@/components/layout/footer';
-import Cursor from '@/components/layout/cursor';
 
 export const metadata: Metadata = {
   metadataBase: new URL('https://ariance.nl'),
@@ -23,7 +22,6 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html lang="nl">
       <body>
-        <Cursor />
         <Navbar />
         <main>{children}</main>
         <Footer />

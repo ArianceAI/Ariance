@@ -22,8 +22,8 @@ export default function Navbar() {
 
   return (
     <header
-      className={`fixed top-0 left-0 right-0 z-50 transition-[background,box-shadow,border-color] duration-400 ${
-        scrolled ? 'glass-nav shadow-[0_2px_30px_rgba(0,0,0,0.4)]' : 'bg-transparent'
+      className={`fixed top-0 left-0 right-0 z-50 transition-[background,box-shadow,border-color] duration-300 ${
+        scrolled ? 'glass-nav-light shadow-[0_1px_20px_rgba(0,0,0,0.08)]' : 'bg-transparent'
       }`}
     >
       <div className="max-w-6xl mx-auto px-6 lg:px-8">
@@ -32,7 +32,7 @@ export default function Navbar() {
           {/* Logo */}
           <Link href="/" className="flex items-center gap-2.5 group">
             <span
-              className="text-[1.15rem] font-bold tracking-tight text-white"
+              className="text-[1.15rem] font-bold tracking-tight text-[#0A0F1C]"
               style={{ fontFamily: 'var(--font-display)' }}
             >
               Ariance
@@ -51,7 +51,7 @@ export default function Navbar() {
               <Link
                 key={link.href}
                 href={link.href}
-                className="text-sm font-medium text-white/70 hover:text-white transition-colors duration-200"
+                className="text-sm font-medium text-[#374151] hover:text-[#2563EB] transition-colors duration-200"
                 style={{ fontFamily: 'var(--font-display)' }}
               >
                 {link.label}
@@ -71,7 +71,7 @@ export default function Navbar() {
 
           {/* Mobile toggle */}
           <button
-            className="md:hidden p-2 text-white/70 hover:text-white transition-colors"
+            className="md:hidden p-2 text-[#374151] hover:text-[#0A0F1C] transition-colors"
             onClick={() => setIsOpen(!isOpen)}
             aria-label="Menu"
           >

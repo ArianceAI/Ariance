@@ -3,7 +3,7 @@
 import { useRef, useState } from 'react';
 import Link from 'next/link';
 import { motion, useInView } from 'framer-motion';
-import { Bot, Lightbulb, Lock, Globe, ArrowUpRight } from 'lucide-react';
+import { Bot, Lightbulb, Globe, ArrowUpRight } from 'lucide-react';
 
 const services = [
   {
@@ -27,18 +27,8 @@ const services = [
     label: null,
   },
   {
-    icon: Lock,
-    num: '03',
-    title: 'Private AI',
-    description: 'Volledig privé AI-model op uw eigen servers. Vertrouwelijke data blijft intern — altijd.',
-    href: '/diensten#private-ai',
-    accent: '#4F46E5',
-    bg: 'rgba(79,70,229,0.07)',
-    label: null,
-  },
-  {
     icon: Globe,
-    num: '04',
+    num: '03',
     title: 'Websites & Digitalisering',
     description: 'Moderne websites en digitale tools die uw bedrijf online zetten en processen digitaliseren.',
     href: '/diensten#websites',
