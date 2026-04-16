@@ -22,22 +22,19 @@ export default function Navbar() {
 
   return (
     <header
-      className={`fixed top-0 left-0 right-0 z-50 transition-[background,border-color,box-shadow] duration-500 ${
-        scrolled
-          ? 'glass-nav shadow-[0_4px_32px_rgba(0,0,0,0.5)]'
-          : 'bg-transparent border-b border-transparent'
+      className={`fixed top-0 left-0 right-0 z-50 transition-[background,box-shadow,border-color] duration-300 ${
+        scrolled ? 'glass-nav-light shadow-[0_1px_20px_rgba(0,0,0,0.08)]' : 'bg-transparent'
       }`}
     >
       <div className="max-w-6xl mx-auto px-6 lg:px-8">
         <div className="flex items-center justify-between h-16 md:h-[68px]">
 
           <Link href="/" className="flex items-center gap-2 group">
-            <span className="font-heading text-xl font-bold text-[#F8FAFC] tracking-tight italic">
-              Ariance
-            </span>
+            <span className="text-xl font-bold text-[#0F1117] tracking-tight">Ariance</span>
             <span
-              className="w-1.5 h-1.5 rounded-full bg-[#2563EB] transition-[transform,box-shadow] duration-300 ease-[cubic-bezier(0.34,1.56,0.64,1)] group-hover:scale-[2]"
-              style={{ boxShadow: '0 0 8px rgba(37,99,235,0.8)' }}
+              className="w-1.5 h-1.5 rounded-full bg-[#2563EB]
+                         transition-[transform,box-shadow] duration-300 ease-[cubic-bezier(0.34,1.56,0.64,1)]
+                         group-hover:scale-[2.5] group-hover:shadow-[0_0_8px_rgba(37,99,235,0.6)]"
             />
           </Link>
 
@@ -46,16 +43,16 @@ export default function Navbar() {
               <Link
                 key={link.href}
                 href={link.href}
-                className="font-sans text-sm font-medium text-[#94A3B8] hover:text-[#F8FAFC] transition-colors duration-200"
+                className="text-sm font-medium text-[#374151] hover:text-[#2563EB] transition-colors duration-200"
               >
                 {link.label}
               </Link>
             ))}
             <Link
               href="/contact"
-              className="font-sans text-sm font-semibold text-white bg-[#2563EB] px-4 py-2 rounded-md
+              className="text-sm font-semibold bg-[#2563EB] text-white px-4 py-2 rounded-md
                          transition-[transform,box-shadow] duration-300 ease-[cubic-bezier(0.34,1.56,0.64,1)]
-                         hover:-translate-y-0.5 hover:bg-[#1d4ed8] hover:shadow-[0_8px_24px_rgba(37,99,235,0.45)]
+                         hover:-translate-y-0.5 hover:bg-[#1d4ed8] hover:shadow-[0_6px_20px_rgba(37,99,235,0.4)]
                          active:translate-y-0"
             >
               Neem contact op
@@ -63,7 +60,7 @@ export default function Navbar() {
           </nav>
 
           <button
-            className="md:hidden p-2 text-[#94A3B8] hover:text-[#F8FAFC] transition-colors duration-200"
+            className="md:hidden p-2 text-[#374151] hover:text-[#0F1117] transition-colors duration-200"
             onClick={() => setIsOpen(!isOpen)}
             aria-label="Menu openen"
           >
@@ -76,17 +73,14 @@ export default function Navbar() {
         className={`md:hidden overflow-hidden transition-[max-height,opacity] duration-300 ease-[cubic-bezier(0.34,1.56,0.64,1)] ${
           isOpen ? 'max-h-64 opacity-100' : 'max-h-0 opacity-0'
         }`}
-        style={{
-          background: 'rgba(15,17,23,0.97)',
-          borderTop: '1px solid rgba(37,99,235,0.1)',
-        }}
+        style={{ background: 'rgba(255,255,255,0.97)', borderTop: '1px solid #f1f5f9' }}
       >
         <div className="max-w-6xl mx-auto px-6 py-4 flex flex-col gap-4">
           {navLinks.map((link) => (
             <Link
               key={link.href}
               href={link.href}
-              className="font-sans text-sm font-medium text-[#94A3B8] hover:text-[#F8FAFC] transition-colors duration-200 py-1"
+              className="text-sm font-medium text-[#374151] hover:text-[#2563EB] transition-colors duration-200 py-1"
               onClick={() => setIsOpen(false)}
             >
               {link.label}
@@ -94,7 +88,7 @@ export default function Navbar() {
           ))}
           <Link
             href="/contact"
-            className="font-sans text-sm font-semibold text-white bg-[#2563EB] px-4 py-2.5 rounded-md
+            className="text-sm font-semibold bg-[#2563EB] text-white px-4 py-2.5 rounded-md
                        hover:bg-[#1d4ed8] transition-colors duration-200 text-center mt-1"
             onClick={() => setIsOpen(false)}
           >

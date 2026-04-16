@@ -1,94 +1,102 @@
 import Link from 'next/link';
-import { Bot, Lightbulb, Lock, Globe, ArrowRight } from 'lucide-react';
+import { Bot, Lightbulb, Lock, Globe, ArrowUpRight } from 'lucide-react';
 
 const services = [
   {
     icon: Bot,
-    label: '01',
+    num: '01',
     title: 'AI Automatisering',
-    description: 'Automatiseer repetitieve processen zoals e-mailverwerking, rapportages, data-invoer en klantcommunicatie. Bespaar uren per week met slimme AI-workflows.',
+    description: 'Automatiseer e-mailverwerking, rapportages, data-invoer en klantcommunicatie. Bespaar uren per week met slimme AI-workflows.',
     href: '/diensten#automatisering',
   },
   {
     icon: Lightbulb,
-    label: '02',
+    num: '02',
     title: 'AI Consultancy',
-    description: 'Weet u niet waar u moet beginnen? Ariance analyseert uw bedrijfsprocessen en adviseert welke AI-toepassingen de meeste waarde opleveren voor uw situatie.',
+    description: 'Ariance analyseert uw bedrijfsprocessen en adviseert welke AI-toepassingen de meeste waarde opleveren voor uw specifieke situatie.',
     href: '/diensten#consultancy',
   },
   {
     icon: Lock,
-    label: '03',
+    num: '03',
     title: 'Private AI',
-    description: 'Een volledig privé AI-model op uw eigen servers of beveiligde cloud. Vertrouwelijke bedrijfsdata blijft intern — geen data naar externe partijen.',
+    description: 'Een volledig privé AI-model op uw eigen servers. Vertrouwelijke bedrijfsdata blijft intern — geen data naar externe partijen.',
     href: '/diensten#private-ai',
   },
   {
     icon: Globe,
-    label: '04',
+    num: '04',
     title: 'Websites & Digitalisering',
-    description: 'Moderne websites en digitale tools die uw bedrijf online zetten. Van eenvoudige zakelijke website tot complete digitale transformatie.',
+    description: 'Moderne websites en digitale tools die uw bedrijf online zetten en processen digitaliseren.',
     href: '/diensten#websites',
   },
 ];
 
 export default function ServicesSection() {
   return (
-    <section className="py-20 md:py-28 bg-[#0F1117]" id="diensten">
+    <section className="py-20 md:py-28 bg-[#F8FAFC]" id="diensten">
       <div className="max-w-6xl mx-auto px-6 lg:px-8">
 
-        <div className="max-w-xl mb-12 md:mb-16">
-          <span className="font-mono text-[11px] font-medium tracking-[0.2em] uppercase text-[#60A5FA] mb-3 block">
-            — 02 &nbsp; Onze diensten
-          </span>
-          <h2 className="font-heading text-3xl md:text-4xl font-bold text-[#F8FAFC] leading-tight mb-4">
-            Wat wij voor u doen
-          </h2>
-          <p className="font-sans text-base text-[#94A3B8] leading-[1.75]">
-            Van strategie tot implementatie — Ariance levert concrete AI-oplossingen die passen bij uw bedrijf en budget.
-          </p>
+        <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-14">
+          <div>
+            <p className="text-xs font-semibold uppercase tracking-widest text-[#2563EB] mb-3">
+              Onze diensten
+            </p>
+            <h2 className="text-3xl md:text-4xl font-extrabold text-[#0F1117] tracking-tight leading-tight">
+              Wat wij voor u doen
+            </h2>
+          </div>
+          <Link
+            href="/diensten"
+            className="text-sm font-semibold text-[#2563EB] hover:text-[#1d4ed8] transition-colors duration-200 shrink-0"
+          >
+            Alle diensten bekijken →
+          </Link>
         </div>
 
-        <div
-          className="grid grid-cols-1 md:grid-cols-2 gap-px rounded-xl overflow-hidden"
-          style={{ background: 'rgba(37,99,235,0.1)' }}
-        >
+        {/* Editoriale lijst */}
+        <div className="divide-y divide-[#E5E7EB]" style={{ borderTop: '1px solid #E5E7EB', borderBottom: '1px solid #E5E7EB' }}>
           {services.map((service) => {
             const Icon = service.icon;
             return (
-              <div
+              <Link
                 key={service.title}
-                className="group p-7 bg-[#0F1117] relative transition-[background] duration-300 hover:bg-[#131929]"
+                href={service.href}
+                className="group flex items-start gap-6 py-7 transition-[background] duration-200 hover:bg-white px-4 -mx-4 rounded-xl"
               >
-                <span className="font-mono text-[10px] tracking-widest text-[#475569] mb-4 block">
-                  {service.label}
+                {/* Nummer */}
+                <span className="text-xs font-bold text-[#D1D5DB] tracking-widest mt-1 w-6 shrink-0 group-hover:text-[#2563EB] transition-colors duration-200">
+                  {service.num}
                 </span>
 
+                {/* Icon */}
                 <div
-                  className="w-10 h-10 rounded-md flex items-center justify-center mb-5
-                              transition-[box-shadow] duration-300 group-hover:shadow-[0_0_24px_rgba(37,99,235,0.3)]"
-                  style={{
-                    background: 'rgba(37,99,235,0.1)',
-                    border: '1px solid rgba(37,99,235,0.2)',
-                  }}
+                  className="w-10 h-10 rounded-xl flex items-center justify-center shrink-0
+                               transition-[background,box-shadow] duration-300 ease-[cubic-bezier(0.34,1.56,0.64,1)]
+                               bg-[#EFF6FF] group-hover:bg-[#2563EB] group-hover:shadow-[0_4px_16px_rgba(37,99,235,0.35)]"
                 >
-                  <Icon size={17} className="text-[#60A5FA]" />
+                  <Icon
+                    size={17}
+                    className="text-[#2563EB] transition-colors duration-300 group-hover:text-white"
+                  />
                 </div>
 
-                <h3 className="font-heading text-lg font-bold text-[#F8FAFC] mb-3">{service.title}</h3>
-                <p className="font-sans text-sm text-[#94A3B8] leading-[1.75] mb-5">{service.description}</p>
+                {/* Tekst */}
+                <div className="flex-1 min-w-0">
+                  <h3 className="text-base font-bold text-[#0F1117] mb-1.5 group-hover:text-[#2563EB] transition-colors duration-200">
+                    {service.title}
+                  </h3>
+                  <p className="text-sm text-[#6B7280] leading-[1.7]">
+                    {service.description}
+                  </p>
+                </div>
 
-                <Link
-                  href={service.href}
-                  className="inline-flex items-center gap-1.5 font-sans text-sm font-semibold text-[#60A5FA]
-                             transition-[gap] duration-200 hover:gap-2.5"
-                >
-                  Meer info
-                  <ArrowRight size={14} />
-                </Link>
-
-                <div className="absolute bottom-0 left-0 h-px w-0 bg-[#2563EB] transition-[width] duration-500 ease-out group-hover:w-full" />
-              </div>
+                {/* Arrow */}
+                <ArrowUpRight
+                  size={18}
+                  className="text-[#D1D5DB] shrink-0 mt-1 transition-[transform,color] duration-300 ease-[cubic-bezier(0.34,1.56,0.64,1)] group-hover:text-[#2563EB] group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
+                />
+              </Link>
             );
           })}
         </div>

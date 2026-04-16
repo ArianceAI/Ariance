@@ -9,33 +9,19 @@ const usps = [
 
 export default function UspBar() {
   return (
-    <section
-      className="py-14 md:py-16"
-      style={{
-        background: '#131929',
-        borderTop: '1px solid rgba(37,99,235,0.12)',
-        borderBottom: '1px solid rgba(37,99,235,0.12)',
-      }}
-    >
+    <section className="bg-[#2563EB] py-12 md:py-14">
       <div className="max-w-6xl mx-auto px-6 lg:px-8">
-        <div className="grid grid-cols-2 lg:grid-cols-4 gap-8 md:gap-10">
+        <div className="grid grid-cols-2 lg:grid-cols-4 gap-8">
           {usps.map((usp) => {
             const Icon = usp.icon;
             return (
               <div key={usp.title} className="flex flex-col gap-3">
-                <div
-                  className="w-10 h-10 rounded-md flex items-center justify-center"
-                  style={{
-                    background: 'rgba(37,99,235,0.1)',
-                    border: '1px solid rgba(37,99,235,0.22)',
-                    boxShadow: '0 0 16px rgba(37,99,235,0.08)',
-                  }}
-                >
-                  <Icon size={17} className="text-[#60A5FA]" />
+                <div className="w-9 h-9 rounded-lg bg-white/15 flex items-center justify-center">
+                  <Icon size={17} className="text-white" />
                 </div>
                 <div>
-                  <h3 className="font-sans text-sm font-semibold text-[#F8FAFC] mb-1">{usp.title}</h3>
-                  <p className="font-sans text-xs text-[#475569] leading-relaxed">{usp.description}</p>
+                  <h3 className="text-sm font-bold text-white mb-0.5">{usp.title}</h3>
+                  <p className="text-xs text-blue-100 leading-relaxed">{usp.description}</p>
                 </div>
               </div>
             );
