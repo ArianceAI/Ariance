@@ -10,28 +10,31 @@ const services = [
     icon: Bot,
     num: '01',
     title: 'AI Automatisering',
-    description: 'Automatiseer e-mailverwerking, rapportages, data-invoer en klantcommunicatie. Bespaar uren per week met slimme AI-workflows.',
+    description: 'Automatiseer e-mailverwerking, rapportages, data-invoer en klantcommunicatie. Bespaar uren per week.',
     href: '/diensten#automatisering',
     accent: '#2563EB',
-    accentBg: 'rgba(37,99,235,0.08)',
+    bg: 'rgba(37,99,235,0.07)',
+    label: 'Meest gevraagd',
   },
   {
     icon: Lightbulb,
     num: '02',
     title: 'AI Consultancy',
-    description: 'Ariance analyseert uw bedrijfsprocessen en adviseert welke AI-toepassingen de meeste waarde opleveren voor uw specifieke situatie.',
+    description: 'Ariance analyseert uw processen en adviseert welke AI-toepassingen de meeste waarde opleveren.',
     href: '/diensten#consultancy',
-    accent: '#FBBF24',
-    accentBg: 'rgba(251,191,36,0.07)',
+    accent: '#0891B2',
+    bg: 'rgba(8,145,178,0.07)',
+    label: null,
   },
   {
     icon: Lock,
     num: '03',
     title: 'Private AI',
-    description: 'Een volledig privé AI-model op uw eigen servers. Vertrouwelijke bedrijfsdata blijft intern — geen data naar externe partijen.',
+    description: 'Volledig privé AI-model op uw eigen servers. Vertrouwelijke data blijft intern — altijd.',
     href: '/diensten#private-ai',
-    accent: '#34D399',
-    accentBg: 'rgba(52,211,153,0.07)',
+    accent: '#4F46E5',
+    bg: 'rgba(79,70,229,0.07)',
+    label: null,
   },
   {
     icon: Globe,
@@ -39,16 +42,17 @@ const services = [
     title: 'Websites & Digitalisering',
     description: 'Moderne websites en digitale tools die uw bedrijf online zetten en processen digitaliseren.',
     href: '/diensten#websites',
-    accent: '#F472B6',
-    accentBg: 'rgba(244,114,182,0.07)',
+    accent: '#0D9488',
+    bg: 'rgba(13,148,136,0.07)',
+    label: null,
   },
 ];
 
 function TiltCard({ service, delay }: { service: typeof services[0]; delay: number }) {
   const ref = useRef<HTMLAnchorElement>(null);
+  const cardRef = useRef(null);
   const [tilt, setTilt] = useState({ x: 0, y: 0 });
   const [hovered, setHovered] = useState(false);
-  const cardRef = useRef(null);
   const isInView = useInView(cardRef, { once: true, margin: '-40px' });
   const Icon = service.icon;
 
@@ -56,7 +60,7 @@ function TiltCard({ service, delay }: { service: typeof services[0]; delay: numb
     const rect = ref.current!.getBoundingClientRect();
     const x = (e.clientX - rect.left) / rect.width  - 0.5;
     const y = (e.clientY - rect.top)  / rect.height - 0.5;
-    setTilt({ x: -y * 10, y: x * 10 });
+    setTilt({ x: -y * 8, y: x * 8 });
   };
 
   return (
@@ -73,26 +77,34 @@ function TiltCard({ service, delay }: { service: typeof services[0]; delay: numb
         onMouseEnter={() => setHovered(true)}
         onMouseLeave={() => { setTilt({ x: 0, y: 0 }); setHovered(false); }}
         style={{
-          transform: `perspective(700px) rotateX(${tilt.x}deg) rotateY(${tilt.y}deg) ${hovered ? 'translateY(-6px)' : ''}`,
-          transition: hovered ? 'transform 0.1s ease, box-shadow 0.3s ease' : 'transform 0.5s ease, box-shadow 0.3s ease',
-          boxShadow: hovered
-            ? `0 20px 50px rgba(0,0,0,0.1), 0 0 0 1.5px ${service.accent}30`
-            : '0 4px 20px rgba(0,0,0,0.05)',
           display: 'block',
           background: '#fff',
-          border: '1.5px solid var(--clr-border-light)',
+          border: `1.5px solid ${hovered ? service.accent + '40' : '#E5E7EB'}`,
           borderRadius: '20px',
           padding: '28px',
           position: 'relative',
           overflow: 'hidden',
+          transform: `perspective(700px) rotateX(${tilt.x}deg) rotateY(${tilt.y}deg) ${hovered ? 'translateY(-6px)' : ''}`,
+          transition: hovered ? 'transform 0.1s ease, box-shadow 0.3s ease, border-color 0.3s ease' : 'transform 0.5s ease, box-shadow 0.3s ease, border-color 0.3s ease',
+          boxShadow: hovered ? `0 20px 50px ${service.accent}18, 0 4px 12px rgba(0,0,0,0.06)` : '0 2px 12px rgba(0,0,0,0.04)',
         }}
         className="group"
       >
-        {/* Corner accent */}
+        {/* Top accent bar */}
         <div
-          className="absolute top-0 right-0 w-24 h-24 rounded-bl-[80px] transition-opacity duration-300 opacity-0 group-hover:opacity-100"
-          style={{ background: service.accentBg }}
+          className="absolute top-0 left-0 right-0 h-[3px] rounded-t-[18px] opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+          style={{ background: `linear-gradient(90deg, ${service.accent}, ${service.accent}80, transparent)` }}
         />
+
+        {/* Optional label badge */}
+        {service.label && (
+          <div
+            className="absolute top-5 right-5 text-[10px] font-bold px-2.5 py-1 rounded-full"
+            style={{ background: `${service.accent}12`, color: service.accent, fontFamily: 'var(--font-display)' }}
+          >
+            {service.label}
+          </div>
+        )}
 
         {/* Number */}
         <div
@@ -105,33 +117,24 @@ function TiltCard({ service, delay }: { service: typeof services[0]; delay: numb
         {/* Icon */}
         <motion.div
           className="w-12 h-12 rounded-xl flex items-center justify-center mb-5 transition-[background,box-shadow] duration-300"
-          style={{ background: hovered ? service.accent : service.accentBg }}
+          style={{ background: hovered ? service.accent : service.bg }}
           animate={isInView ? { scale: [0.5, 1.1, 1], opacity: [0, 1, 1] } : {}}
           transition={{ duration: 0.5, delay: delay + 0.2 }}
         >
-          <Icon
-            size={20}
-            style={{ color: hovered ? '#fff' : service.accent, transition: 'color 0.3s' }}
-            strokeWidth={1.8}
-          />
+          <Icon size={20} style={{ color: hovered ? '#fff' : service.accent, transition: 'color 0.3s' }} strokeWidth={1.8} />
         </motion.div>
 
-        {/* Text */}
         <h3
           className="text-base font-bold mb-2.5 transition-colors duration-200"
-          style={{
-            color: hovered ? service.accent : '#0A0F1C',
-            fontFamily: 'var(--font-display)',
-          }}
+          style={{ color: hovered ? service.accent : '#0A0F1C', fontFamily: 'var(--font-display)' }}
         >
           {service.title}
         </h3>
-        <p className="text-sm leading-[1.75]" style={{ color: 'var(--clr-text-muted-l)' }}>
+        <p className="text-sm leading-[1.75] mb-5" style={{ color: '#6B7280' }}>
           {service.description}
         </p>
 
-        {/* Arrow */}
-        <div className="mt-5 flex items-center gap-1.5">
+        <div className="flex items-center gap-1.5">
           <span
             className="text-xs font-semibold transition-colors duration-200"
             style={{ color: hovered ? service.accent : '#9CA3AF', fontFamily: 'var(--font-display)' }}
@@ -139,9 +142,9 @@ function TiltCard({ service, delay }: { service: typeof services[0]; delay: numb
             Meer info
           </span>
           <ArrowUpRight
-            size={14}
-            style={{ color: hovered ? service.accent : '#9CA3AF', transition: 'color 0.2s, transform 0.3s' }}
-            className={hovered ? 'translate-x-0.5 -translate-y-0.5' : ''}
+            size={13}
+            style={{ color: hovered ? service.accent : '#9CA3AF', transition: 'color 0.2s, transform 0.3s',
+              transform: hovered ? 'translate(2px, -2px)' : 'translate(0, 0)' }}
           />
         </div>
       </Link>
@@ -154,13 +157,9 @@ export default function ServicesSection() {
   const isInView = useInView(headerRef, { once: true, margin: '-40px' });
 
   return (
-    <section
-      className="py-24 md:py-32"
-      style={{ background: 'var(--clr-bg-light)' }}
-      id="diensten"
-    >
+    <section className="py-24 md:py-32" style={{ background: 'var(--clr-bg-light)' }} id="diensten">
       <div className="max-w-6xl mx-auto px-6 lg:px-8">
-        {/* Header */}
+
         <motion.div
           ref={headerRef}
           className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-14"
@@ -169,15 +168,14 @@ export default function ServicesSection() {
           transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
         >
           <div>
-            <p
-              className="text-[11px] font-bold uppercase tracking-[0.18em] text-[#2563EB] mb-3"
-              style={{ fontFamily: 'var(--font-display)' }}
-            >
+            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full text-[11px] font-bold mb-4"
+              style={{ background: 'rgba(37,99,235,0.08)', border: '1px solid rgba(37,99,235,0.18)', color: '#2563EB', fontFamily: 'var(--font-display)' }}>
+              <span className="w-1.5 h-1.5 rounded-full bg-[#2563EB]" />
               Onze diensten
-            </p>
+            </div>
             <h2
               className="text-3xl md:text-[2.6rem] font-extrabold tracking-tight leading-tight"
-              style={{ fontFamily: 'var(--font-display)', color: 'var(--clr-text-dark)' }}
+              style={{ fontFamily: 'var(--font-display)', color: '#0A0F1C' }}
             >
               Wat wij voor u doen
             </h2>
@@ -187,12 +185,10 @@ export default function ServicesSection() {
             className="text-sm font-semibold text-[#2563EB] hover:text-[#1d4ed8] transition-colors shrink-0 flex items-center gap-1.5"
             style={{ fontFamily: 'var(--font-display)' }}
           >
-            Alle diensten bekijken
-            <ArrowUpRight size={14} />
+            Alle diensten <ArrowUpRight size={14} />
           </Link>
         </motion.div>
 
-        {/* Cards grid */}
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
           {services.map((service, i) => (
             <TiltCard key={service.title} service={service} delay={i * 0.1} />
