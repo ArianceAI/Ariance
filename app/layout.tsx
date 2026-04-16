@@ -1,14 +1,8 @@
 import './globals.css';
 import type { Metadata } from 'next';
-import { Inter } from 'next/font/google';
 import Navbar from '@/components/layout/navbar';
 import Footer from '@/components/layout/footer';
-
-const inter = Inter({
-  subsets: ['latin'],
-  variable: '--font-inter',
-  display: 'swap',
-});
+import Cursor from '@/components/layout/cursor';
 
 export const metadata: Metadata = {
   metadataBase: new URL('https://ariance.nl'),
@@ -27,8 +21,9 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="nl" className={inter.variable}>
-      <body className={`${inter.className} bg-white text-[#0F1117]`}>
+    <html lang="nl">
+      <body>
+        <Cursor />
         <Navbar />
         <main>{children}</main>
         <Footer />

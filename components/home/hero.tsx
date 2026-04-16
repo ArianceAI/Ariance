@@ -1,109 +1,204 @@
+'use client';
+
+import { useRef, useState } from 'react';
 import Link from 'next/link';
-import { ArrowRight } from 'lucide-react';
+import { motion, type Variants } from 'framer-motion';
+import { ArrowRight, Sparkles } from 'lucide-react';
+
+const stats = [
+  { value: '100%', label: 'Nederlands maatwerk' },
+  { value: '2025', label: 'Opgericht in Alkmaar' },
+  { value: 'Direct', label: 'Contact met oprichter' },
+  { value: 'MKB', label: 'Specialist & focus' },
+];
+
+const container: Variants = {
+  hidden: {},
+  visible: { transition: { staggerChildren: 0.1, delayChildren: 0.2 } },
+};
+const fadeUp: Variants = {
+  hidden:  { opacity: 0, y: 28 },
+  visible: { opacity: 1, y: 0, transition: { duration: 0.75, ease: [0.22, 1, 0.36, 1] as [number,number,number,number] } },
+};
+
+function MagneticButton({ href, children, primary = false }: { href: string; children: React.ReactNode; primary?: boolean }) {
+  const ref = useRef<HTMLDivElement>(null);
+  const [pos, setPos] = useState({ x: 0, y: 0 });
+
+  const handleMove = (e: React.MouseEvent) => {
+    const rect = ref.current!.getBoundingClientRect();
+    setPos({
+      x: (e.clientX - rect.left - rect.width  / 2) * 0.32,
+      y: (e.clientY - rect.top  - rect.height / 2) * 0.32,
+    });
+  };
+
+  return (
+    <motion.div
+      ref={ref}
+      onMouseMove={handleMove}
+      onMouseLeave={() => setPos({ x: 0, y: 0 })}
+      animate={{ x: pos.x, y: pos.y }}
+      transition={{ type: 'spring', stiffness: 160, damping: 14 }}
+      className="inline-flex"
+    >
+      <Link
+        href={href}
+        className={`inline-flex items-center gap-2.5 font-semibold px-7 py-3.5 rounded-xl text-sm
+          transition-[box-shadow] duration-300 ${
+            primary
+              ? 'bg-[#2563EB] text-white hover:bg-[#1d4ed8] hover:shadow-[0_16px_40px_rgba(37,99,235,0.5)]'
+              : 'text-white border border-white/15 hover:border-white/30 hover:bg-white/[0.07] hover:shadow-[0_8px_24px_rgba(0,0,0,0.4)]'
+          }`}
+        style={{ fontFamily: 'var(--font-display)' }}
+      >
+        {children}
+      </Link>
+    </motion.div>
+  );
+}
 
 export default function Hero() {
   return (
-    <section className="relative bg-white pt-32 pb-24 md:pt-44 md:pb-32 overflow-hidden">
+    <section
+      className="relative min-h-screen flex flex-col justify-center overflow-hidden"
+      style={{ background: 'var(--clr-bg-dark)' }}
+    >
+      {/* Noise overlay */}
+      <div className="noise-overlay" />
 
-      {/* Diagonale lijntextuur */}
-      <div className="absolute inset-0 bg-line-texture pointer-events-none" />
-
-      {/* Grote blauwe ring — rechts */}
+      {/* Ambient glow — center left */}
       <div
-        className="absolute -right-32 top-1/2 -translate-y-1/2 w-[560px] h-[560px] rounded-full pointer-events-none"
+        className="absolute top-1/2 -translate-y-1/2 left-0 w-[800px] h-[800px] pointer-events-none"
         style={{
-          border: '80px solid rgba(37,99,235,0.07)',
+          background: 'radial-gradient(ellipse 60% 60% at 20% 50%, rgba(37,99,235,0.14) 0%, transparent 70%)',
         }}
       />
-      {/* Kleinere ring ernaast */}
+      {/* Glow top right */}
       <div
-        className="absolute -right-8 top-1/2 -translate-y-1/2 w-[320px] h-[320px] rounded-full pointer-events-none"
+        className="absolute -top-40 right-0 w-[600px] h-[600px] pointer-events-none"
         style={{
-          border: '2px solid rgba(37,99,235,0.12)',
+          background: 'radial-gradient(ellipse 70% 70% at 80% 20%, rgba(37,99,235,0.08) 0%, transparent 70%)',
         }}
       />
 
-      <div className="relative max-w-6xl mx-auto px-6 lg:px-8">
-        <div className="max-w-[680px]">
+      {/* Floating decorative orbs */}
+      <div
+        className="absolute top-1/4 right-1/4 w-64 h-64 rounded-full pointer-events-none animate-float"
+        style={{
+          background: 'radial-gradient(circle, rgba(37,99,235,0.12) 0%, transparent 70%)',
+          filter: 'blur(32px)',
+        }}
+      />
+      <div
+        className="absolute bottom-1/3 right-1/6 w-48 h-48 rounded-full pointer-events-none animate-float-2"
+        style={{
+          background: 'radial-gradient(circle, rgba(96,165,250,0.1) 0%, transparent 70%)',
+          filter: 'blur(24px)',
+        }}
+      />
 
+      {/* Subtle grid */}
+      <div
+        className="absolute inset-0 pointer-events-none"
+        style={{
+          backgroundImage: `
+            linear-gradient(rgba(37,99,235,0.04) 1px, transparent 1px),
+            linear-gradient(90deg, rgba(37,99,235,0.04) 1px, transparent 1px)
+          `,
+          backgroundSize: '64px 64px',
+        }}
+      />
+
+      <div className="relative max-w-6xl mx-auto px-6 lg:px-8 pt-36 pb-28">
+        <motion.div
+          className="max-w-[720px]"
+          variants={container}
+          initial="hidden"
+          animate="visible"
+        >
           {/* Badge */}
-          <div
-            className="inline-flex items-center gap-2 text-[#2563EB] text-xs font-semibold px-3.5 py-1.5 rounded-full mb-8 tracking-wide"
+          <motion.div variants={fadeUp} className="inline-flex items-center gap-2.5 mb-8">
+            <div
+              className="flex items-center gap-2 text-[#60A5FA] text-xs font-semibold px-4 py-2 rounded-full"
+              style={{
+                background: 'rgba(37,99,235,0.12)',
+                border: '1px solid rgba(37,99,235,0.3)',
+                fontFamily: 'var(--font-display)',
+              }}
+            >
+              <Sparkles size={12} className="text-[#60A5FA]" />
+              AI voor het Nederlandse MKB
+            </div>
+          </motion.div>
+
+          {/* Headline */}
+          <motion.h1
+            variants={fadeUp}
+            className="font-extrabold leading-[1.05] tracking-[-0.03em] mb-7 text-white"
             style={{
-              background: '#EFF6FF',
-              border: '1px solid #BFDBFE',
+              fontFamily: 'var(--font-display)',
+              fontSize: 'clamp(2.8rem, 6vw, 4.5rem)',
             }}
           >
-            <span className="w-1.5 h-1.5 rounded-full bg-[#2563EB] animate-pulse" />
-            AI voor het Nederlandse MKB
-          </div>
-
-          {/* Heading — groot, strak, bold */}
-          <h1 className="text-[2.75rem] md:text-[3.5rem] lg:text-[4rem] font-extrabold text-[#0F1117] leading-[1.06] tracking-[-0.03em] mb-6">
             AI neemt het{' '}
             <span className="relative inline-block">
-              routinewerk
-              {/* Blauwe onderstreep */}
-              <span
-                className="absolute -bottom-1 left-0 right-0 h-[5px] rounded-full"
-                style={{ background: 'linear-gradient(90deg, #2563EB, #60A5FA)' }}
-              />
-            </span>
-            {' '}over.
+              <span className="text-gradient">routinewerk</span>
+            </span>{' '}
+            over.
             <br />
-            <span className="text-[#2563EB]">Jij focust op wat telt.</span>
-          </h1>
+            <span className="text-white/60">Jij focust op wat telt.</span>
+          </motion.h1>
 
-          <p className="text-lg text-[#6B7280] leading-[1.75] mb-10 max-w-xl">
-            Ariance bouwt praktische AI-oplossingen voor Nederlandse bedrijven. Geen hype,
-            geen vage beloftes — maar concrete automatisering die tijd bespaart en omzet verhoogt.
-          </p>
+          <motion.p
+            variants={fadeUp}
+            className="text-lg leading-[1.8] mb-10 max-w-[560px]"
+            style={{ color: 'var(--clr-text-muted-d)', fontFamily: 'var(--font-body)' }}
+          >
+            Ariance bouwt praktische AI-oplossingen voor Nederlandse bedrijven.
+            Geen hype, geen vage beloftes — maar concrete automatisering die
+            tijd bespaart en omzet verhoogt.
+          </motion.p>
 
-          <div className="flex flex-col sm:flex-row gap-3">
-            <Link
-              href="/diensten"
-              className="inline-flex items-center justify-center gap-2 bg-[#2563EB] text-white
-                         font-semibold px-6 py-3.5 rounded-lg text-sm
-                         transition-[transform,box-shadow] duration-300 ease-[cubic-bezier(0.34,1.56,0.64,1)]
-                         hover:-translate-y-1 hover:bg-[#1d4ed8] hover:shadow-[0_12px_28px_rgba(37,99,235,0.38)]
-                         active:translate-y-0"
-            >
+          <motion.div variants={fadeUp} className="flex flex-col sm:flex-row gap-3">
+            <MagneticButton href="/diensten" primary>
               Bekijk onze diensten
               <ArrowRight size={15} />
-            </Link>
-            <Link
-              href="/contact"
-              className="inline-flex items-center justify-center gap-2 text-[#0F1117]
-                         font-semibold px-6 py-3.5 rounded-lg text-sm bg-white
-                         transition-[transform,box-shadow] duration-300 ease-[cubic-bezier(0.34,1.56,0.64,1)]
-                         hover:-translate-y-1 hover:shadow-[0_8px_20px_rgba(0,0,0,0.1)]
-                         active:translate-y-0"
-              style={{ border: '1.5px solid #E5E7EB' }}
-            >
+            </MagneticButton>
+            <MagneticButton href="/contact">
               Neem contact op
-            </Link>
-          </div>
-        </div>
+            </MagneticButton>
+          </motion.div>
+        </motion.div>
 
-        {/* Stats — met blauwe linkerbalk */}
-        <div className="mt-20 grid grid-cols-2 md:grid-cols-4 gap-8">
-          {[
-            { value: '100%', label: 'Nederlands maatwerk' },
-            { value: '2025', label: 'Opgericht in Alkmaar' },
-            { value: 'Direct', label: 'Contact met oprichter' },
-            { value: 'MKB', label: 'Specialist & focus' },
-          ].map((stat) => (
+        {/* Stats */}
+        <motion.div
+          className="mt-24 grid grid-cols-2 md:grid-cols-4 gap-8 pt-10"
+          style={{ borderTop: '1px solid rgba(255,255,255,0.07)' }}
+          initial={{ opacity: 0, y: 30 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.9, duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
+        >
+          {stats.map((stat, i) => (
             <div key={stat.label} className="flex gap-3 items-start">
-              <div className="w-0.5 h-full min-h-[40px] bg-[#2563EB] rounded-full shrink-0 mt-1" />
+              <div
+                className="w-px min-h-[44px] shrink-0 mt-1 rounded-full"
+                style={{ background: `linear-gradient(180deg, #2563EB, rgba(37,99,235,0.1))` }}
+              />
               <div>
-                <div className="text-2xl font-extrabold text-[#0F1117] tracking-tight leading-none mb-1">
+                <div
+                  className="text-2xl font-bold text-white tracking-tight leading-none mb-1.5"
+                  style={{ fontFamily: 'var(--font-display)' }}
+                >
                   {stat.value}
                 </div>
-                <div className="text-sm text-[#9CA3AF]">{stat.label}</div>
+                <div className="text-xs" style={{ color: 'var(--clr-text-muted-d)' }}>
+                  {stat.label}
+                </div>
               </div>
             </div>
           ))}
-        </div>
+        </motion.div>
       </div>
     </section>
   );
