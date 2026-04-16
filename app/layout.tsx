@@ -47,7 +47,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       lang="nl"
       className={`${fraunces.variable} ${jakarta.variable} ${mono.variable} dark`}
     >
-      <body className="bg-[#0A0907] text-[#FAF7F2]">
+      <body className="bg-[#0F1117] text-[#F8FAFC]">
         <Navbar />
         <main>{children}</main>
         <Footer />

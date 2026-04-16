@@ -31,42 +31,39 @@ export default function Navbar() {
       <div className="max-w-6xl mx-auto px-6 lg:px-8">
         <div className="flex items-center justify-between h-16 md:h-[68px]">
 
-          {/* Wordmark */}
           <Link href="/" className="flex items-center gap-2 group">
-            <span className="font-heading text-xl font-bold text-[#FAF7F2] tracking-tight italic">
+            <span className="font-heading text-xl font-bold text-[#F8FAFC] tracking-tight italic">
               Ariance
             </span>
             <span
-              className="w-1.5 h-1.5 rounded-full bg-[#D97706] transition-[transform,box-shadow] duration-300 ease-[cubic-bezier(0.34,1.56,0.64,1)] group-hover:scale-[2]"
-              style={{ boxShadow: '0 0 8px rgba(217,119,6,0.7)' }}
+              className="w-1.5 h-1.5 rounded-full bg-[#2563EB] transition-[transform,box-shadow] duration-300 ease-[cubic-bezier(0.34,1.56,0.64,1)] group-hover:scale-[2]"
+              style={{ boxShadow: '0 0 8px rgba(37,99,235,0.8)' }}
             />
           </Link>
 
-          {/* Desktop links */}
           <nav className="hidden md:flex items-center gap-8">
             {navLinks.map((link) => (
               <Link
                 key={link.href}
                 href={link.href}
-                className="font-sans text-sm font-medium text-[#A89880] hover:text-[#FAF7F2] transition-colors duration-200"
+                className="font-sans text-sm font-medium text-[#94A3B8] hover:text-[#F8FAFC] transition-colors duration-200"
               >
                 {link.label}
               </Link>
             ))}
             <Link
               href="/contact"
-              className="font-sans text-sm font-semibold text-[#0A0907] bg-[#D97706] px-4 py-2 rounded-md
+              className="font-sans text-sm font-semibold text-white bg-[#2563EB] px-4 py-2 rounded-md
                          transition-[transform,box-shadow] duration-300 ease-[cubic-bezier(0.34,1.56,0.64,1)]
-                         hover:-translate-y-0.5 hover:bg-[#F59E0B] hover:shadow-[0_8px_24px_rgba(217,119,6,0.45)]
+                         hover:-translate-y-0.5 hover:bg-[#1d4ed8] hover:shadow-[0_8px_24px_rgba(37,99,235,0.45)]
                          active:translate-y-0"
             >
               Neem contact op
             </Link>
           </nav>
 
-          {/* Mobile toggle */}
           <button
-            className="md:hidden p-2 text-[#A89880] hover:text-[#FAF7F2] transition-colors duration-200"
+            className="md:hidden p-2 text-[#94A3B8] hover:text-[#F8FAFC] transition-colors duration-200"
             onClick={() => setIsOpen(!isOpen)}
             aria-label="Menu openen"
           >
@@ -75,14 +72,13 @@ export default function Navbar() {
         </div>
       </div>
 
-      {/* Mobile menu */}
       <div
         className={`md:hidden overflow-hidden transition-[max-height,opacity] duration-300 ease-[cubic-bezier(0.34,1.56,0.64,1)] ${
           isOpen ? 'max-h-64 opacity-100' : 'max-h-0 opacity-0'
         }`}
         style={{
-          background: 'rgba(10,9,7,0.97)',
-          borderTop: '1px solid rgba(217,119,6,0.1)',
+          background: 'rgba(15,17,23,0.97)',
+          borderTop: '1px solid rgba(37,99,235,0.1)',
         }}
       >
         <div className="max-w-6xl mx-auto px-6 py-4 flex flex-col gap-4">
@@ -90,7 +86,7 @@ export default function Navbar() {
             <Link
               key={link.href}
               href={link.href}
-              className="font-sans text-sm font-medium text-[#A89880] hover:text-[#FAF7F2] transition-colors duration-200 py-1"
+              className="font-sans text-sm font-medium text-[#94A3B8] hover:text-[#F8FAFC] transition-colors duration-200 py-1"
               onClick={() => setIsOpen(false)}
             >
               {link.label}
@@ -98,8 +94,8 @@ export default function Navbar() {
           ))}
           <Link
             href="/contact"
-            className="font-sans text-sm font-semibold text-[#0A0907] bg-[#D97706] px-4 py-2.5 rounded-md
-                       hover:bg-[#F59E0B] transition-colors duration-200 text-center mt-1"
+            className="font-sans text-sm font-semibold text-white bg-[#2563EB] px-4 py-2.5 rounded-md
+                       hover:bg-[#1d4ed8] transition-colors duration-200 text-center mt-1"
             onClick={() => setIsOpen(false)}
           >
             Neem contact op
