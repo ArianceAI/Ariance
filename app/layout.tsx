@@ -1,13 +1,29 @@
 import './globals.css';
 import type { Metadata } from 'next';
-import { Inter } from 'next/font/google';
+import { Fraunces, Plus_Jakarta_Sans, JetBrains_Mono } from 'next/font/google';
 import Navbar from '@/components/layout/navbar';
 import Footer from '@/components/layout/footer';
 
-const inter = Inter({
+/* Fraunces — variable optical-size serif for headings */
+const fraunces = Fraunces({
   subsets: ['latin'],
-  variable: '--font-inter',
+  variable: '--font-heading',
   display: 'swap',
+});
+
+/* Plus Jakarta Sans — body copy */
+const jakarta = Plus_Jakarta_Sans({
+  subsets: ['latin'],
+  variable: '--font-body',
+  display: 'swap',
+});
+
+/* JetBrains Mono — labels and accents */
+const mono = JetBrains_Mono({
+  subsets: ['latin'],
+  variable: '--font-mono',
+  display: 'swap',
+  weight: ['400', '500'],
 });
 
 export const metadata: Metadata = {
@@ -25,14 +41,13 @@ export const metadata: Metadata = {
   },
 };
 
-export default function RootLayout({
-  children,
-}: {
-  children: React.ReactNode;
-}) {
+export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="nl" className={inter.variable}>
-      <body className={`${inter.className} bg-white text-[#0F1117]`}>
+    <html
+      lang="nl"
+      className={`${fraunces.variable} ${jakarta.variable} ${mono.variable} dark`}
+    >
+      <body className="bg-[#0A0907] text-[#FAF7F2]">
         <Navbar />
         <main>{children}</main>
         <Footer />
