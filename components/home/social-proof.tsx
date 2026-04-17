@@ -2,134 +2,162 @@
 
 import { useRef } from 'react';
 import { motion, useInView } from 'framer-motion';
-import { Quote, Star } from 'lucide-react';
+import { Quote } from 'lucide-react';
 
 const clients = [
   {
     name: 'Fit Administratie',
     sector: 'Administratiekantoor',
     initials: 'FA',
-    color: '#2563EB',
-    description:
-      'Fit Administratie automatiseert haar documentverwerking en klantcommunicatie met op maat gebouwde AI-workflows van Ariance.',
-    stars: 5,
+    accent: '#5EEAD4',
+    accentRgb: '94,234,212',
+    quote:
+      'De AI-workflows van Ariance verwerken onze documenten en klantcommunicatie zelfstandig. We winnen er wekelijks uren mee terug.',
+    metric: { v: '+70%', l: 'sneller verwerkt' },
   },
   {
     name: 'YouradviesgroepBV',
     sector: 'Financieel advies',
     initials: 'YA',
-    color: '#34D399',
-    description:
-      'YouradviesgroepBV gebruikt een private AI-omgeving voor interne kennisraadpleging en het versnellen van adviesrapporten.',
-    stars: 5,
+    accent: '#F5A962',
+    accentRgb: '245,169,98',
+    quote:
+      'Met de private AI-omgeving kunnen we veilig interne kennis raadplegen en adviesrapporten versneld opstellen — zonder dat data de deur uitgaat.',
+    metric: { v: 'AVG', l: 'volledig compliant' },
   },
 ];
 
 export default function SocialProof() {
   const ref = useRef(null);
-  const headerRef = useRef(null);
-  const isInView = useInView(headerRef, { once: true, margin: '-40px' });
+  const inView = useInView(ref, { once: true, margin: '-80px' });
 
   return (
     <section
-      ref={ref}
-      className="py-24 md:py-32"
-      style={{ background: 'var(--clr-bg-dark)', position: 'relative', overflow: 'hidden' }}
+      className="relative overflow-hidden py-24 md:py-32"
+      style={{ background: 'var(--bg-1)' }}
     >
-      {/* Background glow */}
+      {/* Ambient */}
       <div
-        className="absolute bottom-0 right-0 w-[500px] h-[500px] pointer-events-none"
+        className="absolute -top-20 -left-20 w-[500px] h-[500px] rounded-full pointer-events-none"
         style={{
-          background: 'radial-gradient(ellipse 60% 60% at 80% 80%, rgba(37,99,235,0.1) 0%, transparent 70%)',
+          background: 'radial-gradient(circle, rgba(94,234,212,0.1) 0%, transparent 60%)',
+          filter: 'blur(60px)',
+        }}
+      />
+      <div
+        className="absolute -bottom-20 -right-20 w-[500px] h-[500px] rounded-full pointer-events-none"
+        style={{
+          background: 'radial-gradient(circle, rgba(245,169,98,0.08) 0%, transparent 60%)',
+          filter: 'blur(70px)',
         }}
       />
 
       <div className="relative max-w-6xl mx-auto px-6 lg:px-8">
         {/* Header */}
         <motion.div
-          ref={headerRef}
-          className="max-w-xl mb-14"
-          initial={{ opacity: 0, y: 30 }}
-          animate={isInView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
+          ref={ref}
+          className="max-w-xl mb-16"
+          initial={{ opacity: 0, y: 24 }}
+          animate={inView ? { opacity: 1, y: 0 } : {}}
+          transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
         >
-          <p
-            className="text-[11px] font-bold uppercase tracking-[0.18em] text-[#60A5FA] mb-3"
-            style={{ fontFamily: 'var(--font-display)' }}
+          <span
+            className="inline-flex items-center gap-2 px-3 py-1 rounded-full mono-label mb-5"
+            style={{
+              background: 'rgba(94,234,212,0.08)',
+              border: '1px solid rgba(94,234,212,0.22)',
+              color: 'var(--accent)',
+            }}
           >
-            Referenties
-          </p>
+            <span className="w-1.5 h-1.5 rounded-full bg-[var(--accent)]" />
+            Klanten
+          </span>
           <h2
-            className="text-3xl md:text-[2.6rem] font-extrabold tracking-tight leading-tight mb-4 text-white"
-            style={{ fontFamily: 'var(--font-display)' }}
+            className="font-display font-extrabold tracking-[-0.03em] leading-[0.98] mb-4"
+            style={{ fontSize: 'clamp(2rem, 4.2vw, 3rem)', color: 'var(--ink)' }}
           >
-            Onze klanten
+            Nederlandse bedrijven<br />
+            die al profiteren.
           </h2>
-          <p className="text-base leading-[1.75]" style={{ color: 'var(--clr-text-muted-d)' }}>
-            Nederlandse bedrijven die al profiteren van praktische AI-implementaties door Ariance.
+          <p className="text-base md:text-[17px] leading-[1.65]" style={{ color: 'var(--muted-d)' }}>
+            Van administratiekantoren tot adviesbureaus — organisaties door heel Nederland
+            vertrouwen op Ariance voor praktische AI.
           </p>
         </motion.div>
 
         {/* Cards */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-          {clients.map((client, i) => (
+          {clients.map((c, i) => (
             <motion.div
-              key={client.name}
+              key={c.name}
               initial={{ opacity: 0, y: 40 }}
-              animate={isInView ? { opacity: 1, y: 0 } : {}}
-              transition={{ duration: 0.7, delay: i * 0.15, ease: [0.22, 1, 0.36, 1] }}
-              className="group relative rounded-2xl p-8 overflow-hidden
-                         transition-[transform,box-shadow] duration-300 hover:-translate-y-1"
+              animate={inView ? { opacity: 1, y: 0 } : {}}
+              transition={{ duration: 0.8, delay: i * 0.15, ease: [0.22, 1, 0.36, 1] }}
+              className="group relative rounded-3xl overflow-hidden p-8 md:p-10 transition-[transform,box-shadow] duration-500 hover:-translate-y-1"
               style={{
-                background: 'rgba(255,255,255,0.04)',
-                border: '1px solid rgba(255,255,255,0.08)',
-                backdropFilter: 'blur(12px)',
-                boxShadow: '0 8px 32px rgba(0,0,0,0.3)',
-              }}
-              whileHover={{
-                boxShadow: `0 20px 50px rgba(0,0,0,0.4), 0 0 0 1px ${client.color}30`,
+                background: 'rgba(19,38,32,0.6)',
+                border: `1px solid rgba(${c.accentRgb},0.18)`,
+                backdropFilter: 'blur(14px)',
+                boxShadow: '0 12px 40px rgba(0,0,0,0.3)',
               }}
             >
-              {/* Glow accent on hover */}
+              {/* Decorative accent corner */}
               <div
-                className="absolute top-0 left-0 w-full h-1 rounded-t-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300"
-                style={{ background: `linear-gradient(90deg, transparent, ${client.color}, transparent)` }}
+                className="absolute -top-10 -right-10 w-40 h-40 rounded-full pointer-events-none transition-opacity duration-500 opacity-60 group-hover:opacity-100"
+                style={{
+                  background: `radial-gradient(circle, rgba(${c.accentRgb},0.18) 0%, transparent 70%)`,
+                  filter: 'blur(20px)',
+                }}
               />
 
-              {/* Quote icon */}
+              {/* Top line */}
+              <div
+                className="absolute top-0 left-0 right-0 h-[2px]"
+                style={{
+                  background: `linear-gradient(90deg, transparent, ${c.accent}, transparent)`,
+                }}
+              />
+
               <Quote
-                size={28}
-                className="mb-5 opacity-30"
-                style={{ color: client.color }}
+                size={32}
+                className="mb-6 opacity-40"
+                style={{ color: c.accent }}
               />
 
-              {/* Stars */}
-              <div className="flex gap-1 mb-4">
-                {Array.from({ length: client.stars }).map((_, j) => (
-                  <Star key={j} size={13} fill={client.color} style={{ color: client.color }} />
-                ))}
-              </div>
+              <blockquote
+                className="font-display text-xl md:text-[1.4rem] leading-[1.4] mb-10 tracking-[-0.015em]"
+                style={{ color: 'var(--ink)' }}
+              >
+                {c.quote}
+              </blockquote>
 
-              <p className="text-sm leading-[1.85] mb-8" style={{ color: 'rgba(232,237,245,0.8)' }}>
-                "{client.description}"
-              </p>
-
-              <div className="flex items-center gap-3 pt-5" style={{ borderTop: '1px solid rgba(255,255,255,0.07)' }}>
-                <div
-                  className="w-10 h-10 rounded-xl flex items-center justify-center shrink-0 font-bold text-white text-sm"
-                  style={{ background: client.color, fontFamily: 'var(--font-display)' }}
-                >
-                  {client.initials}
-                </div>
-                <div>
-                  <div className="text-sm font-semibold text-white" style={{ fontFamily: 'var(--font-display)' }}>
-                    {client.name}
-                  </div>
+              <div className="flex items-end justify-between gap-4 pt-6" style={{ borderTop: '1px solid rgba(240,239,230,0.06)' }}>
+                <div className="flex items-center gap-4">
                   <div
-                    className="text-[11px] uppercase tracking-wide mt-0.5"
-                    style={{ color: 'var(--clr-text-muted-d)', fontFamily: 'var(--font-display)' }}
+                    className="w-12 h-12 rounded-xl flex items-center justify-center font-display font-extrabold text-sm shrink-0"
+                    style={{
+                      background: `rgba(${c.accentRgb},0.15)`,
+                      color: c.accent,
+                      border: `1px solid rgba(${c.accentRgb},0.3)`,
+                    }}
                   >
-                    {client.sector}
+                    {c.initials}
+                  </div>
+                  <div>
+                    <div className="font-display font-bold text-[15px]" style={{ color: 'var(--ink)' }}>
+                      {c.name}
+                    </div>
+                    <div className="mono-label mt-0.5" style={{ color: 'var(--muted-d)' }}>
+                      {c.sector}
+                    </div>
+                  </div>
+                </div>
+                <div className="text-right">
+                  <div className="font-display font-extrabold text-2xl tracking-tight" style={{ color: c.accent }}>
+                    {c.metric.v}
+                  </div>
+                  <div className="mono-label" style={{ color: 'var(--muted-d)' }}>
+                    {c.metric.l}
                   </div>
                 </div>
               </div>
@@ -138,13 +166,13 @@ export default function SocialProof() {
         </div>
 
         <motion.p
-          className="mt-10 text-center text-sm"
-          style={{ color: 'var(--clr-text-muted-d)' }}
+          className="mt-12 text-center text-sm"
+          style={{ color: 'var(--muted-d)' }}
           initial={{ opacity: 0 }}
-          animate={isInView ? { opacity: 1 } : {}}
-          transition={{ duration: 0.6, delay: 0.5 }}
+          animate={inView ? { opacity: 1 } : {}}
+          transition={{ duration: 0.7, delay: 0.5 }}
         >
-          Tevreden klanten door heel Nederland — van Alkmaar tot Eindhoven.
+          Vertrouwd door MKB-bedrijven van Alkmaar tot Eindhoven.
         </motion.p>
       </div>
     </section>

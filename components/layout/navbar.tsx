@@ -2,7 +2,8 @@
 
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
-import { Menu, X } from 'lucide-react';
+import { usePathname } from 'next/navigation';
+import { Menu, X, ArrowUpRight } from 'lucide-react';
 
 const navLinks = [
   { href: '/',         label: 'Home' },
@@ -11,102 +12,121 @@ const navLinks = [
 ];
 
 export default function Navbar() {
-  const [isOpen,   setIsOpen]   = useState(false);
+  const [isOpen, setIsOpen]     = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const pathname = usePathname();
 
   useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 30);
+    const onScroll = () => setScrolled(window.scrollY > 24);
+    onScroll();
     window.addEventListener('scroll', onScroll, { passive: true });
     return () => window.removeEventListener('scroll', onScroll);
   }, []);
 
+  useEffect(() => { setIsOpen(false); }, [pathname]);
+
   return (
     <header
-      className={`fixed top-0 left-0 right-0 z-50 transition-[background,box-shadow,border-color] duration-300 ${
-        scrolled ? 'glass-nav-light shadow-[0_1px_20px_rgba(0,0,0,0.08)]' : 'bg-transparent'
+      className={`fixed top-0 left-0 right-0 z-50 transition-[padding,background,border-color,box-shadow] duration-400 ${
+        scrolled ? 'glass-nav-dark py-0' : 'bg-transparent py-1.5'
       }`}
     >
       <div className="max-w-6xl mx-auto px-6 lg:px-8">
-        <div className="flex items-center justify-between h-16 md:h-[70px]">
+        <div className={`flex items-center justify-between transition-[height] duration-400 ${scrolled ? 'h-[60px]' : 'h-[76px]'}`}>
 
-          {/* Logo */}
+          {/* Logo — Ariance mark */}
           <Link href="/" className="flex items-center gap-2.5 group">
-            <span
-              className="text-[1.15rem] font-bold tracking-tight text-[#0A0F1C]"
-              style={{ fontFamily: 'var(--font-display)' }}
-            >
-              Ariance
+            <span className="relative">
+              <span className="block w-2.5 h-2.5 rounded-full bg-[var(--accent)] transition-transform duration-500 group-hover:scale-[1.6]" />
+              <span className="absolute inset-0 rounded-full bg-[var(--accent)] animate-pulse-glow" />
             </span>
-            <span
-              className="relative w-2 h-2 rounded-full bg-[#2563EB] transition-[transform,box-shadow] duration-300
-                         group-hover:scale-[2] group-hover:shadow-[0_0_10px_rgba(37,99,235,0.8)]"
-            >
-              <span className="absolute inset-0 rounded-full bg-[#2563EB] animate-ping opacity-50" />
+            <span className="font-display text-[1.15rem] font-extrabold tracking-tight text-[var(--ink)]">
+              ariance<span className="text-[var(--accent)]">.</span>
             </span>
           </Link>
 
           {/* Desktop nav */}
-          <nav className="hidden md:flex items-center gap-8">
-            {navLinks.map((link) => (
-              <Link
-                key={link.href}
-                href={link.href}
-                className="text-sm font-medium text-[#374151] hover:text-[#2563EB] transition-colors duration-200"
-                style={{ fontFamily: 'var(--font-display)' }}
-              >
-                {link.label}
-              </Link>
-            ))}
+          <nav className="hidden md:flex items-center gap-1">
+            {navLinks.map((link) => {
+              const active = pathname === link.href;
+              return (
+                <Link
+                  key={link.href}
+                  href={link.href}
+                  className="relative px-4 py-2 font-display text-sm font-medium transition-colors duration-200 group"
+                  style={{ color: active ? 'var(--ink)' : 'rgba(240,239,230,0.65)' }}
+                >
+                  <span className="relative z-10 transition-colors duration-200 group-hover:text-[var(--ink)]">
+                    {link.label}
+                  </span>
+                  <span
+                    className={`absolute left-4 right-4 bottom-1 h-px transition-transform duration-300 origin-left ${active ? 'scale-x-100' : 'scale-x-0 group-hover:scale-x-100'}`}
+                    style={{ background: 'var(--accent)' }}
+                  />
+                </Link>
+              );
+            })}
             <Link
               href="/contact"
-              className="text-sm font-semibold px-5 py-2.5 rounded-lg text-white
-                         bg-[#2563EB] transition-[transform,box-shadow] duration-300
-                         hover:-translate-y-0.5 hover:bg-[#1d4ed8]
-                         hover:shadow-[0_8px_24px_rgba(37,99,235,0.45)]"
-              style={{ fontFamily: 'var(--font-display)' }}
+              className="ml-4 group inline-flex items-center gap-2 font-display text-[13px] font-semibold px-5 py-2.5 rounded-full transition-all duration-300 hover:-translate-y-0.5"
+              style={{
+                background: 'var(--amber)',
+                color: 'var(--ink-dark)',
+                boxShadow: '0 10px 30px rgba(245,169,98,0.32), inset 0 1px 0 rgba(255,255,255,0.25)',
+              }}
             >
-              Neem contact op
+              Plan een gesprek
+              <ArrowUpRight size={14} className="transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
             </Link>
           </nav>
 
           {/* Mobile toggle */}
           <button
-            className="md:hidden p-2 text-[#374151] hover:text-[#0A0F1C] transition-colors"
+            className="md:hidden p-2 rounded-lg transition-colors"
+            style={{ color: 'var(--ink)' }}
             onClick={() => setIsOpen(!isOpen)}
             aria-label="Menu"
           >
-            {isOpen ? <X size={20} /> : <Menu size={20} />}
+            {isOpen ? <X size={22} /> : <Menu size={22} />}
           </button>
         </div>
       </div>
 
       {/* Mobile menu */}
       <div
-        className={`md:hidden overflow-hidden transition-[max-height,opacity] duration-300 ${
-          isOpen ? 'max-h-72 opacity-100' : 'max-h-0 opacity-0'
+        className={`md:hidden overflow-hidden transition-[max-height,opacity] duration-400 ${
+          isOpen ? 'max-h-[340px] opacity-100' : 'max-h-0 opacity-0'
         }`}
-        style={{ background: 'rgba(6,11,20,0.98)', borderTop: '1px solid rgba(255,255,255,0.06)' }}
+        style={{
+          background: 'rgba(7,17,13,0.98)',
+          borderTop: '1px solid rgba(94,234,212,0.08)',
+        }}
       >
-        <div className="max-w-6xl mx-auto px-6 py-5 flex flex-col gap-4">
-          {navLinks.map((link) => (
-            <Link
-              key={link.href}
-              href={link.href}
-              className="text-sm font-medium text-white/70 hover:text-white transition-colors py-1"
-              style={{ fontFamily: 'var(--font-display)' }}
-              onClick={() => setIsOpen(false)}
-            >
-              {link.label}
-            </Link>
-          ))}
+        <div className="max-w-6xl mx-auto px-6 py-6 flex flex-col gap-1">
+          {navLinks.map((link) => {
+            const active = pathname === link.href;
+            return (
+              <Link
+                key={link.href}
+                href={link.href}
+                className="font-display text-base font-medium py-3 flex items-center justify-between group"
+                style={{ color: active ? 'var(--accent)' : 'var(--ink)' }}
+              >
+                {link.label}
+                <ArrowUpRight size={16} className="opacity-0 group-hover:opacity-100 transition-opacity duration-200" style={{ color: 'var(--accent)' }} />
+              </Link>
+            );
+          })}
           <Link
             href="/contact"
-            className="text-sm font-semibold bg-[#2563EB] text-white px-4 py-3 rounded-lg
-                       hover:bg-[#1d4ed8] transition-colors text-center mt-1"
-            style={{ fontFamily: 'var(--font-display)' }}
-            onClick={() => setIsOpen(false)}
+            className="mt-3 inline-flex items-center justify-center gap-2 font-display font-semibold text-sm px-5 py-3.5 rounded-full"
+            style={{
+              background: 'var(--amber)',
+              color: 'var(--ink-dark)',
+              boxShadow: '0 10px 30px rgba(245,169,98,0.32)',
+            }}
           >
-            Neem contact op
+            Plan een gesprek <ArrowUpRight size={15} />
           </Link>
         </div>
       </div>

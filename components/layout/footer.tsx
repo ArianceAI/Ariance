@@ -2,54 +2,81 @@ import Link from 'next/link';
 import { MapPin, Mail, Phone, Clock, ArrowUpRight } from 'lucide-react';
 
 const navLinks = [
-  { href: '/',         label: 'Home' },
-  { href: '/diensten', label: 'Diensten' },
-  { href: '/contact',  label: 'Contact' },
+  { href: '/',                   label: 'Home' },
+  { href: '/diensten',           label: 'Diensten' },
+  { href: '/contact',            label: 'Contact' },
+];
+
+const servicesLinks = [
+  { href: '/diensten#automatisering', label: 'AI Automatisering' },
+  { href: '/diensten#consultancy',    label: 'AI Consultancy' },
+  { href: '/diensten#private-ai',     label: 'Private AI' },
+  { href: '/diensten#websites',       label: 'Websites & Digitalisering' },
 ];
 
 const contactItems = [
   { icon: MapPin, content: 'Jan van Goyenstraat 29\n1823 GC Alkmaar', href: null },
-  { icon: Mail,   content: 'arianceautomation@gmail.com', href: 'mailto:arianceautomation@gmail.com' },
-  { icon: Phone,  content: '+31 6 14455066',             href: 'tel:+31614455066' },
-  { icon: Clock,  content: 'Ma – Vr: 9:00 – 17:00',    href: null },
+  { icon: Mail,   content: 'arianceautomation@gmail.com',              href: 'mailto:arianceautomation@gmail.com' },
+  { icon: Phone,  content: '+31 6 14455066',                           href: 'tel:+31614455066' },
+  { icon: Clock,  content: 'Ma – Vr: 9:00 – 17:00',                    href: null },
 ];
 
 export default function Footer() {
   return (
-    <footer style={{ background: 'var(--clr-bg-dark)', borderTop: '1px solid rgba(255,255,255,0.05)' }}>
-      {/* Top bar */}
+    <footer
+      className="relative overflow-hidden"
+      style={{ background: '#050D09', borderTop: '1px solid rgba(94,234,212,0.08)' }}
+    >
+      {/* Ambient glow bottom */}
       <div
-        className="border-b"
-        style={{ borderColor: 'rgba(255,255,255,0.05)' }}
-      >
-        <div className="max-w-6xl mx-auto px-6 lg:px-8 py-12 md:py-14">
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-10 md:gap-12">
+        className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[800px] h-[300px] pointer-events-none"
+        style={{
+          background: 'radial-gradient(ellipse 50% 100% at 50% 100%, rgba(94,234,212,0.14) 0%, transparent 65%)',
+          filter: 'blur(40px)',
+        }}
+      />
 
-            {/* Brand */}
-            <div className="md:col-span-1">
-              <div className="flex items-center gap-2.5 mb-5">
-                <span
-                  className="text-xl font-bold tracking-tight text-white"
-                  style={{ fontFamily: 'var(--font-display)' }}
-                >
-                  Ariance
+      {/* Main */}
+      <div
+        className="relative border-b"
+        style={{ borderColor: 'rgba(240,239,230,0.06)' }}
+      >
+        <div className="max-w-6xl mx-auto px-6 lg:px-8 py-16 md:py-20">
+          <div className="grid grid-cols-1 md:grid-cols-12 gap-10 md:gap-12">
+
+            {/* Brand column (5) */}
+            <div className="md:col-span-5">
+              <Link href="/" className="inline-flex items-center gap-2.5 mb-6 group">
+                <span className="relative">
+                  <span className="block w-2.5 h-2.5 rounded-full bg-[var(--accent)] transition-transform duration-500 group-hover:scale-150" />
+                  <span className="absolute inset-0 rounded-full bg-[var(--accent)] animate-pulse-glow" />
                 </span>
-                <span
-                  className="w-2 h-2 rounded-full bg-[#2563EB]"
-                  style={{ boxShadow: '0 0 8px rgba(37,99,235,0.8)' }}
-                />
-              </div>
-              <p className="text-sm leading-relaxed max-w-[220px]" style={{ color: 'var(--clr-text-muted-d)' }}>
-                Praktische AI-oplossingen voor het Nederlandse MKB. Geen theorie, maar echte resultaten.
+                <span className="font-display text-xl font-extrabold tracking-tight" style={{ color: 'var(--ink)' }}>
+                  ariance<span style={{ color: 'var(--accent)' }}>.</span>
+                </span>
+              </Link>
+              <p className="text-sm leading-[1.75] max-w-sm mb-7" style={{ color: 'var(--muted-d)' }}>
+                Praktische AI-oplossingen voor het Nederlandse MKB.
+                Van automatisering tot private AI — in weken live, niet maanden.
               </p>
+
+              <Link
+                href="/contact"
+                className="group inline-flex items-center gap-2 font-display font-semibold text-[13px] px-5 py-2.5 rounded-full transition-[transform,box-shadow] duration-300 hover:-translate-y-0.5"
+                style={{
+                  background: 'var(--amber)',
+                  color: 'var(--ink-dark)',
+                  boxShadow: '0 10px 26px rgba(245,169,98,0.3)',
+                }}
+              >
+                Plan een gesprek
+                <ArrowUpRight size={14} className="transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+              </Link>
             </div>
 
-            {/* Navigation */}
-            <div>
-              <h3
-                className="text-[11px] font-bold uppercase tracking-[0.16em] mb-5"
-                style={{ color: 'rgba(107,122,153,0.6)', fontFamily: 'var(--font-display)' }}
-              >
+            {/* Nav (3) */}
+            <div className="md:col-span-3">
+              <h3 className="mono-label mb-5" style={{ color: 'var(--accent)' }}>
                 Navigatie
               </h3>
               <nav className="flex flex-col gap-3">
@@ -57,46 +84,69 @@ export default function Footer() {
                   <Link
                     key={link.href}
                     href={link.href}
-                    className="text-sm font-medium flex items-center gap-1 group w-fit transition-colors duration-200"
-                    style={{ color: 'var(--clr-text-muted-d)', fontFamily: 'var(--font-display)' }}
+                    className="group inline-flex items-center gap-1 font-display text-sm font-medium w-fit transition-colors duration-200"
+                    style={{ color: 'var(--muted-d)' }}
                   >
-                    <span className="group-hover:text-white transition-colors duration-200">
+                    <span className="transition-colors duration-200 group-hover:text-[var(--ink)]">
                       {link.label}
                     </span>
                     <ArrowUpRight
-                      size={11}
-                      className="opacity-0 group-hover:opacity-100 transition-[opacity,transform] duration-200 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 text-white"
+                      size={12}
+                      className="opacity-0 group-hover:opacity-100 transition-[opacity,transform] duration-200 group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
+                      style={{ color: 'var(--accent)' }}
                     />
+                  </Link>
+                ))}
+              </nav>
+
+              <h3 className="mono-label mb-5 mt-10" style={{ color: 'var(--accent)' }}>
+                Diensten
+              </h3>
+              <nav className="flex flex-col gap-3">
+                {servicesLinks.map((link) => (
+                  <Link
+                    key={link.href}
+                    href={link.href}
+                    className="font-display text-sm font-medium transition-colors duration-200 w-fit"
+                    style={{ color: 'var(--muted-d)' }}
+                  >
+                    <span className="hover:text-[var(--ink)] transition-colors duration-200">
+                      {link.label}
+                    </span>
                   </Link>
                 ))}
               </nav>
             </div>
 
-            {/* Contact */}
-            <div>
-              <h3
-                className="text-[11px] font-bold uppercase tracking-[0.16em] mb-5"
-                style={{ color: 'rgba(107,122,153,0.6)', fontFamily: 'var(--font-display)' }}
-              >
+            {/* Contact (4) */}
+            <div className="md:col-span-4">
+              <h3 className="mono-label mb-5" style={{ color: 'var(--accent)' }}>
                 Contact
               </h3>
-              <ul className="flex flex-col gap-3.5">
+              <ul className="flex flex-col gap-4">
                 {contactItems.map(({ icon: Icon, content, href }) => (
-                  <li key={content} className="flex items-start gap-2.5">
-                    <Icon size={13} className="mt-0.5 shrink-0 text-[#2563EB] opacity-70" />
+                  <li key={content} className="flex items-start gap-3">
+                    <span
+                      className="w-8 h-8 rounded-lg flex items-center justify-center shrink-0"
+                      style={{
+                        background: 'rgba(94,234,212,0.08)',
+                        border: '1px solid rgba(94,234,212,0.18)',
+                      }}
+                    >
+                      <Icon size={13} style={{ color: 'var(--accent)' }} />
+                    </span>
                     {href ? (
                       <a
                         href={href}
-                        className="text-sm leading-relaxed hover:text-white transition-colors duration-200 whitespace-pre-line"
-                        style={{ color: 'var(--clr-text-muted-d)' }}
+                        className="text-sm leading-[1.6] transition-colors duration-200 whitespace-pre-line"
+                        style={{ color: 'var(--muted-d)' }}
                       >
-                        {content}
+                        <span className="hover:text-[var(--ink)] transition-colors duration-200">
+                          {content}
+                        </span>
                       </a>
                     ) : (
-                      <span
-                        className="text-sm leading-relaxed whitespace-pre-line"
-                        style={{ color: 'var(--clr-text-muted-d)' }}
-                      >
+                      <span className="text-sm leading-[1.6] whitespace-pre-line" style={{ color: 'var(--muted-d)' }}>
                         {content}
                       </span>
                     )}
@@ -108,13 +158,13 @@ export default function Footer() {
         </div>
       </div>
 
-      {/* Bottom bar */}
-      <div className="max-w-6xl mx-auto px-6 lg:px-8 py-6 flex flex-col sm:flex-row items-center justify-between gap-3">
-        <p className="text-xs" style={{ color: 'rgba(75,85,99,0.8)' }}>
-          &copy; {new Date().getFullYear()} Ariance. Alle rechten voorbehouden.
+      {/* Bottom */}
+      <div className="relative max-w-6xl mx-auto px-6 lg:px-8 py-6 flex flex-col sm:flex-row items-center justify-between gap-3">
+        <p className="mono-label" style={{ color: 'rgba(122,139,130,0.7)' }}>
+          © {new Date().getFullYear()} Ariance · Alle rechten voorbehouden
         </p>
-        <p className="text-xs" style={{ color: 'rgba(75,85,99,0.8)' }}>
-          Opgericht 2025 · Alkmaar, Nederland
+        <p className="mono-label" style={{ color: 'rgba(122,139,130,0.7)' }}>
+          Opgericht 2025 · Alkmaar, nederland
         </p>
       </div>
     </footer>

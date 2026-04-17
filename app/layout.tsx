@@ -5,14 +5,14 @@ import Footer from '@/components/layout/footer';
 
 export const metadata: Metadata = {
   metadataBase: new URL('https://ariance.nl'),
-  title: 'Ariance — AI Oplossingen voor Nederlandse Bedrijven',
+  title: 'Ariance — AI die écht werkt voor Nederlandse bedrijven',
   description:
-    'Ariance bouwt praktische AI-oplossingen voor Nederlandse MKB-bedrijven. AI Automatisering, Consultancy, Private AI en Digitalisering. Gevestigd in Alkmaar.',
-  keywords: 'AI automatisering, kunstmatige intelligentie, MKB, Nederland, Alkmaar, digitalisering',
+    'Ariance bouwt praktische AI-oplossingen voor Nederlandse MKB-bedrijven. AI Automatisering, Consultancy, Private AI en Digitalisering. Gevestigd in Alkmaar — werkzaam door heel Nederland.',
+  keywords: 'AI automatisering, private AI, AI consultancy, MKB Nederland, Alkmaar, digitalisering, AVG AI',
   authors: [{ name: 'Léon Ariëns' }],
   openGraph: {
-    title: 'Ariance — AI Oplossingen voor Nederlandse Bedrijven',
-    description: 'Praktische AI-oplossingen voor het Nederlandse MKB.',
+    title: 'Ariance — AI die écht werkt voor Nederlandse bedrijven',
+    description: 'Praktische AI-oplossingen voor het Nederlandse MKB — in weken live, niet maanden.',
     locale: 'nl_NL',
     type: 'website',
   },
@@ -23,7 +23,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     <html lang="nl">
       <body>
         <Navbar />
-        <main>{children}</main>
+        <main className="relative">{children}</main>
         <Footer />
       </body>
     </html>

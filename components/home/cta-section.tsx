@@ -3,42 +3,43 @@
 import { useRef, useState } from 'react';
 import Link from 'next/link';
 import { motion, useInView } from 'framer-motion';
-import { ArrowRight, Phone, Zap } from 'lucide-react';
+import { ArrowRight, Phone, Mail } from 'lucide-react';
 
-function MagneticBtn({ href, children, primary = false, tel = false }: {
-  href: string; children: React.ReactNode; primary?: boolean; tel?: boolean;
-}) {
+function MagneticBtn({
+  href, children, variant = 'primary', tel = false,
+}: { href: string; children: React.ReactNode; variant?: 'primary' | 'ghost'; tel?: boolean }) {
   const ref = useRef<HTMLDivElement>(null);
   const [pos, setPos] = useState({ x: 0, y: 0 });
-
-  const move = (e: React.MouseEvent) => {
-    const rect = ref.current!.getBoundingClientRect();
-    setPos({
-      x: (e.clientX - rect.left - rect.width  / 2) * 0.3,
-      y: (e.clientY - rect.top  - rect.height / 2) * 0.3,
-    });
-  };
-
-  const Tag = tel ? 'a' : Link;
+  const Tag: any = tel ? 'a' : Link;
 
   return (
     <motion.div
       ref={ref}
-      onMouseMove={move}
+      onMouseMove={(e) => {
+        const r = ref.current!.getBoundingClientRect();
+        setPos({ x: (e.clientX - r.left - r.width / 2) * 0.25, y: (e.clientY - r.top - r.height / 2) * 0.25 });
+      }}
       onMouseLeave={() => setPos({ x: 0, y: 0 })}
       animate={{ x: pos.x, y: pos.y }}
-      transition={{ type: 'spring', stiffness: 150, damping: 14 }}
+      transition={{ type: 'spring', stiffness: 160, damping: 14 }}
       className="inline-flex"
     >
       <Tag
-        href={href as any}
-        className={`inline-flex items-center gap-2.5 font-semibold px-7 py-4 rounded-xl text-sm
-          transition-[box-shadow] duration-300 ${
-            primary
-              ? 'bg-[#2563EB] text-white hover:bg-[#1d4ed8] hover:shadow-[0_20px_50px_rgba(37,99,235,0.6)]'
-              : 'text-white border border-white/15 hover:border-white/30 hover:bg-white/[0.07]'
-          }`}
-        style={{ fontFamily: 'var(--font-display)' }}
+        href={href}
+        className="group inline-flex items-center gap-2.5 font-display font-semibold text-[14px] px-7 py-4 rounded-full transition-[transform,box-shadow] duration-300 hover:-translate-y-0.5"
+        style={
+          variant === 'primary'
+            ? {
+                background: 'var(--amber)',
+                color: 'var(--ink-dark)',
+                boxShadow: '0 18px 50px rgba(245,169,98,0.45), inset 0 1px 0 rgba(255,255,255,0.3)',
+              }
+            : {
+                background: 'transparent',
+                color: 'var(--ink)',
+                border: '1px solid rgba(240,239,230,0.18)',
+              }
+        }
       >
         {children}
       </Tag>
@@ -48,127 +49,128 @@ function MagneticBtn({ href, children, primary = false, tel = false }: {
 
 export default function CtaSection() {
   const ref = useRef(null);
-  const isInView = useInView(ref, { once: true, margin: '-60px' });
+  const inView = useInView(ref, { once: true, margin: '-80px' });
 
   return (
     <section
       ref={ref}
-      className="relative py-28 md:py-40 overflow-hidden"
-      style={{ background: 'var(--clr-bg-dark)' }}
+      className="relative overflow-hidden py-28 md:py-40"
+      style={{ background: 'var(--bg-0)' }}
     >
-      {/* Noise */}
-      <div className="noise-overlay" />
+      <div className="noise" />
 
-      {/* Central glow */}
-      <div
-        className="absolute inset-0 flex items-center justify-center pointer-events-none"
-        aria-hidden
-      >
+      {/* Grid */}
+      <div className="absolute inset-0 bg-grid opacity-40 pointer-events-none" />
+
+      {/* Huge central glow orb */}
+      <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
         <div
-          className="w-[700px] h-[400px] rounded-full"
+          className="w-[800px] h-[500px] rounded-full"
           style={{
-            background: 'radial-gradient(ellipse 80% 60% at 50% 100%, rgba(37,99,235,0.22) 0%, rgba(37,99,235,0.06) 55%, transparent 70%)',
-            filter: 'blur(20px)',
+            background:
+              'radial-gradient(ellipse 80% 60% at 50% 80%, rgba(94,234,212,0.32) 0%, rgba(245,169,98,0.14) 45%, transparent 72%)',
+            filter: 'blur(30px)',
           }}
         />
       </div>
 
-      {/* Top line */}
-      <div
-        className="absolute top-0 left-1/2 -translate-x-1/2 w-32 h-px"
-        style={{ background: 'linear-gradient(90deg, transparent, rgba(37,99,235,0.6), transparent)' }}
-      />
-
       {/* Floating orbs */}
       <div
-        className="absolute left-10 top-1/3 w-36 h-36 rounded-full pointer-events-none animate-float"
-        style={{ background: 'radial-gradient(circle, rgba(37,99,235,0.12) 0%, transparent 70%)', filter: 'blur(20px)' }}
-      />
-      <div
-        className="absolute right-10 bottom-1/3 w-24 h-24 rounded-full pointer-events-none animate-float-2"
-        style={{ background: 'radial-gradient(circle, rgba(96,165,250,0.1) 0%, transparent 70%)', filter: 'blur(16px)' }}
-      />
-
-      {/* Grid */}
-      <div
-        className="absolute inset-0 pointer-events-none"
+        className="absolute left-12 top-1/3 w-40 h-40 rounded-full pointer-events-none animate-float"
         style={{
-          backgroundImage: `
-            linear-gradient(rgba(37,99,235,0.04) 1px, transparent 1px),
-            linear-gradient(90deg, rgba(37,99,235,0.04) 1px, transparent 1px)
-          `,
-          backgroundSize: '64px 64px',
+          background: 'radial-gradient(circle, rgba(94,234,212,0.18) 0%, transparent 70%)',
+          filter: 'blur(20px)',
+        }}
+      />
+      <div
+        className="absolute right-12 bottom-1/4 w-28 h-28 rounded-full pointer-events-none animate-float-slow"
+        style={{
+          background: 'radial-gradient(circle, rgba(245,169,98,0.16) 0%, transparent 70%)',
+          filter: 'blur(18px)',
         }}
       />
 
-      <div className="relative max-w-6xl mx-auto px-6 lg:px-8 text-center">
-        <motion.div
-          initial={{ opacity: 0, y: 40 }}
-          animate={isInView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
-        >
-          {/* Badge */}
-          <div className="inline-flex items-center gap-2 mb-7">
-            <div
-              className="flex items-center gap-2 text-[#60A5FA] text-xs font-semibold px-4 py-2 rounded-full"
-              style={{
-                background: 'rgba(37,99,235,0.1)',
-                border: '1px solid rgba(37,99,235,0.25)',
-                fontFamily: 'var(--font-display)',
-              }}
-            >
-              <Zap size={11} fill="#60A5FA" />
-              Begin vandaag
-            </div>
-          </div>
+      {/* Top accent line */}
+      <div
+        className="absolute top-0 left-1/2 -translate-x-1/2 w-40 h-px"
+        style={{ background: 'linear-gradient(90deg, transparent, rgba(94,234,212,0.5), transparent)' }}
+      />
 
-          <h2
-            className="font-extrabold text-white leading-[1.04] tracking-tight mb-5 max-w-2xl mx-auto"
+      <div className="relative max-w-5xl mx-auto px-6 lg:px-8 text-center">
+        <motion.div
+          initial={{ opacity: 0, y: 32 }}
+          animate={inView ? { opacity: 1, y: 0 } : {}}
+          transition={{ duration: 0.9, ease: [0.22, 1, 0.36, 1] }}
+        >
+          <span
+            className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full mono-label mb-8"
             style={{
-              fontFamily: 'var(--font-display)',
-              fontSize: 'clamp(2.4rem, 5.5vw, 4rem)',
-              textShadow: '0 0 80px rgba(37,99,235,0.25)',
+              background: 'rgba(245,169,98,0.1)',
+              border: '1px solid rgba(245,169,98,0.3)',
+              color: 'var(--amber)',
             }}
           >
-            Klaar om te starten?
+            <span className="w-1.5 h-1.5 rounded-full bg-[var(--amber)] animate-pulse" />
+            Start vandaag
+          </span>
+
+          <h2
+            className="font-display font-extrabold leading-[0.95] tracking-[-0.035em] mb-7 max-w-3xl mx-auto"
+            style={{
+              fontSize: 'clamp(2.4rem, 6vw, 4.6rem)',
+              color: 'var(--ink)',
+              textShadow: '0 0 80px rgba(94,234,212,0.15)',
+            }}
+          >
+            Klaar om{' '}
+            <span className="text-gradient-emerald">tijd terug te winnen?</span>
           </h2>
 
           <motion.p
-            className="text-base md:text-lg leading-[1.75] mb-12 max-w-lg mx-auto"
-            style={{ color: 'var(--clr-text-muted-d)' }}
+            className="text-lg md:text-xl leading-[1.65] mb-12 max-w-xl mx-auto"
+            style={{ color: 'var(--muted-d)' }}
             initial={{ opacity: 0 }}
-            animate={isInView ? { opacity: 1 } : {}}
-            transition={{ delay: 0.2, duration: 0.7 }}
+            animate={inView ? { opacity: 1 } : {}}
+            transition={{ duration: 0.7, delay: 0.2 }}
           >
             Plan een vrijblijvend gesprek met Léon. Binnen 30 minuten weet u welke
-            AI-oplossingen het meeste opleveren voor uw bedrijf.
+            AI-oplossingen écht iets opleveren voor uw bedrijf.
           </motion.p>
 
           <motion.div
-            className="flex flex-col sm:flex-row gap-4 justify-center"
-            initial={{ opacity: 0, y: 20 }}
-            animate={isInView ? { opacity: 1, y: 0 } : {}}
-            transition={{ delay: 0.35, duration: 0.7 }}
+            className="flex flex-col sm:flex-row gap-4 justify-center mb-12"
+            initial={{ opacity: 0, y: 16 }}
+            animate={inView ? { opacity: 1, y: 0 } : {}}
+            transition={{ duration: 0.7, delay: 0.35 }}
           >
-            <MagneticBtn href="/contact" primary>
-              Neem contact op
-              <ArrowRight size={15} />
+            <MagneticBtn href="/contact">
+              Plan een gratis gesprek
+              <ArrowRight size={15} className="transition-transform duration-300 group-hover:translate-x-1" />
             </MagneticBtn>
-            <MagneticBtn href="tel:+31614455066" tel>
+            <MagneticBtn href="tel:+31614455066" variant="ghost" tel>
               <Phone size={14} />
               +31 6 14455066
             </MagneticBtn>
           </motion.div>
 
-          <motion.p
-            className="mt-10 text-xs tracking-wide"
-            style={{ color: 'rgba(107,122,153,0.7)' }}
+          <motion.div
+            className="flex flex-wrap items-center justify-center gap-x-8 gap-y-3 pt-10"
+            style={{ borderTop: '1px solid var(--border-d)' }}
             initial={{ opacity: 0 }}
-            animate={isInView ? { opacity: 1 } : {}}
-            transition={{ delay: 0.5 }}
+            animate={inView ? { opacity: 1 } : {}}
+            transition={{ duration: 0.7, delay: 0.5 }}
           >
-            Bereikbaar ma–vr · 9:00 – 17:00 · Alkmaar
-          </motion.p>
+            <span className="mono-label flex items-center gap-2" style={{ color: 'var(--muted-d)' }}>
+              <Mail size={12} style={{ color: 'var(--accent)' }} />
+              arianceautomation@gmail.com
+            </span>
+            <span className="mono-label" style={{ color: 'var(--muted-d)' }}>
+              ∙ ma–vr · 9:00–17:00
+            </span>
+            <span className="mono-label" style={{ color: 'var(--muted-d)' }}>
+              ∙ alkmaar, nederland
+            </span>
+          </motion.div>
         </motion.div>
       </div>
     </section>
