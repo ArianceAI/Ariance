@@ -124,7 +124,7 @@ function OrbitalDiagram() {
           backdropFilter: 'blur(8px)',
         }}
       >
-        ∙ workflows
+        ∙ automatisering
       </div>
       <div
         className="absolute top-[8%] right-[14%] px-3 py-1.5 rounded-full font-mono text-[10px] tracking-wider uppercase animate-float-slow"
@@ -135,7 +135,7 @@ function OrbitalDiagram() {
           backdropFilter: 'blur(8px)',
         }}
       >
-        ∙ private_ai
+        ∙ strategie
       </div>
       <div
         className="absolute bottom-[14%] right-[6%] px-3 py-1.5 rounded-full font-mono text-[10px] tracking-wider uppercase animate-float"
@@ -147,7 +147,7 @@ function OrbitalDiagram() {
           animationDelay: '1.2s',
         }}
       >
-        ∙ chatbots
+        ∙ consultancy
       </div>
       <div
         className="absolute bottom-[22%] left-[2%] px-3 py-1.5 rounded-full font-mono text-[10px] tracking-wider uppercase animate-float-slow"
@@ -159,7 +159,7 @@ function OrbitalDiagram() {
           animationDelay: '0.6s',
         }}
       >
-        ∙ consultancy
+        ∙ workflows
       </div>
     </div>
   );
@@ -257,7 +257,7 @@ export default function Hero() {
             {/* CTAs */}
             <motion.div variants={fadeUp} className="flex flex-col sm:flex-row gap-3 mb-10">
               <MagneticButton href="/contact">
-                Let&apos;s talk
+                Plan een gesprek
                 <ArrowRight size={15} className="transition-transform duration-300 group-hover:translate-x-1" />
               </MagneticButton>
               <MagneticButton href="/diensten" variant="ghost">

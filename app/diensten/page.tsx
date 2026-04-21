@@ -1,11 +1,11 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
-import { Bot, Lightbulb, Lock, Globe, Check, ArrowRight } from 'lucide-react';
+import { Bot, Lightbulb, Check, ArrowRight } from 'lucide-react';
 
 export const metadata: Metadata = {
   title: 'Diensten — Ariance AI Oplossingen',
   description:
-    'Ontdek de AI-diensten van Ariance: automatisering, consultancy, private AI en website- en digitaliseringsoplossingen voor het Nederlandse MKB.',
+    'Ontdek de AI-diensten van Ariance: AI automatisering en AI consultancy voor het Nederlandse MKB.',
 };
 
 const services = [
@@ -55,54 +55,6 @@ const services = [
       'Prioriteitenmatrix met businesscase per kans',
       'Implementatieplan op hoofdlijnen',
       'Presentatie aan directie/management',
-    ],
-  },
-  {
-    id: 'private-ai',
-    icon: Lock,
-    title: 'Private AI',
-    tagline: 'AI-kracht. Uw data blijft van u.',
-    description:
-      'Een private AI-omgeving is een volledig eigen AI-systeem dat draait op uw servers of een beveiligde private cloud. U profiteert van alle mogelijkheden van moderne AI, maar zonder dat vertrouwelijke bedrijfsinformatie de deur uitgaat.',
-    benefits: [
-      'Volledige dataprivacy — geen data naar OpenAI of anderen',
-      'AVG-compliant door ontwerp',
-      'Eigen kennisbank op basis van uw interne documenten',
-      'Medewerkers kunnen veilig vragen stellen over bedrijfsprocessen',
-      'Geen publieke AI-limieten of gebruikskosten per query',
-      'Volledig te beheren en aan te passen door uzelf',
-    ],
-    included: [
-      'Technische architectuurkeuze en advies',
-      'Installatie en configuratie van het AI-model',
-      'Koppeling met uw interne kennisbronnen',
-      'Beveiligingsinstellingen en toegangsbeheer',
-      'Training voor eindgebruikers',
-      'Maandelijks onderhoud en updates (optioneel)',
-    ],
-  },
-  {
-    id: 'websites',
-    icon: Globe,
-    title: 'Websites & Digitalisering',
-    tagline: 'Professioneel online. Processen gedigitaliseerd.',
-    description:
-      'Een sterke online aanwezigheid en gedigitaliseerde processen zijn de basis voor groei. Ariance bouwt moderne, snelle websites en helpt bedrijven hun werkprocessen digitaliseren — van offertetraject tot klantportaal.',
-    benefits: [
-      'Professionele bedrijfswebsite die converteert',
-      'Gebouwd met Next.js of WordPress, volledig op maat',
-      'Geoptimaliseerd voor zoekmachines (SEO)',
-      'Mobiel-first en snel laadgedrag',
-      'Digitale formulieren en klantportalen',
-      'Koppelingen met boekhoudpakketten, CRM en e-mail',
-    ],
-    included: [
-      'Design op maat (geen standaard templates)',
-      'Tekstadvies en contentstructuur in het Nederlands',
-      'Domein- en hostingadvies',
-      'SSL-certificaat en beveiligingsconfiguratie',
-      'Google Analytics en Search Console koppeling',
-      '3 maanden technisch onderhoud inclusief',
     ],
   },
 ];

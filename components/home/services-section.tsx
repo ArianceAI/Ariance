@@ -3,7 +3,7 @@
 import { useRef, useState } from 'react';
 import Link from 'next/link';
 import { motion, useInView } from 'framer-motion';
-import { Workflow, Compass, Lock, Layout, ArrowUpRight } from 'lucide-react';
+import { Workflow, Compass, ArrowUpRight } from 'lucide-react';
 
 const services = [
   {
@@ -26,28 +26,6 @@ const services = [
     href: '/diensten#consultancy',
     accent: '#10D9A0',
     accentRgb: '16,217,160',
-    label: null,
-  },
-  {
-    icon: Lock,
-    num: '03',
-    title: 'Private AI',
-    description:
-      'Uw data blijft binnen uw eigen omgeving. Volledig AVG-compliant, gebouwd voor zorg, juridisch en accountancy met strenge privacy-eisen.',
-    href: '/diensten#private-ai',
-    accent: '#67E8F9',
-    accentRgb: '103,232,249',
-    label: 'Voor gevoelige sectoren',
-  },
-  {
-    icon: Layout,
-    num: '04',
-    title: 'GPT-powered Chatbots',
-    description:
-      'Stroomlijn klantenservice en interne taken met AI-chatbots die 24/7 beschikbaar zijn — documenten vinden, leads kwalificeren, vragen beantwoorden.',
-    href: '/diensten#chatbots',
-    accent: '#A5F3FC',
-    accentRgb: '165,243,252',
     label: null,
   },
 ];
@@ -214,11 +192,11 @@ export default function ServicesSection() {
               className="font-display font-extrabold tracking-[-0.03em] leading-[0.98] mb-4"
               style={{ fontSize: 'clamp(2rem, 4.2vw, 3.2rem)', color: 'var(--ink)' }}
             >
-              Vier disciplines.<br />
+              Twee diensten.<br />
               <span className="text-gradient-emerald">Eén aanspreekpunt.</span>
             </h2>
             <p className="text-base md:text-[17px] leading-[1.65]" style={{ color: 'var(--muted-d)' }}>
-              Van strategie tot implementatie, van automatisering tot private AI-omgevingen —
+              Van eerste adviesgesprek tot werkende automatisering —
               u hoeft niet aan te kloppen bij meerdere partijen.
             </p>
           </div>

@@ -185,7 +185,7 @@ export default function AboutSection() {
               boxShadow: '0 12px 30px rgba(34,211,238,0.28)',
             }}
           >
-            Let&apos;s talk
+            Plan een gesprek
             <ArrowUpRight size={14} className="transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
           </Link>
           <Link

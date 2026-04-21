@@ -139,7 +139,7 @@ export default function Narrative() {
               boxShadow: '0 14px 40px rgba(34,211,238,0.30)',
             }}
           >
-            Let&apos;s talk
+            Plan een gesprek
             <ArrowRight size={15} className="transition-transform duration-300 group-hover:translate-x-1" />
           </Link>
         </motion.div>
