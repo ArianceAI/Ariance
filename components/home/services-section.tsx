@@ -61,17 +61,17 @@ function TiltCard({ s, delay }: { s: typeof services[0]; delay: number }) {
         className="group relative block overflow-hidden rounded-3xl"
         style={{
           background: hovered
-            ? `linear-gradient(145deg, rgba(${s.accentRgb},0.08) 0%, rgba(26,24,40,0.9) 60%)`
-            : 'rgba(26,24,40,0.5)',
-          border: `1px solid ${hovered ? `rgba(${s.accentRgb},0.35)` : 'rgba(240,239,230,0.08)'}`,
+            ? `linear-gradient(145deg, rgba(${s.accentRgb},0.06) 0%, #ffffff 60%)`
+            : '#ffffff',
+          border: `1px solid ${hovered ? `rgba(${s.accentRgb},0.35)` : 'rgba(13,12,24,0.08)'}`,
           padding: '32px',
           transform: `perspective(900px) rotateX(${t.x}deg) rotateY(${t.y}deg) ${hovered ? 'translateY(-4px)' : ''}`,
           transition: hovered
             ? 'transform 0.15s ease, background 0.4s ease, border-color 0.4s ease, box-shadow 0.4s ease'
             : 'transform 0.6s cubic-bezier(0.22,1,0.36,1), background 0.4s ease, border-color 0.4s ease, box-shadow 0.4s ease',
           boxShadow: hovered
-            ? `0 24px 60px rgba(${s.accentRgb},0.18), 0 4px 12px rgba(0,0,0,0.3)`
-            : '0 4px 20px rgba(0,0,0,0.25)',
+            ? `0 24px 60px rgba(${s.accentRgb},0.20), 0 4px 12px rgba(0,0,0,0.08)`
+            : '0 2px 12px rgba(0,0,0,0.06), 0 1px 0 rgba(13,12,24,0.04)',
         }}
       >
         {/* Top accent line */}
@@ -135,7 +135,7 @@ function TiltCard({ s, delay }: { s: typeof services[0]; delay: number }) {
 
         <div
           className="inline-flex items-center gap-1.5 font-display text-[13px] font-semibold transition-colors duration-300"
-          style={{ color: hovered ? s.accent : 'rgba(240,239,230,0.55)' }}
+          style={{ color: hovered ? s.accent : 'rgba(13,12,24,0.35)' }}
         >
           <span>Meer over {s.title.split(' ')[0].toLowerCase()}</span>
           <ArrowUpRight

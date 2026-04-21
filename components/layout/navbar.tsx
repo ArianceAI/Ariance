@@ -54,7 +54,7 @@ export default function Navbar() {
                   key={link.href}
                   href={link.href}
                   className="relative px-4 py-2 font-display text-sm font-medium transition-colors duration-200 group"
-                  style={{ color: active ? 'var(--ink)' : 'rgba(240,239,230,0.65)' }}
+                  style={{ color: active ? 'var(--accent)' : 'var(--muted-d)' }}
                 >
                   <span className="relative z-10 transition-colors duration-200 group-hover:text-[var(--ink)]">
                     {link.label}

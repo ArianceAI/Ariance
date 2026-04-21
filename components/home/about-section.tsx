@@ -94,9 +94,9 @@ export default function AboutSection() {
               transition={{ duration: 0.8, delay: i * 0.15, ease: [0.22, 1, 0.36, 1] }}
               className="group relative rounded-3xl overflow-hidden p-8 md:p-10 transition-[transform,box-shadow] duration-500 hover:-translate-y-1"
               style={{
-                background: `linear-gradient(145deg, rgba(${c.accentRgb},0.05) 0%, rgba(17,22,38,0.95) 60%)`,
-                border: `1px solid rgba(${c.accentRgb},0.18)`,
-                boxShadow: '0 12px 40px rgba(0,0,0,0.3)',
+                background: `linear-gradient(145deg, rgba(${c.accentRgb},0.04) 0%, #ffffff 60%)`,
+                border: `1px solid rgba(${c.accentRgb},0.22)`,
+                boxShadow: '0 4px 24px rgba(0,0,0,0.06)',
               }}
             >
               {/* Top accent line */}
@@ -142,7 +142,7 @@ export default function AboutSection() {
                 {c.description}
               </p>
 
-              <div className="flex items-end justify-between gap-4 pt-6" style={{ borderTop: '1px solid rgba(238,239,245,0.06)' }}>
+              <div className="flex items-end justify-between gap-4 pt-6" style={{ borderTop: '1px solid rgba(13,12,24,0.08)' }}>
                 <div className="flex items-center gap-3">
                   <div
                     className="w-10 h-10 rounded-xl flex items-center justify-center font-display font-extrabold text-xs"

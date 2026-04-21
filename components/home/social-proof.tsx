@@ -95,10 +95,9 @@ export default function SocialProof() {
               transition={{ duration: 0.8, delay: i * 0.15, ease: [0.22, 1, 0.36, 1] }}
               className="group relative rounded-3xl overflow-hidden p-8 md:p-10 transition-[transform,box-shadow] duration-500 hover:-translate-y-1"
               style={{
-                background: 'rgba(19,38,32,0.6)',
-                border: `1px solid rgba(${c.accentRgb},0.18)`,
-                backdropFilter: 'blur(14px)',
-                boxShadow: '0 12px 40px rgba(0,0,0,0.3)',
+                background: '#ffffff',
+                border: `1px solid rgba(${c.accentRgb},0.22)`,
+                boxShadow: '0 4px 24px rgba(0,0,0,0.06)',
               }}
             >
               {/* Decorative accent corner */}
@@ -136,7 +135,7 @@ export default function SocialProof() {
                 {c.body}
               </p>
 
-              <div className="flex items-end justify-between gap-4 pt-6" style={{ borderTop: '1px solid rgba(238,239,245,0.06)' }}>
+              <div className="flex items-end justify-between gap-4 pt-6" style={{ borderTop: '1px solid rgba(13,12,24,0.08)' }}>
                 <div className="flex items-center gap-4">
                   <div
                     className="w-12 h-12 rounded-xl flex items-center justify-center font-display font-extrabold text-sm shrink-0"

@@ -45,7 +45,7 @@ function MagneticButton({
             : {
                 background: 'transparent',
                 color: 'var(--ink)',
-                border: '1px solid rgba(238,239,245,0.15)',
+                border: '1px solid rgba(13,12,24,0.18)',
               }
         }
       >
@@ -71,7 +71,7 @@ function OrbitalDiagram() {
         <defs>
           <radialGradient id="coreGlowCyan" cx="50%" cy="50%" r="50%">
             <stop offset="0%"  stopColor="#818cf8" stopOpacity="1" />
-            <stop offset="40%" stopColor="#06B6D4" stopOpacity="0.6" />
+            <stop offset="40%" stopColor="#6d62f0" stopOpacity="0.6" />
             <stop offset="100%" stopColor="#4f46e5" stopOpacity="0" />
           </radialGradient>
         </defs>
@@ -107,7 +107,7 @@ function OrbitalDiagram() {
 
         {/* Core */}
         <circle cx="200" cy="200" r="58" fill="url(#coreGlowCyan)" />
-        <circle cx="200" cy="200" r="20" fill="#0d0c18" stroke="#818cf8" strokeWidth="1.5" />
+        <circle cx="200" cy="200" r="20" fill="#f4f3f8" stroke="#818cf8" strokeWidth="1.5" />
         <circle cx="200" cy="200" r="6" fill="#818cf8">
           <animate attributeName="r" values="6;9;6" dur="2.4s" repeatCount="indefinite" />
           <animate attributeName="opacity" values="1;0.5;1" dur="2.4s" repeatCount="indefinite" />
@@ -118,7 +118,7 @@ function OrbitalDiagram() {
       <div
         className="absolute top-[18%] left-[6%] px-3 py-1.5 rounded-full font-mono text-[10px] tracking-wider uppercase animate-float"
         style={{
-          background: 'rgba(6,9,15,0.85)',
+          background: 'rgba(255,255,255,0.92)',
           border: '1px solid rgba(129,140,248,0.25)',
           color: '#818cf8',
           backdropFilter: 'blur(8px)',
@@ -129,7 +129,7 @@ function OrbitalDiagram() {
       <div
         className="absolute top-[8%] right-[14%] px-3 py-1.5 rounded-full font-mono text-[10px] tracking-wider uppercase animate-float-slow"
         style={{
-          background: 'rgba(6,9,15,0.85)',
+          background: 'rgba(255,255,255,0.92)',
           border: '1px solid rgba(192,132,252,0.3)',
           color: '#c084fc',
           backdropFilter: 'blur(8px)',
@@ -140,7 +140,7 @@ function OrbitalDiagram() {
       <div
         className="absolute bottom-[14%] right-[6%] px-3 py-1.5 rounded-full font-mono text-[10px] tracking-wider uppercase animate-float"
         style={{
-          background: 'rgba(6,9,15,0.85)',
+          background: 'rgba(255,255,255,0.92)',
           border: '1px solid rgba(129,140,248,0.25)',
           color: '#818cf8',
           backdropFilter: 'blur(8px)',
@@ -152,9 +152,9 @@ function OrbitalDiagram() {
       <div
         className="absolute bottom-[22%] left-[2%] px-3 py-1.5 rounded-full font-mono text-[10px] tracking-wider uppercase animate-float-slow"
         style={{
-          background: 'rgba(6,9,15,0.85)',
-          border: '1px solid rgba(103,232,249,0.3)',
-          color: '#d8b4fe',
+          background: 'rgba(255,255,255,0.92)',
+          border: '1px solid rgba(216,180,254,0.5)',
+          color: '#9333ea',
           backdropFilter: 'blur(8px)',
           animationDelay: '0.6s',
         }}
