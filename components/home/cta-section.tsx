@@ -30,9 +30,9 @@ function MagneticBtn({
         style={
           variant === 'primary'
             ? {
-                background: 'var(--amber)',
-                color: 'var(--ink-dark)',
-                boxShadow: '0 18px 50px rgba(245,169,98,0.45), inset 0 1px 0 rgba(255,255,255,0.3)',
+                background: 'linear-gradient(135deg, #22D3EE 0%, #06B6D4 100%)',
+                color: '#06090F',
+                boxShadow: '0 18px 50px rgba(34,211,238,0.40), inset 0 1px 0 rgba(255,255,255,0.2)',
               }
             : {
                 background: 'transparent',
@@ -68,7 +68,7 @@ export default function CtaSection() {
           className="w-[800px] h-[500px] rounded-full"
           style={{
             background:
-              'radial-gradient(ellipse 80% 60% at 50% 80%, rgba(94,234,212,0.32) 0%, rgba(245,169,98,0.14) 45%, transparent 72%)',
+              'radial-gradient(ellipse 80% 60% at 50% 80%, rgba(34,211,238,0.28) 0%, rgba(16,217,160,0.12) 45%, transparent 72%)',
             filter: 'blur(30px)',
           }}
         />
@@ -78,14 +78,14 @@ export default function CtaSection() {
       <div
         className="absolute left-12 top-1/3 w-40 h-40 rounded-full pointer-events-none animate-float"
         style={{
-          background: 'radial-gradient(circle, rgba(94,234,212,0.18) 0%, transparent 70%)',
+          background: 'radial-gradient(circle, rgba(34,211,238,0.16) 0%, transparent 70%)',
           filter: 'blur(20px)',
         }}
       />
       <div
         className="absolute right-12 bottom-1/4 w-28 h-28 rounded-full pointer-events-none animate-float-slow"
         style={{
-          background: 'radial-gradient(circle, rgba(245,169,98,0.16) 0%, transparent 70%)',
+          background: 'radial-gradient(circle, rgba(16,217,160,0.14) 0%, transparent 70%)',
           filter: 'blur(18px)',
         }}
       />
@@ -93,7 +93,7 @@ export default function CtaSection() {
       {/* Top accent line */}
       <div
         className="absolute top-0 left-1/2 -translate-x-1/2 w-40 h-px"
-        style={{ background: 'linear-gradient(90deg, transparent, rgba(94,234,212,0.5), transparent)' }}
+        style={{ background: 'linear-gradient(90deg, transparent, rgba(34,211,238,0.5), transparent)' }}
       />
 
       <div className="relative max-w-5xl mx-auto px-6 lg:px-8 text-center">
@@ -105,13 +105,13 @@ export default function CtaSection() {
           <span
             className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full mono-label mb-8"
             style={{
-              background: 'rgba(245,169,98,0.1)',
-              border: '1px solid rgba(245,169,98,0.3)',
-              color: 'var(--amber)',
+              background: 'rgba(34,211,238,0.08)',
+              border: '1px solid rgba(34,211,238,0.28)',
+              color: 'var(--accent)',
             }}
           >
-            <span className="w-1.5 h-1.5 rounded-full bg-[var(--amber)] animate-pulse" />
-            Start vandaag
+            <span className="w-1.5 h-1.5 rounded-full animate-pulse" style={{ background: 'var(--accent)' }} />
+            Stel je vragen
           </span>
 
           <h2
@@ -122,8 +122,8 @@ export default function CtaSection() {
               textShadow: '0 0 80px rgba(94,234,212,0.15)',
             }}
           >
-            Klaar om{' '}
-            <span className="text-gradient-emerald">tijd terug te winnen?</span>
+            Let&apos;s{' '}
+            <span className="text-gradient-emerald">talk!</span>
           </h2>
 
           <motion.p
@@ -133,8 +133,8 @@ export default function CtaSection() {
             animate={inView ? { opacity: 1 } : {}}
             transition={{ duration: 0.7, delay: 0.2 }}
           >
-            Plan een vrijblijvend gesprek met Léon. Binnen 30 minuten weet u welke
-            AI-oplossingen écht iets opleveren voor uw bedrijf.
+            Klaar om nieuwe mogelijkheden te verkennen? Laten we jouw visie bespreken.
+            Plan een gesprek en laten we kennismaken!
           </motion.p>
 
           <motion.div

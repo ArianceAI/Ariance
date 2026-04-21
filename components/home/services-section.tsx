@@ -13,8 +13,8 @@ const services = [
     description:
       'Laat repetitieve taken verdwijnen. E-mailverwerking, rapportages, data-invoer en klantopvolging draaien zelfstandig op de achtergrond.',
     href: '/diensten#automatisering',
-    accent: '#5EEAD4',
-    accentRgb: '94,234,212',
+    accent: '#22D3EE',
+    accentRgb: '34,211,238',
     label: 'Meest gevraagd',
   },
   {
@@ -24,8 +24,8 @@ const services = [
     description:
       'Objectief advies over waar AI écht iets oplevert voor uw bedrijf — en waar niet. Met een concrete roadmap en prioriteitenmatrix.',
     href: '/diensten#consultancy',
-    accent: '#F5A962',
-    accentRgb: '245,169,98',
+    accent: '#10D9A0',
+    accentRgb: '16,217,160',
     label: null,
   },
   {
@@ -35,19 +35,19 @@ const services = [
     description:
       'Uw data blijft binnen uw eigen omgeving. Volledig AVG-compliant, gebouwd voor zorg, juridisch en accountancy met strenge privacy-eisen.',
     href: '/diensten#private-ai',
-    accent: '#A8D4BE',
-    accentRgb: '168,212,190',
+    accent: '#67E8F9',
+    accentRgb: '103,232,249',
     label: 'Voor gevoelige sectoren',
   },
   {
     icon: Layout,
     num: '04',
-    title: 'Websites & Digitalisering',
+    title: 'GPT-powered Chatbots',
     description:
-      'Snelle, conversiegerichte websites en digitale workflows. Gebouwd in Next.js of WordPress — volledig op maat, geen templates.',
-    href: '/diensten#websites',
-    accent: '#FCD9A8',
-    accentRgb: '252,217,168',
+      'Stroomlijn klantenservice en interne taken met AI-chatbots die 24/7 beschikbaar zijn — documenten vinden, leads kwalificeren, vragen beantwoorden.',
+    href: '/diensten#chatbots',
+    accent: '#A5F3FC',
+    accentRgb: '165,243,252',
     label: null,
   },
 ];
@@ -184,7 +184,7 @@ export default function ServicesSection() {
       <div
         className="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[400px] pointer-events-none"
         style={{
-          background: 'radial-gradient(ellipse, rgba(94,234,212,0.08) 0%, transparent 65%)',
+          background: 'radial-gradient(ellipse, rgba(34,211,238,0.08) 0%, transparent 65%)',
           filter: 'blur(40px)',
         }}
       />
@@ -202,12 +202,12 @@ export default function ServicesSection() {
             <span
               className="inline-flex items-center gap-2 px-3 py-1 rounded-full mono-label mb-5"
               style={{
-                background: 'rgba(94,234,212,0.08)',
-                border: '1px solid rgba(94,234,212,0.22)',
+                background: 'rgba(34,211,238,0.08)',
+                border: '1px solid rgba(34,211,238,0.22)',
                 color: 'var(--accent)',
               }}
             >
-              <span className="w-1.5 h-1.5 rounded-full bg-[var(--accent)]" />
+              <span className="w-1.5 h-1.5 rounded-full" style={{ background: 'var(--accent)' }} />
               Onze diensten
             </span>
             <h2

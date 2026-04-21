@@ -7,22 +7,22 @@ import { Quote } from 'lucide-react';
 const clients = [
   {
     name: 'Fit Administratie',
-    sector: 'Administratiekantoor',
+    role: 'Administratiekantoor',
     initials: 'FA',
-    accent: '#5EEAD4',
-    accentRgb: '94,234,212',
-    quote:
-      'De AI-workflows van Ariance verwerken onze documenten en klantcommunicatie zelfstandig. We winnen er wekelijks uren mee terug.',
+    accent: '#22D3EE',
+    accentRgb: '34,211,238',
+    quote: 'Interessante, hands-on samenwerking.',
+    body: 'De AI-workflows van Ariance verwerken onze documenten en klantcommunicatie zelfstandig. We winnen er wekelijks uren mee terug en maken minder fouten dan voorheen.',
     metric: { v: '+70%', l: 'sneller verwerkt' },
   },
   {
     name: 'YouradviesgroepBV',
-    sector: 'Financieel advies',
+    role: 'Financieel advies',
     initials: 'YA',
-    accent: '#F5A962',
-    accentRgb: '245,169,98',
-    quote:
-      'Met de private AI-omgeving kunnen we veilig interne kennis raadplegen en adviesrapporten versneld opstellen — zonder dat data de deur uitgaat.',
+    accent: '#10D9A0',
+    accentRgb: '16,217,160',
+    quote: 'Meer structuur, sterker team.',
+    body: 'Met de private AI-omgeving kunnen we veilig interne kennis raadplegen en adviesrapporten sneller opstellen — zonder dat gevoelige data de deur uitgaat. Volledig AVG-compliant.',
     metric: { v: 'AVG', l: 'volledig compliant' },
   },
 ];
@@ -40,14 +40,14 @@ export default function SocialProof() {
       <div
         className="absolute -top-20 -left-20 w-[500px] h-[500px] rounded-full pointer-events-none"
         style={{
-          background: 'radial-gradient(circle, rgba(94,234,212,0.1) 0%, transparent 60%)',
+          background: 'radial-gradient(circle, rgba(34,211,238,0.10) 0%, transparent 60%)',
           filter: 'blur(60px)',
         }}
       />
       <div
         className="absolute -bottom-20 -right-20 w-[500px] h-[500px] rounded-full pointer-events-none"
         style={{
-          background: 'radial-gradient(circle, rgba(245,169,98,0.08) 0%, transparent 60%)',
+          background: 'radial-gradient(circle, rgba(16,217,160,0.08) 0%, transparent 60%)',
           filter: 'blur(70px)',
         }}
       />
@@ -64,24 +64,24 @@ export default function SocialProof() {
           <span
             className="inline-flex items-center gap-2 px-3 py-1 rounded-full mono-label mb-5"
             style={{
-              background: 'rgba(94,234,212,0.08)',
-              border: '1px solid rgba(94,234,212,0.22)',
+              background: 'rgba(34,211,238,0.08)',
+              border: '1px solid rgba(34,211,238,0.22)',
               color: 'var(--accent)',
             }}
           >
-            <span className="w-1.5 h-1.5 rounded-full bg-[var(--accent)]" />
-            Klanten
+            <span className="w-1.5 h-1.5 rounded-full" style={{ background: 'var(--accent)' }} />
+            Testimonials
           </span>
           <h2
             className="font-display font-extrabold tracking-[-0.03em] leading-[0.98] mb-4"
             style={{ fontSize: 'clamp(2rem, 4.2vw, 3rem)', color: 'var(--ink)' }}
           >
-            Nederlandse bedrijven<br />
-            die al profiteren.
+            Luister naar wat onze<br />
+            <span className="text-gradient-emerald">klanten zeggen.</span>
           </h2>
           <p className="text-base md:text-[17px] leading-[1.65]" style={{ color: 'var(--muted-d)' }}>
             Van administratiekantoren tot adviesbureaus — organisaties door heel Nederland
-            vertrouwen op Ariance voor praktische AI.
+            vertrouwen op Ariance voor praktische AI-oplossingen.
           </p>
         </motion.div>
 
@@ -119,19 +119,24 @@ export default function SocialProof() {
               />
 
               <Quote
-                size={32}
-                className="mb-6 opacity-40"
+                size={28}
+                className="mb-5 opacity-40"
                 style={{ color: c.accent }}
               />
 
-              <blockquote
-                className="font-display text-xl md:text-[1.4rem] leading-[1.4] mb-10 tracking-[-0.015em]"
-                style={{ color: 'var(--ink)' }}
+              {/* Bold quote headline */}
+              <div
+                className="font-display font-bold text-[1.15rem] mb-4 tracking-[-0.01em]"
+                style={{ color: c.accent }}
               >
-                {c.quote}
-              </blockquote>
+                &ldquo;{c.quote}&rdquo;
+              </div>
 
-              <div className="flex items-end justify-between gap-4 pt-6" style={{ borderTop: '1px solid rgba(240,239,230,0.06)' }}>
+              <p className="text-[14.5px] leading-[1.65] mb-8" style={{ color: 'var(--muted-d)' }}>
+                {c.body}
+              </p>
+
+              <div className="flex items-end justify-between gap-4 pt-6" style={{ borderTop: '1px solid rgba(238,239,245,0.06)' }}>
                 <div className="flex items-center gap-4">
                   <div
                     className="w-12 h-12 rounded-xl flex items-center justify-center font-display font-extrabold text-sm shrink-0"
@@ -148,7 +153,7 @@ export default function SocialProof() {
                       {c.name}
                     </div>
                     <div className="mono-label mt-0.5" style={{ color: 'var(--muted-d)' }}>
-                      {c.sector}
+                      {c.role}
                     </div>
                   </div>
                 </div>

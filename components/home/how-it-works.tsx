@@ -8,29 +8,32 @@ const steps = [
   {
     num: '01',
     icon: MessageSquare,
-    title: 'Gratis gesprek',
+    title: 'A.I. Roadmap',
     description:
-      'We analyseren samen uw processen. Binnen 30 minuten weet u waar AI écht iets oplevert — en waar niet.',
-    accent: '#5EEAD4',
-    accentRgb: '94,234,212',
+      'Het begint met een plan. We brengen samen uw bedrijfsprocessen in kaart, identificeren AI-kansen en maken een concrete roadmap inclusief concurrentieanalyse.',
+    accent: '#22D3EE',
+    accentRgb: '34,211,238',
+    points: ['Brainstormen & ideeën', 'Plan van uitvoering', 'Concurrentieanalyse'],
   },
   {
     num: '02',
     icon: Wrench,
-    title: 'Op maat bouwen',
+    title: 'Uitvoering',
     description:
-      'Ariance bouwt uw oplossing, inclusief koppelingen met bestaande tools. U wordt betrokken bij elke beslissing.',
-    accent: '#F5A962',
-    accentRgb: '245,169,98',
+      'De strategie wordt omgezet in actie — dat is waar de magie plaatsvindt. Wekelijkse updates en volledige transparantie over voortgang en resultaten.',
+    accent: '#10D9A0',
+    accentRgb: '16,217,160',
+    points: ['Implementatie', 'Monitoring', 'Stakeholder betrokkenheid'],
   },
   {
     num: '03',
     icon: TrendingUp,
-    title: 'Live & groeien',
+    title: 'Growth & Scale',
     description:
-      'De oplossing gaat live. U bespaart tijd, verlaagt kosten en schaalt mee met uw bedrijf. Met nazorg en doorontwikkeling.',
-    accent: '#A8D4BE',
-    accentRgb: '168,212,190',
+      'We blijven A.I.-tools inzetten om exponentiële groei te stimuleren. Data-gedreven optimalisaties en een schaalbare infrastructuur die met uw bedrijf meegroeit.',
+    accent: '#67E8F9',
+    accentRgb: '103,232,249',
+    points: ['Data-driven beslissingen', 'Optimalisaties', 'Schaalbare infrastructuur'],
   },
 ];
 
@@ -65,21 +68,21 @@ export default function HowItWorks() {
           <span
             className="inline-flex items-center gap-2 px-3 py-1 rounded-full mono-label mb-5"
             style={{
-              background: 'rgba(245,169,98,0.1)',
-              border: '1px solid rgba(245,169,98,0.25)',
-              color: 'var(--amber)',
+              background: 'rgba(34,211,238,0.08)',
+              border: '1px solid rgba(34,211,238,0.22)',
+              color: 'var(--accent)',
             }}
           >
-            <span className="w-1.5 h-1.5 rounded-full bg-[var(--amber)]" />
+            <span className="w-1.5 h-1.5 rounded-full" style={{ background: 'var(--accent)' }} />
             Werkwijze
           </span>
           <h2
             className="font-display font-extrabold tracking-[-0.03em] leading-[0.98] mb-5"
             style={{ fontSize: 'clamp(2rem, 4.2vw, 3.2rem)', color: 'var(--ink)' }}
           >
-            Van gesprek naar{' '}
-            <span className="text-gradient-amber">resultaat</span><br />
-            in drie stappen.
+            Een eenvoudig,{' '}
+            <span className="text-gradient-emerald">doeltreffend</span><br />
+            3-stappen proces.
           </h2>
           <p className="text-base md:text-[17px] leading-[1.65]" style={{ color: 'var(--muted-d)' }}>
             Geen eindeloze trajecten, geen dure rapporten die niemand leest.
@@ -94,7 +97,7 @@ export default function HowItWorks() {
             className="absolute top-10 left-[16.67%] right-[16.67%] h-px hidden md:block pointer-events-none"
             style={{
               background:
-                'repeating-linear-gradient(90deg, rgba(94,234,212,0.4) 0px, rgba(94,234,212,0.4) 6px, transparent 6px, transparent 16px)',
+                'repeating-linear-gradient(90deg, rgba(34,211,238,0.4) 0px, rgba(34,211,238,0.4) 6px, transparent 6px, transparent 16px)',
             }}
           />
 
@@ -153,9 +156,17 @@ export default function HowItWorks() {
                 >
                   {step.title}
                 </h3>
-                <p className="text-[14.5px] leading-[1.65]" style={{ color: 'var(--muted-d)' }}>
+                <p className="text-[14.5px] leading-[1.65] mb-5" style={{ color: 'var(--muted-d)' }}>
                   {step.description}
                 </p>
+                <ul className="flex flex-col gap-2">
+                  {step.points.map((pt) => (
+                    <li key={pt} className="flex items-center gap-2 text-[13px]" style={{ color: 'var(--muted-d)' }}>
+                      <span className="w-1 h-1 rounded-full flex-shrink-0" style={{ background: step.accent }} />
+                      {pt}
+                    </li>
+                  ))}
+                </ul>
               </motion.div>
             );
           })}

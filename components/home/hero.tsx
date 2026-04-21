@@ -1,25 +1,24 @@
 'use client';
 
-import { useEffect, useRef, useState } from 'react';
+import { useRef, useState } from 'react';
 import Link from 'next/link';
 import { motion, type Variants } from 'framer-motion';
-import { ArrowRight, Sparkles } from 'lucide-react';
+import { ArrowRight, Zap } from 'lucide-react';
 
 const container: Variants = {
   hidden: {},
-  visible: { transition: { staggerChildren: 0.1, delayChildren: 0.15 } },
+  visible: { transition: { staggerChildren: 0.1, delayChildren: 0.1 } },
 };
 const fadeUp: Variants = {
-  hidden:  { opacity: 0, y: 28 },
+  hidden:  { opacity: 0, y: 32 },
   visible: { opacity: 1, y: 0, transition: { duration: 0.9, ease: [0.22, 1, 0.36, 1] } },
 };
 
 function MagneticButton({
-  href, children, variant = 'primary', tel = false,
-}: { href: string; children: React.ReactNode; variant?: 'primary' | 'ghost'; tel?: boolean }) {
+  href, children, variant = 'primary',
+}: { href: string; children: React.ReactNode; variant?: 'primary' | 'ghost' }) {
   const ref = useRef<HTMLDivElement>(null);
   const [pos, setPos] = useState({ x: 0, y: 0 });
-  const Tag: any = tel ? 'a' : Link;
 
   return (
     <motion.div
@@ -33,88 +32,83 @@ function MagneticButton({
       transition={{ type: 'spring', stiffness: 160, damping: 14 }}
       className="inline-flex"
     >
-      <Tag
+      <Link
         href={href}
-        className={`group inline-flex items-center gap-2.5 font-display font-semibold text-[14px] px-6 py-3.5 rounded-full transition-[transform,box-shadow] duration-300 hover:-translate-y-0.5`}
+        className="group inline-flex items-center gap-2.5 font-display font-bold text-[15px] px-7 py-4 rounded-full transition-[transform,box-shadow] duration-300 hover:-translate-y-0.5"
         style={
           variant === 'primary'
             ? {
-                background: 'var(--amber)',
-                color: 'var(--ink-dark)',
-                boxShadow: '0 14px 40px rgba(245,169,98,0.38), inset 0 1px 0 rgba(255,255,255,0.3)',
+                background: 'linear-gradient(135deg, #22D3EE 0%, #06B6D4 100%)',
+                color: '#06090F',
+                boxShadow: '0 14px 40px rgba(34,211,238,0.38), inset 0 1px 0 rgba(255,255,255,0.25)',
               }
             : {
                 background: 'transparent',
                 color: 'var(--ink)',
-                border: '1px solid rgba(240,239,230,0.18)',
+                border: '1px solid rgba(238,239,245,0.15)',
               }
         }
       >
         {children}
-      </Tag>
+      </Link>
     </motion.div>
   );
 }
 
 function OrbitalDiagram() {
   return (
-    <div className="relative w-full aspect-square max-w-[560px] mx-auto">
+    <div className="relative w-full aspect-square max-w-[540px] mx-auto">
       {/* Background glow */}
       <div
         className="absolute inset-0 rounded-full pointer-events-none"
         style={{
-          background:
-            'radial-gradient(circle at 50% 50%, rgba(94,234,212,0.22) 0%, rgba(94,234,212,0.06) 40%, transparent 70%)',
+          background: 'radial-gradient(circle at 50% 50%, rgba(34,211,238,0.20) 0%, rgba(6,182,212,0.06) 40%, transparent 70%)',
           filter: 'blur(8px)',
         }}
       />
 
       <svg viewBox="0 0 400 400" className="relative w-full h-full">
         <defs>
-          <radialGradient id="coreGlow" cx="50%" cy="50%" r="50%">
-            <stop offset="0%"  stopColor="#5EEAD4" stopOpacity="1" />
-            <stop offset="40%" stopColor="#2DD4BF" stopOpacity="0.6" />
-            <stop offset="100%" stopColor="#0F766E" stopOpacity="0" />
+          <radialGradient id="coreGlowCyan" cx="50%" cy="50%" r="50%">
+            <stop offset="0%"  stopColor="#22D3EE" stopOpacity="1" />
+            <stop offset="40%" stopColor="#06B6D4" stopOpacity="0.6" />
+            <stop offset="100%" stopColor="#0E7490" stopOpacity="0" />
           </radialGradient>
-          <linearGradient id="ringGrad" x1="0%" y1="0%" x2="100%" y2="0%">
-            <stop offset="0%"  stopColor="#5EEAD4" stopOpacity="0.5" />
-            <stop offset="100%" stopColor="#5EEAD4" stopOpacity="0" />
-          </linearGradient>
         </defs>
 
-        {/* Outer ring (very slow rotate) */}
+        {/* Outer ring */}
         <g style={{ transformOrigin: '200px 200px', animation: 'spin-slower 45s linear infinite' }}>
-          <circle cx="200" cy="200" r="180" fill="none" stroke="rgba(94,234,212,0.10)" strokeWidth="1" strokeDasharray="3 6" />
-          <circle cx="380" cy="200" r="5" fill="#5EEAD4" />
-          <circle cx="96"  cy="268" r="3.5" fill="#5EEAD4" opacity="0.6" />
-          <circle cx="150" cy="40"  r="4" fill="#F5A962" />
+          <circle cx="200" cy="200" r="180" fill="none" stroke="rgba(34,211,238,0.10)" strokeWidth="1" strokeDasharray="3 6" />
+          <circle cx="380" cy="200" r="5" fill="#22D3EE" />
+          <circle cx="96"  cy="268" r="3.5" fill="#22D3EE" opacity="0.6" />
+          <circle cx="150" cy="40"  r="4" fill="#10D9A0" />
         </g>
 
         {/* Middle ring */}
         <g style={{ transformOrigin: '200px 200px', animation: 'spin-slow 30s linear infinite' }}>
-          <circle cx="200" cy="200" r="130" fill="none" stroke="rgba(94,234,212,0.18)" strokeWidth="1" />
-          <circle cx="200" cy="70"  r="6" fill="#5EEAD4" />
-          <circle cx="330" cy="200" r="4" fill="#A8D4BE" />
-          <circle cx="85"  cy="170" r="5" fill="#F5A962" />
+          <circle cx="200" cy="200" r="130" fill="none" stroke="rgba(34,211,238,0.18)" strokeWidth="1" />
+          <circle cx="200" cy="70"  r="6" fill="#22D3EE" />
+          <circle cx="330" cy="200" r="4" fill="#67E8F9" />
+          <circle cx="85"  cy="170" r="5" fill="#10D9A0" />
         </g>
 
         {/* Inner ring */}
         <g style={{ transformOrigin: '200px 200px', animation: 'spin-slower 18s linear infinite' }}>
-          <circle cx="200" cy="200" r="82" fill="none" stroke="rgba(94,234,212,0.28)" strokeWidth="1" />
-          <circle cx="282" cy="200" r="4" fill="#5EEAD4" />
-          <circle cx="160" cy="124" r="3" fill="#5EEAD4" opacity="0.7" />
-          <circle cx="135" cy="250" r="3.5" fill="#A8D4BE" />
+          <circle cx="200" cy="200" r="82" fill="none" stroke="rgba(34,211,238,0.28)" strokeWidth="1" />
+          <circle cx="282" cy="200" r="4" fill="#22D3EE" />
+          <circle cx="160" cy="124" r="3" fill="#22D3EE" opacity="0.7" />
+          <circle cx="135" cy="250" r="3.5" fill="#67E8F9" />
         </g>
 
         {/* Connecting lines */}
-        <line x1="200" y1="200" x2="282" y2="200" stroke="rgba(94,234,212,0.25)" strokeWidth="1" strokeDasharray="2 3" />
-        <line x1="200" y1="200" x2="160" y2="124" stroke="rgba(94,234,212,0.18)" strokeWidth="1" strokeDasharray="2 3" />
-        <line x1="200" y1="200" x2="135" y2="250" stroke="rgba(94,234,212,0.18)" strokeWidth="1" strokeDasharray="2 3" />
+        <line x1="200" y1="200" x2="282" y2="200" stroke="rgba(34,211,238,0.25)" strokeWidth="1" strokeDasharray="2 3" />
+        <line x1="200" y1="200" x2="160" y2="124" stroke="rgba(34,211,238,0.18)" strokeWidth="1" strokeDasharray="2 3" />
+        <line x1="200" y1="200" x2="135" y2="250" stroke="rgba(34,211,238,0.18)" strokeWidth="1" strokeDasharray="2 3" />
 
         {/* Core */}
-        <circle cx="200" cy="200" r="58" fill="url(#coreGlow)" />
-        <circle cx="200" cy="200" r="20" fill="#07110D" stroke="#5EEAD4" strokeWidth="1.5" />
-        <circle cx="200" cy="200" r="6" fill="#5EEAD4">
+        <circle cx="200" cy="200" r="58" fill="url(#coreGlowCyan)" />
+        <circle cx="200" cy="200" r="20" fill="#06090F" stroke="#22D3EE" strokeWidth="1.5" />
+        <circle cx="200" cy="200" r="6" fill="#22D3EE">
           <animate attributeName="r" values="6;9;6" dur="2.4s" repeatCount="indefinite" />
           <animate attributeName="opacity" values="1;0.5;1" dur="2.4s" repeatCount="indefinite" />
         </circle>
@@ -124,9 +118,9 @@ function OrbitalDiagram() {
       <div
         className="absolute top-[18%] left-[6%] px-3 py-1.5 rounded-full font-mono text-[10px] tracking-wider uppercase animate-float"
         style={{
-          background: 'rgba(12,25,20,0.85)',
-          border: '1px solid rgba(94,234,212,0.25)',
-          color: '#5EEAD4',
+          background: 'rgba(6,9,15,0.85)',
+          border: '1px solid rgba(34,211,238,0.25)',
+          color: '#22D3EE',
           backdropFilter: 'blur(8px)',
         }}
       >
@@ -135,9 +129,9 @@ function OrbitalDiagram() {
       <div
         className="absolute top-[8%] right-[14%] px-3 py-1.5 rounded-full font-mono text-[10px] tracking-wider uppercase animate-float-slow"
         style={{
-          background: 'rgba(12,25,20,0.85)',
-          border: '1px solid rgba(245,169,98,0.3)',
-          color: '#F5A962',
+          background: 'rgba(6,9,15,0.85)',
+          border: '1px solid rgba(16,217,160,0.3)',
+          color: '#10D9A0',
           backdropFilter: 'blur(8px)',
         }}
       >
@@ -146,26 +140,26 @@ function OrbitalDiagram() {
       <div
         className="absolute bottom-[14%] right-[6%] px-3 py-1.5 rounded-full font-mono text-[10px] tracking-wider uppercase animate-float"
         style={{
-          background: 'rgba(12,25,20,0.85)',
-          border: '1px solid rgba(94,234,212,0.25)',
-          color: '#5EEAD4',
+          background: 'rgba(6,9,15,0.85)',
+          border: '1px solid rgba(34,211,238,0.25)',
+          color: '#22D3EE',
           backdropFilter: 'blur(8px)',
           animationDelay: '1.2s',
         }}
       >
-        ∙ consultancy
+        ∙ chatbots
       </div>
       <div
         className="absolute bottom-[22%] left-[2%] px-3 py-1.5 rounded-full font-mono text-[10px] tracking-wider uppercase animate-float-slow"
         style={{
-          background: 'rgba(12,25,20,0.85)',
-          border: '1px solid rgba(168,212,190,0.3)',
-          color: '#A8D4BE',
+          background: 'rgba(6,9,15,0.85)',
+          border: '1px solid rgba(103,232,249,0.3)',
+          color: '#67E8F9',
           backdropFilter: 'blur(8px)',
           animationDelay: '0.6s',
         }}
       >
-        ∙ integraties
+        ∙ consultancy
       </div>
     </div>
   );
@@ -174,23 +168,21 @@ function OrbitalDiagram() {
 export default function Hero() {
   return (
     <section
-      className="relative overflow-hidden pt-32 pb-24 md:pt-40 md:pb-32"
+      className="relative overflow-hidden pt-32 pb-24 md:pt-44 md:pb-36"
       style={{ background: 'var(--bg-0)' }}
     >
       {/* Ambient glows */}
       <div
-        className="absolute -top-40 -left-40 w-[600px] h-[600px] rounded-full pointer-events-none"
-        style={{ background: 'radial-gradient(circle, rgba(94,234,212,0.14) 0%, transparent 60%)', filter: 'blur(40px)' }}
+        className="absolute -top-40 -left-40 w-[700px] h-[700px] rounded-full pointer-events-none"
+        style={{ background: 'radial-gradient(circle, rgba(34,211,238,0.12) 0%, transparent 60%)', filter: 'blur(60px)' }}
       />
       <div
         className="absolute -bottom-20 -right-20 w-[500px] h-[500px] rounded-full pointer-events-none"
-        style={{ background: 'radial-gradient(circle, rgba(245,169,98,0.08) 0%, transparent 60%)', filter: 'blur(50px)' }}
+        style={{ background: 'radial-gradient(circle, rgba(16,217,160,0.07) 0%, transparent 60%)', filter: 'blur(60px)' }}
       />
 
       {/* Grid */}
       <div className="absolute inset-0 bg-grid opacity-60 pointer-events-none" />
-
-      {/* Noise */}
       <div className="noise" />
 
       <div className="relative max-w-6xl mx-auto px-6 lg:px-8">
@@ -203,43 +195,44 @@ export default function Hero() {
             initial="hidden"
             animate="visible"
           >
-            {/* Pill */}
+            {/* Agency badge */}
             <motion.div variants={fadeUp} className="mb-7">
               <span
-                className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full mono-label"
+                className="inline-flex items-center gap-2 px-4 py-2 rounded-full mono-label"
                 style={{
-                  background: 'rgba(94,234,212,0.08)',
-                  border: '1px solid rgba(94,234,212,0.22)',
+                  background: 'rgba(34,211,238,0.08)',
+                  border: '1px solid rgba(34,211,238,0.22)',
                   color: 'var(--accent)',
                 }}
               >
-                <Sparkles size={11} className="animate-pulse" />
-                AI voor Nederlandse bedrijven
+                <Zap size={11} className="animate-pulse" />
+                A.I. Automation Agency
               </span>
             </motion.div>
 
             {/* Headline */}
             <motion.h1
               variants={fadeUp}
-              className="font-display font-extrabold leading-[0.98] tracking-[-0.035em] mb-7"
+              className="font-display font-extrabold leading-[0.96] tracking-[-0.04em] mb-7"
               style={{
-                fontSize: 'clamp(2.6rem, 6.2vw, 5.2rem)',
+                fontSize: 'clamp(2.8rem, 7vw, 5.8rem)',
                 color: 'var(--ink)',
               }}
             >
-              AI neemt het{' '}
+              Supercharge{' '}
+              <br className="hidden sm:block" />
               <span className="relative inline-block">
-                <span className="relative z-10 text-gradient-emerald">routinewerk</span>
+                <span className="relative z-10 text-gradient-emerald">jouw bedrijf</span>
                 <svg
                   className="absolute left-0 -bottom-1 w-full"
-                  height="8"
-                  viewBox="0 0 200 8"
+                  height="6"
+                  viewBox="0 0 200 6"
                   preserveAspectRatio="none"
                 >
                   <path
-                    d="M2,6 Q50,2 100,4 T198,5"
-                    stroke="#5EEAD4"
-                    strokeWidth="2"
+                    d="M2,4 Q50,1 100,3 T198,3"
+                    stroke="#22D3EE"
+                    strokeWidth="1.5"
                     strokeLinecap="round"
                     fill="none"
                     strokeDasharray="200"
@@ -248,35 +241,31 @@ export default function Hero() {
                   />
                 </svg>
               </span>
-              {' '}over.
-              <br />
-              <span style={{ color: 'var(--muted-d)' }}>Jij focust op</span>{' '}
-              <span style={{ color: 'var(--ink)' }}>wat telt.</span>
+              {' '}met A.I.
             </motion.h1>
 
             {/* Sub */}
             <motion.p
               variants={fadeUp}
-              className="text-lg md:text-xl leading-[1.65] mb-9 max-w-[580px]"
+              className="text-lg md:text-xl leading-[1.65] mb-10 max-w-[560px]"
               style={{ color: 'var(--muted-d)' }}
             >
-              Geen jarenlange trajecten, geen buzzwords. Ariance bouwt concrete
-              AI-oplossingen die in weken live staan — volledig op maat voor de
-              Nederlandse markt.
+              Wij bouwen A.I. & automations voor bedrijven die van aanpakken weten.
+              Geen eindeloze trajecten — werkende oplossingen in weken.
             </motion.p>
 
             {/* CTAs */}
             <motion.div variants={fadeUp} className="flex flex-col sm:flex-row gap-3 mb-10">
               <MagneticButton href="/contact">
-                Plan een gratis gesprek
+                Let&apos;s talk
                 <ArrowRight size={15} className="transition-transform duration-300 group-hover:translate-x-1" />
               </MagneticButton>
               <MagneticButton href="/diensten" variant="ghost">
-                Bekijk onze diensten
+                Hoe doen we dit?
               </MagneticButton>
             </motion.div>
 
-            {/* Meta row */}
+            {/* Trust row */}
             <motion.div
               variants={fadeUp}
               className="flex flex-wrap items-center gap-x-6 gap-y-3 pt-6"
@@ -287,16 +276,10 @@ export default function Hero() {
                   <span className="absolute inset-0 rounded-full bg-[var(--accent)] animate-ping opacity-60" />
                   <span className="relative inline-flex w-2 h-2 rounded-full bg-[var(--accent)]" />
                 </span>
-                <span className="mono-label" style={{ color: 'var(--muted-d)' }}>
-                  Direct contact met Léon
-                </span>
+                <span className="mono-label" style={{ color: 'var(--muted-d)' }}>Direct contact met Léon</span>
               </div>
-              <span className="mono-label" style={{ color: 'var(--muted-d)' }}>
-                ∙ Gevestigd in Alkmaar
-              </span>
-              <span className="mono-label" style={{ color: 'var(--muted-d)' }}>
-                ∙ AVG-compliant
-              </span>
+              <span className="mono-label" style={{ color: 'var(--muted-d)' }}>∙ AVG-compliant</span>
+              <span className="mono-label" style={{ color: 'var(--muted-d)' }}>∙ In weken live</span>
             </motion.div>
           </motion.div>
 

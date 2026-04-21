@@ -5,24 +5,24 @@
 @import url('https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,300;12..96,500;12..96,700;12..96,800&family=Plus+Jakarta+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap');
 
 :root {
-  /* Midnight Forest palette */
-  --bg-0:            #07110D;  /* deepest — hero, footer */
-  --bg-1:            #0C1914;  /* sections */
-  --bg-2:            #132620;  /* cards on dark */
-  --bg-cream:        #F4F1E9;  /* light contrast section */
-  --bg-cream-2:      #EDE8DC;
-  --ink:             #F0EFE6;  /* text on dark */
-  --ink-dark:        #0A1410;  /* text on cream */
-  --muted-d:         #7A8B82;  /* muted on dark */
-  --muted-l:         #5C6560;  /* muted on cream */
-  --accent:          #5EEAD4;  /* emerald glow */
-  --accent-solid:    #2DD4BF;
-  --accent-deep:     #0F766E;
-  --amber:           #F5A962;  /* warm CTA */
-  --amber-deep:      #EA8C3D;
-  --sage:            #A8D4BE;
-  --border-d:        rgba(240,239,230,0.08);
-  --border-l:        rgba(10,20,16,0.10);
+  /* Flowkify — Dark Navy + Cyan palette */
+  --bg-0:            #06090F;  /* deepest — hero, footer */
+  --bg-1:            #0B0E18;  /* sections */
+  --bg-2:            #111626;  /* cards on dark */
+  --bg-cream:        #F2F1F8;  /* light contrast section */
+  --bg-cream-2:      #E8E6F2;
+  --ink:             #EEEFF5;  /* text on dark */
+  --ink-dark:        #06080F;  /* text on cream */
+  --muted-d:         #6B7494;  /* muted on dark */
+  --muted-l:         #545570;  /* muted on cream */
+  --accent:          #22D3EE;  /* cyan */
+  --accent-solid:    #06B6D4;
+  --accent-deep:     #0E7490;
+  --amber:           #10D9A0;  /* teal-green CTA */
+  --amber-deep:      #059669;
+  --sage:            #67E8F9;
+  --border-d:        rgba(238,239,245,0.08);
+  --border-l:        rgba(6,8,15,0.10);
 
   --font-display:    'Bricolage Grotesque', sans-serif;
   --font-body:       'Plus Jakarta Sans', sans-serif;
@@ -79,22 +79,22 @@
 
 /* ── Glass nav ── */
 .glass-nav-dark {
-  background: rgba(7,17,13,0.72);
+  background: rgba(6,9,15,0.78);
   backdrop-filter: blur(20px) saturate(180%);
   -webkit-backdrop-filter: blur(20px) saturate(180%);
-  border-bottom: 1px solid rgba(94,234,212,0.10);
+  border-bottom: 1px solid rgba(34,211,238,0.10);
 }
 
 /* ── Gradient text ── */
 .text-gradient-emerald {
-  background: linear-gradient(135deg, #5EEAD4 0%, #2DD4BF 60%, #0F766E 100%);
+  background: linear-gradient(135deg, #67E8F9 0%, #22D3EE 50%, #06B6D4 100%);
   -webkit-background-clip: text;
   background-clip: text;
   -webkit-text-fill-color: transparent;
   color: transparent;
 }
 .text-gradient-amber {
-  background: linear-gradient(135deg, #FCD9A8 0%, #F5A962 50%, #EA8C3D 100%);
+  background: linear-gradient(135deg, #6EE7B7 0%, #10D9A0 50%, #059669 100%);
   -webkit-background-clip: text;
   background-clip: text;
   -webkit-text-fill-color: transparent;
@@ -113,8 +113,8 @@
 @keyframes spin-slow   { to { transform: rotate(360deg); } }
 @keyframes spin-slower { to { transform: rotate(-360deg); } }
 @keyframes pulse-glow  {
-  0%, 100% { box-shadow: 0 0 0 0 rgba(94,234,212,0.55); opacity: 1; }
-  60%      { box-shadow: 0 0 0 22px rgba(94,234,212,0); opacity: 0.9; }
+  0%, 100% { box-shadow: 0 0 0 0 rgba(34,211,238,0.55); opacity: 1; }
+  60%      { box-shadow: 0 0 0 22px rgba(34,211,238,0); opacity: 0.9; }
 }
 @keyframes draw { to { stroke-dashoffset: 0; } }
 @keyframes shimmer {
@@ -167,16 +167,16 @@
   font-weight: 500;
 }
 
-/* ── Depth shadows (emerald tinted) ── */
+/* ── Depth shadows (cyan tinted) ── */
 .shadow-elevated {
   box-shadow:
     0 1px 2px rgba(0,0,0,0.04),
-    0 12px 40px rgba(15,118,110,0.10);
+    0 12px 40px rgba(14,116,144,0.10);
 }
 .shadow-floating {
   box-shadow:
     0 4px 6px rgba(0,0,0,0.05),
-    0 30px 60px rgba(15,118,110,0.18);
+    0 30px 60px rgba(14,116,144,0.18);
 }
 .shadow-dark-elevated {
   box-shadow:
@@ -187,8 +187,8 @@
 /* ── Grid background ── */
 .bg-grid {
   background-image:
-    linear-gradient(rgba(94,234,212,0.04) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(94,234,212,0.04) 1px, transparent 1px);
+    linear-gradient(rgba(34,211,238,0.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(34,211,238,0.04) 1px, transparent 1px);
   background-size: 64px 64px;
 }
 
