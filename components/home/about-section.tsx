@@ -14,8 +14,8 @@ const cases = [
       'Automatische verwerking van facturen, klantcorrespondentie en rapportages. Wekelijks meer dan 12 uur bespaard zonder extra personeel.',
     result: '+70% sneller',
     resultLabel: 'verwerking',
-    accent: '#22D3EE',
-    accentRgb: '34,211,238',
+    accent: '#818cf8',
+    accentRgb: '129,140,248',
     tag: 'AI Automatisering',
   },
   {
@@ -26,8 +26,8 @@ const cases = [
       'Private AI-omgeving die volledig lokaal draait. Adviseurs raadplegen interne kennis en stellen rapporten sneller op — zonder dat gevoelige data de deur uitgaat.',
     result: '100% AVG',
     resultLabel: 'compliant',
-    accent: '#10D9A0',
-    accentRgb: '16,217,160',
+    accent: '#c084fc',
+    accentRgb: '192,132,252',
     tag: 'Private AI',
   },
 ];
@@ -46,7 +46,7 @@ export default function AboutSection() {
       <div
         className="absolute -top-20 -left-20 w-[500px] h-[500px] rounded-full pointer-events-none"
         style={{
-          background: 'radial-gradient(circle, rgba(34,211,238,0.08) 0%, transparent 60%)',
+          background: 'radial-gradient(circle, rgba(129,140,248,0.08) 0%, transparent 60%)',
           filter: 'blur(60px)',
         }}
       />
@@ -63,8 +63,8 @@ export default function AboutSection() {
           <span
             className="inline-flex items-center gap-2 px-3 py-1 rounded-full mono-label mb-5"
             style={{
-              background: 'rgba(34,211,238,0.08)',
-              border: '1px solid rgba(34,211,238,0.22)',
+              background: 'rgba(129,140,248,0.08)',
+              border: '1px solid rgba(129,140,248,0.22)',
               color: 'var(--accent)',
             }}
           >
@@ -180,9 +180,9 @@ export default function AboutSection() {
             href="/contact"
             className="group inline-flex items-center gap-2 font-display font-bold text-[14px] px-6 py-3.5 rounded-full transition-[transform,box-shadow] duration-300 hover:-translate-y-0.5"
             style={{
-              background: 'linear-gradient(135deg, #22D3EE 0%, #06B6D4 100%)',
-              color: '#06090F',
-              boxShadow: '0 12px 30px rgba(34,211,238,0.28)',
+              background: 'linear-gradient(135deg, #818cf8 0%, #6d62f0 100%)',
+              color: '#0d0c18',
+              boxShadow: '0 12px 30px rgba(129,140,248,0.28)',
             }}
           >
             Plan een gesprek

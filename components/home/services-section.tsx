@@ -13,8 +13,8 @@ const services = [
     description:
       'Laat repetitieve taken verdwijnen. E-mailverwerking, rapportages, data-invoer en klantopvolging draaien zelfstandig op de achtergrond.',
     href: '/diensten#automatisering',
-    accent: '#22D3EE',
-    accentRgb: '34,211,238',
+    accent: '#818cf8',
+    accentRgb: '129,140,248',
     label: 'Meest gevraagd',
   },
   {
@@ -24,8 +24,8 @@ const services = [
     description:
       'Objectief advies over waar AI écht iets oplevert voor uw bedrijf — en waar niet. Met een concrete roadmap en prioriteitenmatrix.',
     href: '/diensten#consultancy',
-    accent: '#10D9A0',
-    accentRgb: '16,217,160',
+    accent: '#c084fc',
+    accentRgb: '192,132,252',
     label: null,
   },
 ];
@@ -61,8 +61,8 @@ function TiltCard({ s, delay }: { s: typeof services[0]; delay: number }) {
         className="group relative block overflow-hidden rounded-3xl"
         style={{
           background: hovered
-            ? `linear-gradient(145deg, rgba(${s.accentRgb},0.08) 0%, rgba(19,38,32,0.9) 60%)`
-            : 'rgba(19,38,32,0.5)',
+            ? `linear-gradient(145deg, rgba(${s.accentRgb},0.08) 0%, rgba(26,24,40,0.9) 60%)`
+            : 'rgba(26,24,40,0.5)',
           border: `1px solid ${hovered ? `rgba(${s.accentRgb},0.35)` : 'rgba(240,239,230,0.08)'}`,
           padding: '32px',
           transform: `perspective(900px) rotateX(${t.x}deg) rotateY(${t.y}deg) ${hovered ? 'translateY(-4px)' : ''}`,
@@ -162,7 +162,7 @@ export default function ServicesSection() {
       <div
         className="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[400px] pointer-events-none"
         style={{
-          background: 'radial-gradient(ellipse, rgba(34,211,238,0.08) 0%, transparent 65%)',
+          background: 'radial-gradient(ellipse, rgba(129,140,248,0.08) 0%, transparent 65%)',
           filter: 'blur(40px)',
         }}
       />
@@ -180,8 +180,8 @@ export default function ServicesSection() {
             <span
               className="inline-flex items-center gap-2 px-3 py-1 rounded-full mono-label mb-5"
               style={{
-                background: 'rgba(34,211,238,0.08)',
-                border: '1px solid rgba(34,211,238,0.22)',
+                background: 'rgba(129,140,248,0.08)',
+                border: '1px solid rgba(129,140,248,0.22)',
                 color: 'var(--accent)',
               }}
             >

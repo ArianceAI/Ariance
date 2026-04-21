@@ -38,9 +38,9 @@ function MagneticButton({
         style={
           variant === 'primary'
             ? {
-                background: 'linear-gradient(135deg, #22D3EE 0%, #06B6D4 100%)',
-                color: '#06090F',
-                boxShadow: '0 14px 40px rgba(34,211,238,0.38), inset 0 1px 0 rgba(255,255,255,0.25)',
+                background: 'linear-gradient(135deg, #818cf8 0%, #c084fc 100%)',
+                color: '#0d0c18',
+                boxShadow: '0 14px 40px rgba(129,140,248,0.38), inset 0 1px 0 rgba(255,255,255,0.25)',
               }
             : {
                 background: 'transparent',
@@ -62,7 +62,7 @@ function OrbitalDiagram() {
       <div
         className="absolute inset-0 rounded-full pointer-events-none"
         style={{
-          background: 'radial-gradient(circle at 50% 50%, rgba(34,211,238,0.20) 0%, rgba(6,182,212,0.06) 40%, transparent 70%)',
+          background: 'radial-gradient(circle at 50% 50%, rgba(129,140,248,0.20) 0%, rgba(109,98,240,0.06) 40%, transparent 70%)',
           filter: 'blur(8px)',
         }}
       />
@@ -70,45 +70,45 @@ function OrbitalDiagram() {
       <svg viewBox="0 0 400 400" className="relative w-full h-full">
         <defs>
           <radialGradient id="coreGlowCyan" cx="50%" cy="50%" r="50%">
-            <stop offset="0%"  stopColor="#22D3EE" stopOpacity="1" />
+            <stop offset="0%"  stopColor="#818cf8" stopOpacity="1" />
             <stop offset="40%" stopColor="#06B6D4" stopOpacity="0.6" />
-            <stop offset="100%" stopColor="#0E7490" stopOpacity="0" />
+            <stop offset="100%" stopColor="#4f46e5" stopOpacity="0" />
           </radialGradient>
         </defs>
 
         {/* Outer ring */}
         <g style={{ transformOrigin: '200px 200px', animation: 'spin-slower 45s linear infinite' }}>
-          <circle cx="200" cy="200" r="180" fill="none" stroke="rgba(34,211,238,0.10)" strokeWidth="1" strokeDasharray="3 6" />
-          <circle cx="380" cy="200" r="5" fill="#22D3EE" />
-          <circle cx="96"  cy="268" r="3.5" fill="#22D3EE" opacity="0.6" />
-          <circle cx="150" cy="40"  r="4" fill="#10D9A0" />
+          <circle cx="200" cy="200" r="180" fill="none" stroke="rgba(129,140,248,0.10)" strokeWidth="1" strokeDasharray="3 6" />
+          <circle cx="380" cy="200" r="5" fill="#818cf8" />
+          <circle cx="96"  cy="268" r="3.5" fill="#818cf8" opacity="0.6" />
+          <circle cx="150" cy="40"  r="4" fill="#c084fc" />
         </g>
 
         {/* Middle ring */}
         <g style={{ transformOrigin: '200px 200px', animation: 'spin-slow 30s linear infinite' }}>
-          <circle cx="200" cy="200" r="130" fill="none" stroke="rgba(34,211,238,0.18)" strokeWidth="1" />
-          <circle cx="200" cy="70"  r="6" fill="#22D3EE" />
-          <circle cx="330" cy="200" r="4" fill="#67E8F9" />
-          <circle cx="85"  cy="170" r="5" fill="#10D9A0" />
+          <circle cx="200" cy="200" r="130" fill="none" stroke="rgba(129,140,248,0.18)" strokeWidth="1" />
+          <circle cx="200" cy="70"  r="6" fill="#818cf8" />
+          <circle cx="330" cy="200" r="4" fill="#d8b4fe" />
+          <circle cx="85"  cy="170" r="5" fill="#c084fc" />
         </g>
 
         {/* Inner ring */}
         <g style={{ transformOrigin: '200px 200px', animation: 'spin-slower 18s linear infinite' }}>
-          <circle cx="200" cy="200" r="82" fill="none" stroke="rgba(34,211,238,0.28)" strokeWidth="1" />
-          <circle cx="282" cy="200" r="4" fill="#22D3EE" />
-          <circle cx="160" cy="124" r="3" fill="#22D3EE" opacity="0.7" />
-          <circle cx="135" cy="250" r="3.5" fill="#67E8F9" />
+          <circle cx="200" cy="200" r="82" fill="none" stroke="rgba(129,140,248,0.28)" strokeWidth="1" />
+          <circle cx="282" cy="200" r="4" fill="#818cf8" />
+          <circle cx="160" cy="124" r="3" fill="#818cf8" opacity="0.7" />
+          <circle cx="135" cy="250" r="3.5" fill="#d8b4fe" />
         </g>
 
         {/* Connecting lines */}
-        <line x1="200" y1="200" x2="282" y2="200" stroke="rgba(34,211,238,0.25)" strokeWidth="1" strokeDasharray="2 3" />
-        <line x1="200" y1="200" x2="160" y2="124" stroke="rgba(34,211,238,0.18)" strokeWidth="1" strokeDasharray="2 3" />
-        <line x1="200" y1="200" x2="135" y2="250" stroke="rgba(34,211,238,0.18)" strokeWidth="1" strokeDasharray="2 3" />
+        <line x1="200" y1="200" x2="282" y2="200" stroke="rgba(129,140,248,0.25)" strokeWidth="1" strokeDasharray="2 3" />
+        <line x1="200" y1="200" x2="160" y2="124" stroke="rgba(129,140,248,0.18)" strokeWidth="1" strokeDasharray="2 3" />
+        <line x1="200" y1="200" x2="135" y2="250" stroke="rgba(129,140,248,0.18)" strokeWidth="1" strokeDasharray="2 3" />
 
         {/* Core */}
         <circle cx="200" cy="200" r="58" fill="url(#coreGlowCyan)" />
-        <circle cx="200" cy="200" r="20" fill="#06090F" stroke="#22D3EE" strokeWidth="1.5" />
-        <circle cx="200" cy="200" r="6" fill="#22D3EE">
+        <circle cx="200" cy="200" r="20" fill="#0d0c18" stroke="#818cf8" strokeWidth="1.5" />
+        <circle cx="200" cy="200" r="6" fill="#818cf8">
           <animate attributeName="r" values="6;9;6" dur="2.4s" repeatCount="indefinite" />
           <animate attributeName="opacity" values="1;0.5;1" dur="2.4s" repeatCount="indefinite" />
         </circle>
@@ -119,8 +119,8 @@ function OrbitalDiagram() {
         className="absolute top-[18%] left-[6%] px-3 py-1.5 rounded-full font-mono text-[10px] tracking-wider uppercase animate-float"
         style={{
           background: 'rgba(6,9,15,0.85)',
-          border: '1px solid rgba(34,211,238,0.25)',
-          color: '#22D3EE',
+          border: '1px solid rgba(129,140,248,0.25)',
+          color: '#818cf8',
           backdropFilter: 'blur(8px)',
         }}
       >
@@ -130,8 +130,8 @@ function OrbitalDiagram() {
         className="absolute top-[8%] right-[14%] px-3 py-1.5 rounded-full font-mono text-[10px] tracking-wider uppercase animate-float-slow"
         style={{
           background: 'rgba(6,9,15,0.85)',
-          border: '1px solid rgba(16,217,160,0.3)',
-          color: '#10D9A0',
+          border: '1px solid rgba(192,132,252,0.3)',
+          color: '#c084fc',
           backdropFilter: 'blur(8px)',
         }}
       >
@@ -141,8 +141,8 @@ function OrbitalDiagram() {
         className="absolute bottom-[14%] right-[6%] px-3 py-1.5 rounded-full font-mono text-[10px] tracking-wider uppercase animate-float"
         style={{
           background: 'rgba(6,9,15,0.85)',
-          border: '1px solid rgba(34,211,238,0.25)',
-          color: '#22D3EE',
+          border: '1px solid rgba(129,140,248,0.25)',
+          color: '#818cf8',
           backdropFilter: 'blur(8px)',
           animationDelay: '1.2s',
         }}
@@ -154,7 +154,7 @@ function OrbitalDiagram() {
         style={{
           background: 'rgba(6,9,15,0.85)',
           border: '1px solid rgba(103,232,249,0.3)',
-          color: '#67E8F9',
+          color: '#d8b4fe',
           backdropFilter: 'blur(8px)',
           animationDelay: '0.6s',
         }}
@@ -174,11 +174,11 @@ export default function Hero() {
       {/* Ambient glows */}
       <div
         className="absolute -top-40 -left-40 w-[700px] h-[700px] rounded-full pointer-events-none"
-        style={{ background: 'radial-gradient(circle, rgba(34,211,238,0.12) 0%, transparent 60%)', filter: 'blur(60px)' }}
+        style={{ background: 'radial-gradient(circle, rgba(129,140,248,0.12) 0%, transparent 60%)', filter: 'blur(60px)' }}
       />
       <div
         className="absolute -bottom-20 -right-20 w-[500px] h-[500px] rounded-full pointer-events-none"
-        style={{ background: 'radial-gradient(circle, rgba(16,217,160,0.07) 0%, transparent 60%)', filter: 'blur(60px)' }}
+        style={{ background: 'radial-gradient(circle, rgba(192,132,252,0.07) 0%, transparent 60%)', filter: 'blur(60px)' }}
       />
 
       {/* Grid */}
@@ -200,8 +200,8 @@ export default function Hero() {
               <span
                 className="inline-flex items-center gap-2 px-4 py-2 rounded-full mono-label"
                 style={{
-                  background: 'rgba(34,211,238,0.08)',
-                  border: '1px solid rgba(34,211,238,0.22)',
+                  background: 'rgba(129,140,248,0.08)',
+                  border: '1px solid rgba(129,140,248,0.22)',
                   color: 'var(--accent)',
                 }}
               >
@@ -231,7 +231,7 @@ export default function Hero() {
                 >
                   <path
                     d="M2,4 Q50,1 100,3 T198,3"
-                    stroke="#22D3EE"
+                    stroke="#818cf8"
                     strokeWidth="1.5"
                     strokeLinecap="round"
                     fill="none"

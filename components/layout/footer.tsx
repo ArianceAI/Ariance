@@ -10,8 +10,6 @@ const navLinks = [
 const servicesLinks = [
   { href: '/diensten#automatisering', label: 'AI Automatisering' },
   { href: '/diensten#consultancy',    label: 'AI Consultancy' },
-  { href: '/diensten#private-ai',     label: 'Private AI' },
-  { href: '/diensten#websites',       label: 'Websites & Digitalisering' },
 ];
 
 const contactItems = [
@@ -25,13 +23,13 @@ export default function Footer() {
   return (
     <footer
       className="relative overflow-hidden"
-      style={{ background: '#050D09', borderTop: '1px solid rgba(94,234,212,0.08)' }}
+      style={{ background: '#0d0c18', borderTop: '1px solid rgba(129,140,248,0.10)' }}
     >
       {/* Ambient glow bottom */}
       <div
         className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[800px] h-[300px] pointer-events-none"
         style={{
-          background: 'radial-gradient(ellipse 50% 100% at 50% 100%, rgba(94,234,212,0.14) 0%, transparent 65%)',
+          background: 'radial-gradient(ellipse 50% 100% at 50% 100%, rgba(129,140,248,0.14) 0%, transparent 65%)',
           filter: 'blur(40px)',
         }}
       />
@@ -66,7 +64,7 @@ export default function Footer() {
                 style={{
                   background: 'var(--amber)',
                   color: 'var(--ink-dark)',
-                  boxShadow: '0 10px 26px rgba(245,169,98,0.3)',
+                  boxShadow: '0 10px 26px rgba(192,132,252,0.3)',
                 }}
               >
                 Plan een gesprek
@@ -129,8 +127,8 @@ export default function Footer() {
                     <span
                       className="w-8 h-8 rounded-lg flex items-center justify-center shrink-0"
                       style={{
-                        background: 'rgba(94,234,212,0.08)',
-                        border: '1px solid rgba(94,234,212,0.18)',
+                        background: 'rgba(129,140,248,0.08)',
+                        border: '1px solid rgba(129,140,248,0.18)',
                       }}
                     >
                       <Icon size={13} style={{ color: 'var(--accent)' }} />

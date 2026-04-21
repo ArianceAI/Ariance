@@ -72,7 +72,7 @@ export default function Navbar() {
               style={{
                 background: 'var(--amber)',
                 color: 'var(--ink-dark)',
-                boxShadow: '0 10px 30px rgba(245,169,98,0.32), inset 0 1px 0 rgba(255,255,255,0.25)',
+                boxShadow: '0 10px 30px rgba(192,132,252,0.32), inset 0 1px 0 rgba(255,255,255,0.25)',
               }}
             >
               Plan een gesprek
@@ -98,8 +98,8 @@ export default function Navbar() {
           isOpen ? 'max-h-[340px] opacity-100' : 'max-h-0 opacity-0'
         }`}
         style={{
-          background: 'rgba(7,17,13,0.98)',
-          borderTop: '1px solid rgba(94,234,212,0.08)',
+          background: 'rgba(13,12,24,0.98)',
+          borderTop: '1px solid rgba(129,140,248,0.08)',
         }}
       >
         <div className="max-w-6xl mx-auto px-6 py-6 flex flex-col gap-1">
@@ -123,7 +123,7 @@ export default function Navbar() {
             style={{
               background: 'var(--amber)',
               color: 'var(--ink-dark)',
-              boxShadow: '0 10px 30px rgba(245,169,98,0.32)',
+              boxShadow: '0 10px 30px rgba(192,132,252,0.32)',
             }}
           >
             Plan een gesprek <ArrowUpRight size={15} />

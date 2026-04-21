@@ -2,30 +2,30 @@
 @tailwind components;
 @tailwind utilities;
 
-@import url('https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,300;12..96,500;12..96,700;12..96,800&family=Plus+Jakarta+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&family=JetBrains+Mono:wght@400;500&display=swap');
 
 :root {
-  /* Flowkify — Dark Navy + Cyan palette */
-  --bg-0:            #06090F;  /* deepest — hero, footer */
-  --bg-1:            #0B0E18;  /* sections */
-  --bg-2:            #111626;  /* cards on dark */
-  --bg-cream:        #F2F1F8;  /* light contrast section */
-  --bg-cream-2:      #E8E6F2;
-  --ink:             #EEEFF5;  /* text on dark */
-  --ink-dark:        #06080F;  /* text on cream */
+  /* Ariance Brand — Dark Indigo + Violet palette */
+  --bg-0:            #0d0c18;  /* deepest — hero, footer */
+  --bg-1:            #121020;  /* sections */
+  --bg-2:            #1a1828;  /* cards on dark */
+  --bg-cream:        #f4f3f8;  /* light contrast section */
+  --bg-cream-2:      #e8e6f0;
+  --ink:             #fafaf9;  /* text on dark */
+  --ink-dark:        #0d0c18;  /* text on light */
   --muted-d:         #6B7494;  /* muted on dark */
-  --muted-l:         #545570;  /* muted on cream */
-  --accent:          #22D3EE;  /* cyan */
-  --accent-solid:    #06B6D4;
-  --accent-deep:     #0E7490;
-  --amber:           #10D9A0;  /* teal-green CTA */
-  --amber-deep:      #059669;
-  --sage:            #67E8F9;
-  --border-d:        rgba(238,239,245,0.08);
-  --border-l:        rgba(6,8,15,0.10);
+  --muted-l:         #545570;  /* muted on light */
+  --accent:          #818cf8;  /* indigo */
+  --accent-solid:    #6d62f0;
+  --accent-deep:     #4f46e5;
+  --amber:           #c084fc;  /* violet CTA */
+  --amber-deep:      #9333ea;
+  --sage:            #d8b4fe;  /* light violet */
+  --border-d:        rgba(250,250,249,0.08);
+  --border-l:        rgba(13,12,24,0.10);
 
-  --font-display:    'Bricolage Grotesque', sans-serif;
-  --font-body:       'Plus Jakarta Sans', sans-serif;
+  --font-display:    'Space Grotesk', sans-serif;
+  --font-body:       'DM Sans', sans-serif;
   --font-mono:       'JetBrains Mono', monospace;
 
   /* shadcn tokens (light) */
@@ -79,22 +79,22 @@
 
 /* ── Glass nav ── */
 .glass-nav-dark {
-  background: rgba(6,9,15,0.78);
+  background: rgba(13,12,24,0.82);
   backdrop-filter: blur(20px) saturate(180%);
   -webkit-backdrop-filter: blur(20px) saturate(180%);
-  border-bottom: 1px solid rgba(34,211,238,0.10);
+  border-bottom: 1px solid rgba(129,140,248,0.12);
 }
 
 /* ── Gradient text ── */
 .text-gradient-emerald {
-  background: linear-gradient(135deg, #67E8F9 0%, #22D3EE 50%, #06B6D4 100%);
+  background: linear-gradient(135deg, #818cf8 0%, #c084fc 100%);
   -webkit-background-clip: text;
   background-clip: text;
   -webkit-text-fill-color: transparent;
   color: transparent;
 }
 .text-gradient-amber {
-  background: linear-gradient(135deg, #6EE7B7 0%, #10D9A0 50%, #059669 100%);
+  background: linear-gradient(135deg, #c084fc 0%, #d8b4fe 100%);
   -webkit-background-clip: text;
   background-clip: text;
   -webkit-text-fill-color: transparent;
@@ -113,8 +113,8 @@
 @keyframes spin-slow   { to { transform: rotate(360deg); } }
 @keyframes spin-slower { to { transform: rotate(-360deg); } }
 @keyframes pulse-glow  {
-  0%, 100% { box-shadow: 0 0 0 0 rgba(34,211,238,0.55); opacity: 1; }
-  60%      { box-shadow: 0 0 0 22px rgba(34,211,238,0); opacity: 0.9; }
+  0%, 100% { box-shadow: 0 0 0 0 rgba(129,140,248,0.55); opacity: 1; }
+  60%      { box-shadow: 0 0 0 22px rgba(129,140,248,0); opacity: 0.9; }
 }
 @keyframes draw { to { stroke-dashoffset: 0; } }
 @keyframes shimmer {
@@ -167,16 +167,16 @@
   font-weight: 500;
 }
 
-/* ── Depth shadows (cyan tinted) ── */
+/* ── Depth shadows (indigo tinted) ── */
 .shadow-elevated {
   box-shadow:
     0 1px 2px rgba(0,0,0,0.04),
-    0 12px 40px rgba(14,116,144,0.10);
+    0 12px 40px rgba(79,70,229,0.10);
 }
 .shadow-floating {
   box-shadow:
     0 4px 6px rgba(0,0,0,0.05),
-    0 30px 60px rgba(14,116,144,0.18);
+    0 30px 60px rgba(79,70,229,0.18);
 }
 .shadow-dark-elevated {
   box-shadow:
@@ -187,8 +187,8 @@
 /* ── Grid background ── */
 .bg-grid {
   background-image:
-    linear-gradient(rgba(34,211,238,0.04) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(34,211,238,0.04) 1px, transparent 1px);
+    linear-gradient(rgba(129,140,248,0.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(129,140,248,0.04) 1px, transparent 1px);
   background-size: 64px 64px;
 }
 

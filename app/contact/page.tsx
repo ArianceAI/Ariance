@@ -49,8 +49,8 @@ export default function ContactPage() {
         <div className="grid grid-cols-1 lg:grid-cols-5 gap-12 lg:gap-16">
           <div className="lg:col-span-3">
             {submitted ? (
-              <div className="bg-[#EFF6FF] border border-[#BFDBFE] rounded-xl p-8 text-center">
-                <div className="w-12 h-12 rounded-full bg-[#2563EB] flex items-center justify-center mx-auto mb-5">
+              <div className="bg-[#818cf8/10] border border-[#BFDBFE] rounded-xl p-8 text-center">
+                <div className="w-12 h-12 rounded-full bg-[#818cf8] flex items-center justify-center mx-auto mb-5">
                   <Send size={20} className="text-white" />
                 </div>
                 <h2 className="text-xl font-bold text-[#0F1117] mb-3">
@@ -69,7 +69,7 @@ export default function ContactPage() {
                       htmlFor="naam"
                       className="block text-xs font-semibold text-[#0F1117] mb-1.5"
                     >
-                      Naam <span className="text-[#2563EB]">*</span>
+                      Naam <span className="text-[#818cf8]">*</span>
                     </label>
                     <input
                       id="naam"
@@ -79,7 +79,7 @@ export default function ContactPage() {
                       value={formData.naam}
                       onChange={handleChange}
                       placeholder="Jan de Vries"
-                      className="w-full px-3.5 py-2.5 text-sm border border-gray-200 rounded-md bg-white text-[#0F1117] placeholder:text-gray-400 focus:outline-none focus:ring-2 focus:ring-[#2563EB]/30 focus:border-[#2563EB] transition-colors"
+                      className="w-full px-3.5 py-2.5 text-sm border border-gray-200 rounded-md bg-white text-[#0F1117] placeholder:text-gray-400 focus:outline-none focus:ring-2 focus:ring-[#818cf8]/30 focus:border-[#818cf8] transition-colors"
                     />
                   </div>
                   <div>
@@ -96,7 +96,7 @@ export default function ContactPage() {
                       value={formData.bedrijfsnaam}
                       onChange={handleChange}
                       placeholder="Uw bedrijf BV"
-                      className="w-full px-3.5 py-2.5 text-sm border border-gray-200 rounded-md bg-white text-[#0F1117] placeholder:text-gray-400 focus:outline-none focus:ring-2 focus:ring-[#2563EB]/30 focus:border-[#2563EB] transition-colors"
+                      className="w-full px-3.5 py-2.5 text-sm border border-gray-200 rounded-md bg-white text-[#0F1117] placeholder:text-gray-400 focus:outline-none focus:ring-2 focus:ring-[#818cf8]/30 focus:border-[#818cf8] transition-colors"
                     />
                   </div>
                 </div>
@@ -107,7 +107,7 @@ export default function ContactPage() {
                       htmlFor="email"
                       className="block text-xs font-semibold text-[#0F1117] mb-1.5"
                     >
-                      E-mailadres <span className="text-[#2563EB]">*</span>
+                      E-mailadres <span className="text-[#818cf8]">*</span>
                     </label>
                     <input
                       id="email"
@@ -117,7 +117,7 @@ export default function ContactPage() {
                       value={formData.email}
                       onChange={handleChange}
                       placeholder="jan@bedrijf.nl"
-                      className="w-full px-3.5 py-2.5 text-sm border border-gray-200 rounded-md bg-white text-[#0F1117] placeholder:text-gray-400 focus:outline-none focus:ring-2 focus:ring-[#2563EB]/30 focus:border-[#2563EB] transition-colors"
+                      className="w-full px-3.5 py-2.5 text-sm border border-gray-200 rounded-md bg-white text-[#0F1117] placeholder:text-gray-400 focus:outline-none focus:ring-2 focus:ring-[#818cf8]/30 focus:border-[#818cf8] transition-colors"
                     />
                   </div>
                   <div>
@@ -134,7 +134,7 @@ export default function ContactPage() {
                       value={formData.telefoonnummer}
                       onChange={handleChange}
                       placeholder="+31 6 12345678"
-                      className="w-full px-3.5 py-2.5 text-sm border border-gray-200 rounded-md bg-white text-[#0F1117] placeholder:text-gray-400 focus:outline-none focus:ring-2 focus:ring-[#2563EB]/30 focus:border-[#2563EB] transition-colors"
+                      className="w-full px-3.5 py-2.5 text-sm border border-gray-200 rounded-md bg-white text-[#0F1117] placeholder:text-gray-400 focus:outline-none focus:ring-2 focus:ring-[#818cf8]/30 focus:border-[#818cf8] transition-colors"
                     />
                   </div>
                 </div>
@@ -144,7 +144,7 @@ export default function ContactPage() {
                     htmlFor="bericht"
                     className="block text-xs font-semibold text-[#0F1117] mb-1.5"
                   >
-                    Bericht <span className="text-[#2563EB]">*</span>
+                    Bericht <span className="text-[#818cf8]">*</span>
                   </label>
                   <textarea
                     id="bericht"
@@ -154,7 +154,7 @@ export default function ContactPage() {
                     value={formData.bericht}
                     onChange={handleChange}
                     placeholder="Vertel kort over uw bedrijf en wat u wilt bereiken met AI..."
-                    className="w-full px-3.5 py-2.5 text-sm border border-gray-200 rounded-md bg-white text-[#0F1117] placeholder:text-gray-400 focus:outline-none focus:ring-2 focus:ring-[#2563EB]/30 focus:border-[#2563EB] transition-colors resize-none"
+                    className="w-full px-3.5 py-2.5 text-sm border border-gray-200 rounded-md bg-white text-[#0F1117] placeholder:text-gray-400 focus:outline-none focus:ring-2 focus:ring-[#818cf8]/30 focus:border-[#818cf8] transition-colors resize-none"
                   />
                 </div>
 
@@ -162,7 +162,7 @@ export default function ContactPage() {
                   <button
                     type="submit"
                     disabled={loading}
-                    className="inline-flex items-center gap-2 bg-[#2563EB] text-white font-semibold px-6 py-3.5 rounded-md hover:bg-[#1d4ed8] transition-colors text-sm disabled:opacity-70 disabled:cursor-not-allowed"
+                    className="inline-flex items-center gap-2 bg-[#818cf8] text-white font-semibold px-6 py-3.5 rounded-md hover:bg-[#6d62f0] transition-colors text-sm disabled:opacity-70 disabled:cursor-not-allowed"
                   >
                     {loading ? (
                       <>
@@ -177,7 +177,7 @@ export default function ContactPage() {
                     )}
                   </button>
                   <p className="text-xs text-gray-400 mt-3">
-                    Velden met <span className="text-[#2563EB]">*</span> zijn verplicht. Uw gegevens worden niet gedeeld met derden.
+                    Velden met <span className="text-[#818cf8]">*</span> zijn verplicht. Uw gegevens worden niet gedeeld met derden.
                   </p>
                 </div>
               </form>
@@ -192,8 +192,8 @@ export default function ContactPage() {
 
               <ul className="flex flex-col gap-5">
                 <li className="flex items-start gap-3">
-                  <div className="w-8 h-8 rounded-md bg-[#EFF6FF] flex items-center justify-center shrink-0">
-                    <MapPin size={14} className="text-[#2563EB]" />
+                  <div className="w-8 h-8 rounded-md bg-[#818cf8/10] flex items-center justify-center shrink-0">
+                    <MapPin size={14} className="text-[#818cf8]" />
                   </div>
                   <div>
                     <div className="text-xs font-semibold text-[#0F1117] mb-0.5">Adres</div>
@@ -206,14 +206,14 @@ export default function ContactPage() {
                 </li>
 
                 <li className="flex items-start gap-3">
-                  <div className="w-8 h-8 rounded-md bg-[#EFF6FF] flex items-center justify-center shrink-0">
-                    <Mail size={14} className="text-[#2563EB]" />
+                  <div className="w-8 h-8 rounded-md bg-[#818cf8/10] flex items-center justify-center shrink-0">
+                    <Mail size={14} className="text-[#818cf8]" />
                   </div>
                   <div>
                     <div className="text-xs font-semibold text-[#0F1117] mb-0.5">E-mail</div>
                     <a
                       href="mailto:arianceautomation@gmail.com"
-                      className="text-sm text-gray-500 hover:text-[#2563EB] transition-colors"
+                      className="text-sm text-gray-500 hover:text-[#818cf8] transition-colors"
                     >
                       arianceautomation@gmail.com
                     </a>
@@ -221,14 +221,14 @@ export default function ContactPage() {
                 </li>
 
                 <li className="flex items-start gap-3">
-                  <div className="w-8 h-8 rounded-md bg-[#EFF6FF] flex items-center justify-center shrink-0">
-                    <Phone size={14} className="text-[#2563EB]" />
+                  <div className="w-8 h-8 rounded-md bg-[#818cf8/10] flex items-center justify-center shrink-0">
+                    <Phone size={14} className="text-[#818cf8]" />
                   </div>
                   <div>
                     <div className="text-xs font-semibold text-[#0F1117] mb-0.5">Telefoon</div>
                     <a
                       href="tel:+31614455066"
-                      className="text-sm text-gray-500 hover:text-[#2563EB] transition-colors"
+                      className="text-sm text-gray-500 hover:text-[#818cf8] transition-colors"
                     >
                       +31 6 14455066
                     </a>
@@ -236,8 +236,8 @@ export default function ContactPage() {
                 </li>
 
                 <li className="flex items-start gap-3">
-                  <div className="w-8 h-8 rounded-md bg-[#EFF6FF] flex items-center justify-center shrink-0">
-                    <Clock size={14} className="text-[#2563EB]" />
+                  <div className="w-8 h-8 rounded-md bg-[#818cf8/10] flex items-center justify-center shrink-0">
+                    <Clock size={14} className="text-[#818cf8]" />
                   </div>
                   <div>
                     <div className="text-xs font-semibold text-[#0F1117] mb-0.5">Openingstijden</div>

@@ -9,8 +9,8 @@ const clients = [
     name: 'Fit Administratie',
     role: 'Administratiekantoor',
     initials: 'FA',
-    accent: '#22D3EE',
-    accentRgb: '34,211,238',
+    accent: '#818cf8',
+    accentRgb: '129,140,248',
     quote: 'Interessante, hands-on samenwerking.',
     body: 'De AI-workflows van Ariance verwerken onze documenten en klantcommunicatie zelfstandig. We winnen er wekelijks uren mee terug en maken minder fouten dan voorheen.',
     metric: { v: '+70%', l: 'sneller verwerkt' },
@@ -19,8 +19,8 @@ const clients = [
     name: 'YouradviesgroepBV',
     role: 'Financieel advies',
     initials: 'YA',
-    accent: '#10D9A0',
-    accentRgb: '16,217,160',
+    accent: '#c084fc',
+    accentRgb: '192,132,252',
     quote: 'Meer structuur, sterker team.',
     body: 'Met de private AI-omgeving kunnen we veilig interne kennis raadplegen en adviesrapporten sneller opstellen — zonder dat gevoelige data de deur uitgaat. Volledig AVG-compliant.',
     metric: { v: 'AVG', l: 'volledig compliant' },
@@ -40,14 +40,14 @@ export default function SocialProof() {
       <div
         className="absolute -top-20 -left-20 w-[500px] h-[500px] rounded-full pointer-events-none"
         style={{
-          background: 'radial-gradient(circle, rgba(34,211,238,0.10) 0%, transparent 60%)',
+          background: 'radial-gradient(circle, rgba(129,140,248,0.10) 0%, transparent 60%)',
           filter: 'blur(60px)',
         }}
       />
       <div
         className="absolute -bottom-20 -right-20 w-[500px] h-[500px] rounded-full pointer-events-none"
         style={{
-          background: 'radial-gradient(circle, rgba(16,217,160,0.08) 0%, transparent 60%)',
+          background: 'radial-gradient(circle, rgba(192,132,252,0.08) 0%, transparent 60%)',
           filter: 'blur(70px)',
         }}
       />
@@ -64,8 +64,8 @@ export default function SocialProof() {
           <span
             className="inline-flex items-center gap-2 px-3 py-1 rounded-full mono-label mb-5"
             style={{
-              background: 'rgba(34,211,238,0.08)',
-              border: '1px solid rgba(34,211,238,0.22)',
+              background: 'rgba(129,140,248,0.08)',
+              border: '1px solid rgba(129,140,248,0.22)',
               color: 'var(--accent)',
             }}
           >

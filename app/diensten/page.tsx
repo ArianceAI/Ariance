@@ -89,13 +89,13 @@ export default function DienstenPage() {
               >
                 <div className={`grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16 items-start ${index % 2 === 1 ? 'lg:grid-flow-dense' : ''}`}>
                   <div className={index % 2 === 1 ? 'lg:col-start-2' : ''}>
-                    <div className="w-11 h-11 rounded-md bg-[#EFF6FF] flex items-center justify-center mb-6">
-                      <Icon size={20} className="text-[#2563EB]" />
+                    <div className="w-11 h-11 rounded-md bg-[rgba(129,140,248,0.10)] flex items-center justify-center mb-6">
+                      <Icon size={20} className="text-[#818cf8]" />
                     </div>
                     <h2 className="text-2xl md:text-3xl font-bold text-[#0F1117] mb-2">
                       {service.title}
                     </h2>
-                    <p className="text-base font-medium text-[#2563EB] mb-5">{service.tagline}</p>
+                    <p className="text-base font-medium text-[#818cf8] mb-5">{service.tagline}</p>
                     <p className="text-base text-gray-500 leading-relaxed mb-8">
                       {service.description}
                     </p>
@@ -106,7 +106,7 @@ export default function DienstenPage() {
                     <ul className="flex flex-col gap-2.5 mb-8">
                       {service.benefits.map((benefit) => (
                         <li key={benefit} className="flex items-start gap-2.5 text-sm text-gray-600">
-                          <Check size={15} className="text-[#2563EB] mt-0.5 shrink-0" />
+                          <Check size={15} className="text-[#818cf8] mt-0.5 shrink-0" />
                           {benefit}
                         </li>
                       ))}
@@ -114,7 +114,7 @@ export default function DienstenPage() {
 
                     <Link
                       href="/contact"
-                      className="inline-flex items-center gap-2 bg-[#2563EB] text-white font-semibold px-5 py-3 rounded-md hover:bg-[#1d4ed8] transition-colors text-sm"
+                      className="inline-flex items-center gap-2 bg-[#818cf8] text-white font-semibold px-5 py-3 rounded-md hover:bg-[#6d62f0] transition-colors text-sm"
                     >
                       Vraag een offerte aan
                       <ArrowRight size={15} />
@@ -128,8 +128,8 @@ export default function DienstenPage() {
                     <ul className="flex flex-col gap-4">
                       {service.included.map((item) => (
                         <li key={item} className="flex items-start gap-3">
-                          <div className="w-5 h-5 rounded-full bg-[#DBEAFE] flex items-center justify-center shrink-0 mt-0.5">
-                            <Check size={11} className="text-[#2563EB]" />
+                          <div className="w-5 h-5 rounded-full bg-[rgba(129,140,248,0.15)] flex items-center justify-center shrink-0 mt-0.5">
+                            <Check size={11} className="text-[#818cf8]" />
                           </div>
                           <span className="text-sm text-gray-600 leading-relaxed">{item}</span>
                         </li>
@@ -158,7 +158,7 @@ export default function DienstenPage() {
           </p>
           <Link
             href="/contact"
-            className="inline-flex items-center gap-2 bg-[#2563EB] text-white font-semibold px-6 py-3.5 rounded-md hover:bg-[#1d4ed8] transition-colors text-sm"
+            className="inline-flex items-center gap-2 bg-[#818cf8] text-white font-semibold px-6 py-3.5 rounded-md hover:bg-[#6d62f0] transition-colors text-sm"
           >
             Gratis gesprek inplannen
             <ArrowRight size={16} />

@@ -25,11 +25,11 @@ export default function UspBar() {
       {/* Top / bottom edge lines */}
       <div
         className="absolute inset-x-0 top-0 h-px"
-        style={{ background: 'linear-gradient(90deg, transparent, rgba(34,211,238,0.30), transparent)' }}
+        style={{ background: 'linear-gradient(90deg, transparent, rgba(129,140,248,0.30), transparent)' }}
       />
       <div
         className="absolute inset-x-0 bottom-0 h-px"
-        style={{ background: 'linear-gradient(90deg, transparent, rgba(16,217,160,0.20), transparent)' }}
+        style={{ background: 'linear-gradient(90deg, transparent, rgba(192,132,252,0.20), transparent)' }}
       />
 
       {/* Fade masks on left/right */}
@@ -51,8 +51,8 @@ export default function UspBar() {
               key={i}
               className="inline-flex items-center gap-2.5 px-5 py-2.5 rounded-full flex-shrink-0 transition-colors duration-200"
               style={{
-                background: 'rgba(34,211,238,0.05)',
-                border: '1px solid rgba(34,211,238,0.12)',
+                background: 'rgba(129,140,248,0.05)',
+                border: '1px solid rgba(129,140,248,0.12)',
               }}
             >
               <span className="text-base">{tool.emoji}</span>

@@ -11,8 +11,8 @@ const steps = [
     title: 'A.I. Roadmap',
     description:
       'Het begint met een plan. We brengen samen uw bedrijfsprocessen in kaart, identificeren AI-kansen en maken een concrete roadmap inclusief concurrentieanalyse.',
-    accent: '#22D3EE',
-    accentRgb: '34,211,238',
+    accent: '#818cf8',
+    accentRgb: '129,140,248',
     points: ['Brainstormen & ideeën', 'Plan van uitvoering', 'Concurrentieanalyse'],
   },
   {
@@ -21,8 +21,8 @@ const steps = [
     title: 'Uitvoering',
     description:
       'De strategie wordt omgezet in actie — dat is waar de magie plaatsvindt. Wekelijkse updates en volledige transparantie over voortgang en resultaten.',
-    accent: '#10D9A0',
-    accentRgb: '16,217,160',
+    accent: '#c084fc',
+    accentRgb: '192,132,252',
     points: ['Implementatie', 'Monitoring', 'Stakeholder betrokkenheid'],
   },
   {
@@ -31,8 +31,8 @@ const steps = [
     title: 'Growth & Scale',
     description:
       'We blijven A.I.-tools inzetten om exponentiële groei te stimuleren. Data-gedreven optimalisaties en een schaalbare infrastructuur die met uw bedrijf meegroeit.',
-    accent: '#67E8F9',
-    accentRgb: '103,232,249',
+    accent: '#d8b4fe',
+    accentRgb: '216,180,254',
     points: ['Data-driven beslissingen', 'Optimalisaties', 'Schaalbare infrastructuur'],
   },
 ];
@@ -51,7 +51,7 @@ export default function HowItWorks() {
       <div
         className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[300px] pointer-events-none"
         style={{
-          background: 'radial-gradient(ellipse, rgba(94,234,212,0.06) 0%, transparent 70%)',
+          background: 'radial-gradient(ellipse, rgba(129,140,248,0.06) 0%, transparent 70%)',
           filter: 'blur(50px)',
         }}
       />
@@ -68,8 +68,8 @@ export default function HowItWorks() {
           <span
             className="inline-flex items-center gap-2 px-3 py-1 rounded-full mono-label mb-5"
             style={{
-              background: 'rgba(34,211,238,0.08)',
-              border: '1px solid rgba(34,211,238,0.22)',
+              background: 'rgba(129,140,248,0.08)',
+              border: '1px solid rgba(129,140,248,0.22)',
               color: 'var(--accent)',
             }}
           >
@@ -97,7 +97,7 @@ export default function HowItWorks() {
             className="absolute top-10 left-[16.67%] right-[16.67%] h-px hidden md:block pointer-events-none"
             style={{
               background:
-                'repeating-linear-gradient(90deg, rgba(34,211,238,0.4) 0px, rgba(34,211,238,0.4) 6px, transparent 6px, transparent 16px)',
+                'repeating-linear-gradient(90deg, rgba(129,140,248,0.4) 0px, rgba(129,140,248,0.4) 6px, transparent 6px, transparent 16px)',
             }}
           />
 

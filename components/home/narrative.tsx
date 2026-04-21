@@ -33,14 +33,14 @@ export default function Narrative() {
       <div
         className="absolute -left-20 top-1/4 w-96 h-96 pointer-events-none animate-morph"
         style={{
-          background: 'radial-gradient(circle, rgba(34,211,238,0.10) 0%, transparent 70%)',
+          background: 'radial-gradient(circle, rgba(129,140,248,0.10) 0%, transparent 70%)',
           filter: 'blur(50px)',
         }}
       />
       <div
         className="absolute -right-20 bottom-0 w-80 h-80 pointer-events-none animate-morph"
         style={{
-          background: 'radial-gradient(circle, rgba(16,217,160,0.12) 0%, transparent 70%)',
+          background: 'radial-gradient(circle, rgba(192,132,252,0.12) 0%, transparent 70%)',
           filter: 'blur(55px)',
           animationDelay: '4s',
         }}
@@ -58,8 +58,8 @@ export default function Narrative() {
           <span
             className="inline-flex items-center gap-2 px-3 py-1 rounded-full mono-label mb-5"
             style={{
-              background: 'rgba(14,116,144,0.08)',
-              border: '1px solid rgba(14,116,144,0.18)',
+              background: 'rgba(79,70,229,0.08)',
+              border: '1px solid rgba(79,70,229,0.18)',
               color: 'var(--accent-deep)',
             }}
           >
@@ -94,19 +94,19 @@ export default function Narrative() {
               transition={{ duration: 0.8, delay: i * 0.12, ease: [0.22, 1, 0.36, 1] }}
               className="relative rounded-2xl p-8"
               style={{
-                background: 'linear-gradient(145deg, #07110D 0%, #0C1914 100%)',
-                border: '1px solid rgba(34,211,238,0.14)',
+                background: 'linear-gradient(145deg, #0d0c18 0%, #1a1828 100%)',
+                border: '1px solid rgba(129,140,248,0.14)',
                 boxShadow: '0 20px 50px rgba(0,0,0,0.18)',
               }}
             >
               {/* Top accent */}
               <div
                 className="absolute top-0 left-0 right-0 h-[2px] rounded-t-2xl"
-                style={{ background: 'linear-gradient(90deg, transparent, #22D3EE, transparent)' }}
+                style={{ background: 'linear-gradient(90deg, transparent, #818cf8, transparent)' }}
               />
               <div
                 className="w-10 h-10 rounded-xl flex items-center justify-center mb-5"
-                style={{ background: 'rgba(34,211,238,0.10)', border: '1px solid rgba(34,211,238,0.22)' }}
+                style={{ background: 'rgba(129,140,248,0.10)', border: '1px solid rgba(129,140,248,0.22)' }}
               >
                 <Check size={18} style={{ color: 'var(--accent)' }} strokeWidth={2.5} />
               </div>
@@ -134,9 +134,9 @@ export default function Narrative() {
             href="/contact"
             className="group inline-flex items-center gap-2 font-display font-bold text-[15px] px-8 py-4 rounded-full transition-[transform,box-shadow] duration-300 hover:-translate-y-0.5"
             style={{
-              background: 'linear-gradient(135deg, #22D3EE 0%, #06B6D4 100%)',
-              color: '#06090F',
-              boxShadow: '0 14px 40px rgba(34,211,238,0.30)',
+              background: 'linear-gradient(135deg, #818cf8 0%, #6d62f0 100%)',
+              color: '#0d0c18',
+              boxShadow: '0 14px 40px rgba(129,140,248,0.30)',
             }}
           >
             Plan een gesprek
