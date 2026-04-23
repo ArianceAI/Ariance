@@ -173,8 +173,6 @@ export default function Hero() {
           }}
         />
       </div>
-      <div className="absolute inset-0 bg-grid opacity-50 pointer-events-none" />
-      <div className="noise" />
 
       {/* ── Main hero ── */}
       <div className="relative max-w-6xl mx-auto px-6 lg:px-8 pt-32 pb-16 md:pt-44 md:pb-20">
