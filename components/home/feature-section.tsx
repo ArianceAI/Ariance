@@ -136,7 +136,7 @@ export default function FeatureSection() {
                           {item.subtitle}
                         </p>
                       </div>
-                      <Zap size={12} style={{ color: item.accent, opacity: 0.6, shrink: 0 }} />
+                      <Zap size={12} style={{ color: item.accent, opacity: 0.6, flexShrink: 0 }} />
                     </div>
                   ))}
                 </motion.div>
