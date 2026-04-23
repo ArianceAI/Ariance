@@ -117,7 +117,7 @@ export default function Testimonials() {
 
   return (
     <section
-      className="relative overflow-hidden py-20 md:py-28"
+      className="relative py-20 md:py-28"
       style={{ background: 'var(--bg-cream)' }}
     >
       {/* Ambient glow */}
@@ -148,14 +148,14 @@ export default function Testimonials() {
               }}
             >
               <Star size={11} className="fill-[var(--accent-solid)]" />
-              Klantreviews
+              Testimonials
             </span>
 
             <h2
               className="font-display font-extrabold tracking-[-0.03em] leading-[1.0]"
               style={{ fontSize: 'clamp(2rem, 4.2vw, 3rem)', color: 'var(--ink)' }}
             >
-              Wat onze klanten<br />
+              Wat onze klanten<br/>
               <span
                 style={{
                   background: 'linear-gradient(135deg, #818cf8 0%, #c084fc 100%)',

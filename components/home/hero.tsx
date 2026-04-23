@@ -266,18 +266,6 @@ export default function Hero() {
               className="flex flex-col sm:flex-row gap-3"
             >
               <MagneticCTA onClick={open} />
-              <motion.a
-                href="/diensten"
-                className="inline-flex items-center gap-2 font-display font-semibold text-[14px] px-7 py-4 rounded-full transition-[background,border-color] duration-300"
-                style={{
-                  background: 'transparent',
-                  color: 'var(--ink)',
-                  border: '1px solid rgba(13,12,24,0.18)',
-                }}
-                whileHover={{ borderColor: 'rgba(129,140,248,0.4)', background: 'rgba(129,140,248,0.04)' }}
-              >
-                Hoe doen we dit?
-              </motion.a>
             </motion.div>
           </div>
 

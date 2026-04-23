@@ -7,9 +7,7 @@ import { Menu, X, ArrowUpRight } from 'lucide-react';
 import { useContactModal } from '@/components/ui/contact-modal-provider';
 
 const navLinks = [
-  { href: '/',         label: 'Home' },
-  { href: '/diensten', label: 'Diensten' },
-  { href: '/contact',  label: 'Contact' },
+  { href: '/', label: 'Home' },
 ];
 
 export default function Navbar() {

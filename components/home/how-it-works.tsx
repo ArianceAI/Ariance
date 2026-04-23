@@ -125,7 +125,7 @@ export default function HowItWorks() {
             style={{ background: `linear-gradient(90deg, transparent, ${s.accent}, transparent)` }}
           />
 
-          <div className="p-8 md:p-12 min-h-[420px] flex flex-col md:flex-row gap-8 md:gap-12">
+          <div className="p-8 md:p-12 min-h-[500px] flex flex-col md:flex-row gap-8 md:gap-12">
             {/* Text */}
             <div className="md:w-[45%] flex flex-col justify-center">
               <AnimatePresence mode="wait">
@@ -203,16 +203,16 @@ export default function HowItWorks() {
                 onClick={() => setStep(i)}
                 className="flex items-center gap-2.5 px-4 py-2 rounded-full font-display font-semibold text-sm transition-colors duration-300"
                 style={{
-                  background: active ? `rgba(${st.accentRgb},0.12)` : 'transparent',
-                  border: active ? `1px solid rgba(${st.accentRgb},0.30)` : '1px solid rgba(13,12,24,0.10)',
-                  color: active ? st.accent : 'var(--muted-d)',
+                  background: active ? 'rgba(129,140,248,0.12)' : 'transparent',
+                  border: active ? '1px solid rgba(129,140,248,0.30)' : '1px solid rgba(13,12,24,0.10)',
+                  color: active ? '#818cf8' : 'var(--muted-d)',
                 }}
               >
                 <span
                   className="w-5 h-5 rounded-full flex items-center justify-center text-[11px] font-bold shrink-0"
                   style={{
-                    background: done ? st.accent : active ? `rgba(${st.accentRgb},0.20)` : 'rgba(13,12,24,0.07)',
-                    color: done ? '#fff' : active ? st.accent : 'var(--muted-d)',
+                    background: done ? '#818cf8' : active ? 'rgba(129,140,248,0.20)' : 'rgba(13,12,24,0.07)',
+                    color: done ? '#fff' : active ? '#818cf8' : 'var(--muted-d)',
                   }}
                 >
                   {done ? <Check size={10} strokeWidth={3} /> : i + 1}

@@ -27,7 +27,7 @@ export default function Footer() {
   return (
     <footer
       className="relative overflow-hidden"
-      style={{ background: 'var(--bg-cream)', borderTop: '1px solid rgba(129,140,248,0.14)' }}
+      style={{ background: '#e8e7f4', borderTop: '1px solid rgba(129,140,248,0.22)' }}
     >
       {/* Ambient glow bottom */}
       <div

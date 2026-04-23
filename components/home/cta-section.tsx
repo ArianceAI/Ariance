@@ -59,11 +59,6 @@ export default function CtaSection() {
       className="relative overflow-hidden py-28 md:py-40"
       style={{ background: 'var(--bg-cream)' }}
     >
-      <div className="noise" />
-
-      {/* Grid */}
-      <div className="absolute inset-0 bg-grid opacity-40 pointer-events-none" />
-
       {/* Huge central glow orb */}
       <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
         <div
