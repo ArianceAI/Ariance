@@ -1,7 +1,7 @@
 'use client';
 
 import { useState } from 'react';
-import { MapPin, Mail, Phone, Clock, Send } from 'lucide-react';
+import { MapPin, Mail, Phone, Clock, Send, Zap } from 'lucide-react';
 
 export default function ContactPage() {
   const [formData, setFormData] = useState({
@@ -29,18 +29,63 @@ export default function ContactPage() {
   };
 
   return (
-    <div className="bg-white">
-      <div className="bg-[#0F1117] pt-32 pb-16 md:pt-40 md:pb-20">
-        <div className="max-w-6xl mx-auto px-6 lg:px-8">
-          <p className="text-xs font-semibold uppercase tracking-widest text-[#60A5FA] mb-4">
+    <div style={{ background: 'var(--bg-0)' }}>
+      {/* ── Page header ── */}
+      <div
+        className="relative overflow-hidden pt-32 pb-20 md:pt-44 md:pb-28"
+        style={{ background: 'var(--bg-cream)' }}
+      >
+        <div
+          className="absolute -top-40 -left-40 w-[600px] h-[600px] rounded-full pointer-events-none"
+          style={{
+            background: 'radial-gradient(circle, rgba(129,140,248,0.10) 0%, transparent 60%)',
+            filter: 'blur(60px)',
+          }}
+        />
+        <div
+          className="absolute inset-x-0 top-0 h-px"
+          style={{ background: 'linear-gradient(90deg, transparent, rgba(129,140,248,0.25), transparent)' }}
+        />
+        <div className="relative max-w-6xl mx-auto px-6 lg:px-8">
+          <span
+            className="inline-flex items-center gap-2 px-3 py-1 rounded-full mb-6"
+            style={{
+              fontFamily: 'var(--font-mono)',
+              fontSize: '11px',
+              letterSpacing: '0.08em',
+              textTransform: 'uppercase' as const,
+              fontWeight: 500,
+              background: 'rgba(129,140,248,0.08)',
+              border: '1px solid rgba(129,140,248,0.22)',
+              color: 'var(--accent-solid)',
+            }}
+          >
+            <Zap size={11} />
             Neem contact op
-          </p>
-          <h1 className="text-4xl md:text-5xl font-bold text-white leading-tight mb-5">
-            Contact
+          </span>
+          <h1
+            className="font-display font-extrabold tracking-[-0.03em] leading-[0.96] mb-5"
+            style={{ fontSize: 'clamp(2.4rem, 5.5vw, 4rem)', color: 'var(--ink)' }}
+          >
+            Laten we{' '}
+            <span
+              style={{
+                background: 'linear-gradient(135deg, #818cf8 0%, #c084fc 100%)',
+                WebkitBackgroundClip: 'text',
+                backgroundClip: 'text',
+                WebkitTextFillColor: 'transparent',
+                color: 'transparent',
+              }}
+            >
+              kennismaken
+            </span>
           </h1>
-          <p className="text-base md:text-lg text-gray-400 leading-relaxed max-w-xl">
+          <p
+            className="text-base md:text-lg leading-relaxed max-w-xl"
+            style={{ color: 'var(--muted-d)' }}
+          >
             Heeft u een vraag of wilt u weten wat AI voor uw bedrijf kan doen? Stuur een bericht
-            en Léon neemt binnen één werkdag contact met u op.
+            en we nemen binnen één werkdag contact met u op.
           </p>
         </div>
       </div>
@@ -185,7 +230,7 @@ export default function ContactPage() {
           </div>
 
           <div className="lg:col-span-2">
-            <div className="bg-[#F8FAFC] rounded-xl p-7 border border-gray-100">
+            <div className="rounded-3xl p-7" style={{ background: 'var(--bg-cream)', border: '1px solid rgba(129,140,248,0.14)' }}>
               <h2 className="text-base font-semibold text-[#0F1117] mb-6">
                 Contactgegevens
               </h2>
@@ -249,10 +294,9 @@ export default function ContactPage() {
                 </li>
               </ul>
 
-              <div className="mt-7 pt-6 border-t border-gray-200">
-                <p className="text-xs text-gray-400 leading-relaxed">
-                  U spreekt altijd direct met Léon Ariëns — oprichter en eindverantwoordelijke. Geen
-                  callcenter, geen wachtrijen.
+              <div className="mt-7 pt-6" style={{ borderTop: '1px solid rgba(13,12,24,0.08)' }}>
+                <p className="text-xs leading-relaxed" style={{ color: 'var(--muted-l)' }}>
+                  Geen callcenter, geen wachtrijen. Wij reageren altijd persoonlijk en snel.
                 </p>
               </div>
             </div>

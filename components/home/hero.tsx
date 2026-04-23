@@ -219,10 +219,10 @@ export default function Hero() {
                 color: 'var(--ink)',
               }}
             >
-              Supercharge{' '}
+              Bespaar tijd,{' '}
               <br className="hidden sm:block" />
               <span className="relative inline-block">
-                <span className="relative z-10 text-gradient-emerald">jouw bedrijf</span>
+                <span className="relative z-10 text-gradient-emerald">verlaag kosten</span>
                 <svg
                   className="absolute left-0 -bottom-1 w-full"
                   height="6"
@@ -250,8 +250,8 @@ export default function Hero() {
               className="text-lg md:text-xl leading-[1.65] mb-10 max-w-[560px]"
               style={{ color: 'var(--muted-d)' }}
             >
-              Wij bouwen A.I. & automations voor bedrijven die van aanpakken weten.
-              Geen eindeloze trajecten — werkende oplossingen in weken.
+              Ariance levert AI Automatisering en AI Consultancy voor het Nederlandse MKB.
+              Focus op waardevollere taken — werkende oplossingen in weken.
             </motion.p>
 
             {/* CTAs */}
@@ -271,15 +271,9 @@ export default function Hero() {
               className="flex flex-wrap items-center gap-x-6 gap-y-3 pt-6"
               style={{ borderTop: '1px solid var(--border-d)' }}
             >
-              <div className="flex items-center gap-2">
-                <span className="relative flex w-2 h-2">
-                  <span className="absolute inset-0 rounded-full bg-[var(--accent)] animate-ping opacity-60" />
-                  <span className="relative inline-flex w-2 h-2 rounded-full bg-[var(--accent)]" />
-                </span>
-                <span className="mono-label" style={{ color: 'var(--muted-d)' }}>Direct contact met Léon</span>
-              </div>
-              <span className="mono-label" style={{ color: 'var(--muted-d)' }}>∙ AVG-compliant</span>
+              <span className="mono-label" style={{ color: 'var(--muted-d)' }}>AVG-compliant</span>
               <span className="mono-label" style={{ color: 'var(--muted-d)' }}>∙ In weken live</span>
+              <span className="mono-label" style={{ color: 'var(--muted-d)' }}>∙ Geen verborgen kosten</span>
             </motion.div>
           </motion.div>
 

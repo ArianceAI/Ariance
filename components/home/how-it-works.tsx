@@ -1,8 +1,8 @@
 'use client';
 
-import { useRef } from 'react';
-import { motion, useInView } from 'framer-motion';
-import { MessageSquare, Wrench, TrendingUp } from 'lucide-react';
+import { useRef, useState } from 'react';
+import { motion, useInView, AnimatePresence } from 'framer-motion';
+import { MessageSquare, Wrench, TrendingUp, Check, ChevronRight } from 'lucide-react';
 
 const steps = [
   {
@@ -40,6 +40,7 @@ const steps = [
 export default function HowItWorks() {
   const ref = useRef(null);
   const inView = useInView(ref, { once: true, margin: '-80px' });
+  const [activeStep, setActiveStep] = useState(0);
 
   return (
     <section
@@ -60,7 +61,7 @@ export default function HowItWorks() {
         {/* Header */}
         <motion.div
           ref={ref}
-          className="max-w-2xl mb-20"
+          className="max-w-2xl mb-16"
           initial={{ opacity: 0, y: 24 }}
           animate={inView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
@@ -90,87 +91,156 @@ export default function HowItWorks() {
           </p>
         </motion.div>
 
-        {/* Steps */}
-        <div className="relative grid grid-cols-1 md:grid-cols-3 gap-10 md:gap-6">
-          {/* Connecting dashed line */}
-          <div
-            className="absolute top-10 left-[16.67%] right-[16.67%] h-px hidden md:block pointer-events-none"
-            style={{
-              background:
-                'repeating-linear-gradient(90deg, rgba(129,140,248,0.4) 0px, rgba(129,140,248,0.4) 6px, transparent 6px, transparent 16px)',
-            }}
-          />
-
-          {steps.map((step, i) => {
-            const Icon = step.icon;
-            return (
-              <motion.div
-                key={step.num}
-                initial={{ opacity: 0, y: 40 }}
-                animate={inView ? { opacity: 1, y: 0 } : {}}
-                transition={{ duration: 0.8, delay: i * 0.15, ease: [0.22, 1, 0.36, 1] }}
-                className="relative"
-              >
-                {/* Huge outline number — decorative */}
-                <div
-                  aria-hidden
-                  className="absolute -top-8 -left-2 font-display font-black leading-none select-none pointer-events-none"
+        {/* Interactive steps layout */}
+        <motion.div
+          className="grid grid-cols-1 lg:grid-cols-5 gap-4 lg:gap-8"
+          initial={{ opacity: 0, y: 32 }}
+          animate={inView ? { opacity: 1, y: 0 } : {}}
+          transition={{ duration: 0.8, delay: 0.2, ease: [0.22, 1, 0.36, 1] }}
+        >
+          {/* Left — step selector */}
+          <div className="lg:col-span-2 flex flex-col gap-3">
+            {steps.map((step, i) => {
+              const Icon = step.icon;
+              const isActive = i === activeStep;
+              return (
+                <button
+                  key={step.num}
+                  onClick={() => setActiveStep(i)}
+                  className="group relative text-left rounded-2xl p-5 transition-all duration-300 w-full"
                   style={{
-                    fontSize: '9rem',
-                    color: 'transparent',
-                    WebkitTextStroke: `1px rgba(${step.accentRgb},0.12)`,
+                    background: isActive
+                      ? `linear-gradient(135deg, rgba(${step.accentRgb},0.08) 0%, rgba(${step.accentRgb},0.03) 100%)`
+                      : 'transparent',
+                    border: `1px solid ${isActive ? `rgba(${step.accentRgb},0.30)` : 'rgba(13,12,24,0.08)'}`,
+                    boxShadow: isActive ? `0 4px 20px rgba(${step.accentRgb},0.12)` : 'none',
                   }}
                 >
-                  {step.num}
-                </div>
+                  <div className="flex items-center gap-4">
+                    {/* Icon circle */}
+                    <div
+                      className="w-11 h-11 rounded-xl flex items-center justify-center shrink-0 transition-all duration-300"
+                      style={{
+                        background: isActive ? step.accent : `rgba(${step.accentRgb},0.08)`,
+                        boxShadow: isActive ? `0 8px 20px rgba(${step.accentRgb},0.30)` : 'none',
+                      }}
+                    >
+                      <Icon
+                        size={18}
+                        strokeWidth={1.8}
+                        style={{ color: isActive ? '#ffffff' : step.accent, transition: 'color 0.3s' }}
+                      />
+                    </div>
 
-                {/* Icon circle */}
-                <div className="relative mb-8 z-10">
-                  <div
-                    className="w-20 h-20 rounded-full flex items-center justify-center"
+                    <div className="flex-1 min-w-0">
+                      <div className="mono-label mb-0.5" style={{ color: step.accent }}>
+                        Stap {step.num}
+                      </div>
+                      <div
+                        className="font-display font-bold text-[15px] transition-colors duration-300"
+                        style={{ color: isActive ? 'var(--ink)' : 'var(--muted-d)' }}
+                      >
+                        {step.title}
+                      </div>
+                    </div>
+
+                    <ChevronRight
+                      size={16}
+                      className="shrink-0 transition-transform duration-300"
+                      style={{
+                        color: isActive ? step.accent : 'rgba(13,12,24,0.25)',
+                        transform: isActive ? 'rotate(90deg)' : 'rotate(0deg)',
+                      }}
+                    />
+                  </div>
+                </button>
+              );
+            })}
+          </div>
+
+          {/* Right — detail panel */}
+          <div className="lg:col-span-3 relative min-h-[320px]">
+            <AnimatePresence mode="wait">
+              {steps.map((step, i) => {
+                if (i !== activeStep) return null;
+                const Icon = step.icon;
+                return (
+                  <motion.div
+                    key={step.num}
+                    initial={{ opacity: 0, x: 20 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    exit={{ opacity: 0, x: -16 }}
+                    transition={{ duration: 0.38, ease: [0.22, 1, 0.36, 1] }}
+                    className="rounded-3xl p-8 md:p-10 h-full"
                     style={{
-                      background: 'var(--bg-2)',
-                      border: `1px solid rgba(${step.accentRgb},0.3)`,
-                      boxShadow: `0 0 0 8px rgba(${step.accentRgb},0.05), 0 12px 30px rgba(${step.accentRgb},0.18)`,
+                      background: `linear-gradient(145deg, rgba(${step.accentRgb},0.06) 0%, #ffffff 55%)`,
+                      border: `1px solid rgba(${step.accentRgb},0.20)`,
+                      boxShadow: `0 8px 40px rgba(${step.accentRgb},0.10), 0 2px 8px rgba(0,0,0,0.04)`,
                     }}
                   >
-                    <Icon size={26} style={{ color: step.accent }} strokeWidth={1.6} />
-                  </div>
-                  <div
-                    className="absolute -top-1.5 -right-1.5 w-8 h-8 rounded-full flex items-center justify-center font-display font-bold text-xs"
-                    style={{
-                      background: step.accent,
-                      color: 'var(--ink-dark)',
-                    }}
-                  >
-                    {i + 1}
-                  </div>
-                </div>
+                    {/* Top accent line */}
+                    <div
+                      className="absolute top-0 left-0 right-0 h-[2px] rounded-t-3xl"
+                      style={{
+                        background: `linear-gradient(90deg, transparent, ${step.accent}, transparent)`,
+                      }}
+                    />
 
-                <div className="mono-label mb-3" style={{ color: step.accent }}>
-                  Stap {step.num}
-                </div>
-                <h3
-                  className="font-display text-xl md:text-[1.4rem] font-bold mb-3 tracking-tight"
-                  style={{ color: 'var(--ink)' }}
-                >
-                  {step.title}
-                </h3>
-                <p className="text-[14.5px] leading-[1.65] mb-5" style={{ color: 'var(--muted-d)' }}>
-                  {step.description}
-                </p>
-                <ul className="flex flex-col gap-2">
-                  {step.points.map((pt) => (
-                    <li key={pt} className="flex items-center gap-2 text-[13px]" style={{ color: 'var(--muted-d)' }}>
-                      <span className="w-1 h-1 rounded-full flex-shrink-0" style={{ background: step.accent }} />
-                      {pt}
-                    </li>
-                  ))}
-                </ul>
-              </motion.div>
-            );
-          })}
-        </div>
+                    {/* Icon */}
+                    <div
+                      className="w-16 h-16 rounded-2xl flex items-center justify-center mb-6"
+                      style={{
+                        background: step.accent,
+                        boxShadow: `0 12px 30px rgba(${step.accentRgb},0.35)`,
+                      }}
+                    >
+                      <Icon size={26} strokeWidth={1.6} style={{ color: '#ffffff' }} />
+                    </div>
+
+                    {/* Num + title */}
+                    <div className="mono-label mb-2" style={{ color: step.accent }}>
+                      Stap {step.num}
+                    </div>
+                    <h3
+                      className="font-display text-2xl font-bold mb-4 tracking-tight"
+                      style={{ color: 'var(--ink)' }}
+                    >
+                      {step.title}
+                    </h3>
+                    <p className="text-[15px] leading-[1.7] mb-7" style={{ color: 'var(--muted-d)' }}>
+                      {step.description}
+                    </p>
+
+                    {/* Points */}
+                    <ul className="flex flex-col gap-3">
+                      {step.points.map((pt, j) => (
+                        <motion.li
+                          key={pt}
+                          initial={{ opacity: 0, x: -8 }}
+                          animate={{ opacity: 1, x: 0 }}
+                          transition={{ delay: j * 0.09, duration: 0.3, ease: 'easeOut' }}
+                          className="flex items-center gap-3 text-[14px]"
+                          style={{ color: 'var(--muted-d)' }}
+                        >
+                          <span
+                            className="w-5 h-5 rounded-full flex items-center justify-center shrink-0"
+                            style={{
+                              background: `rgba(${step.accentRgb},0.12)`,
+                              border: `1px solid rgba(${step.accentRgb},0.25)`,
+                            }}
+                          >
+                            <Check size={11} style={{ color: step.accent }} strokeWidth={2.5} />
+                          </span>
+                          {pt}
+                        </motion.li>
+                      ))}
+                    </ul>
+                  </motion.div>
+                );
+              })}
+            </AnimatePresence>
+          </div>
+        </motion.div>
       </div>
     </section>
   );
