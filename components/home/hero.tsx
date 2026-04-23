@@ -107,7 +107,7 @@ function OrbitalDiagram() {
 
         {/* Core */}
         <circle cx="200" cy="200" r="58" fill="url(#coreGlowCyan)" />
-        <circle cx="200" cy="200" r="20" fill="#f4f3f8" stroke="#818cf8" strokeWidth="1.5" />
+        <circle cx="200" cy="200" r="20" fill="#ffffff" stroke="#818cf8" strokeWidth="1.5" />
         <circle cx="200" cy="200" r="6" fill="#818cf8">
           <animate attributeName="r" values="6;9;6" dur="2.4s" repeatCount="indefinite" />
           <animate attributeName="opacity" values="1;0.5;1" dur="2.4s" repeatCount="indefinite" />

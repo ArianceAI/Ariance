@@ -6,13 +6,13 @@
 
 :root {
   /* Ariance Brand — Light + Indigo/Violet palette */
-  --bg-0:            #f4f3f8;  /* main page background */
+  --bg-0:            #ffffff;  /* main page background */
   --bg-1:            #ffffff;  /* clean white sections */
-  --bg-2:            #eae9f4;  /* card/panel background */
+  --bg-2:            #f4f3f8;  /* subtle card/panel background */
   --bg-dark:         #0d0c18;  /* explicit dark bg for CTA/footer */
   --bg-dark-2:       #1a1828;  /* dark cards */
-  --bg-cream:        #f4f3f8;  /* same as bg-0 */
-  --bg-cream-2:      #e8e6f0;
+  --bg-cream:        #f7f6fb;  /* very subtle off-white for contrast sections */
+  --bg-cream-2:      #eeecf5;
   --ink:             #0d0c18;  /* dark text on light */
   --ink-light:       #fafaf9;  /* light text on dark */
   --ink-dark:        #0d0c18;  /* text on light backgrounds */
