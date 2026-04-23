@@ -3,7 +3,7 @@ import UspBar from '@/components/home/usp-bar';
 import FeatureSection from '@/components/home/feature-section';
 import Narrative from '@/components/home/narrative';
 import HowItWorks from '@/components/home/how-it-works';
-import SocialProof from '@/components/home/social-proof';
+import Testimonials from '@/components/home/testimonials';
 import CtaSection from '@/components/home/cta-section';
 
 export default function HomePage() {
@@ -15,7 +15,7 @@ export default function HomePage() {
       <FeatureSection variant="consultancy" />
       <Narrative />
       <HowItWorks />
-      <SocialProof />
+      <Testimonials />
       <CtaSection />
     </>
   );
