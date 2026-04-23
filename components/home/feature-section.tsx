@@ -177,7 +177,7 @@ export default function FeatureSection({ variant }: { variant: Variant }) {
     <motion.section
       ref={ref}
       className="relative overflow-hidden py-16 md:py-24"
-      style={{ background: variant === 'consultancy' ? 'var(--bg-cream)' : 'var(--bg-0)' }}
+      style={{ background: 'var(--bg-0)' }}
       initial={{ opacity: 0, y: 40 }}
       animate={inView ? { opacity: 1, y: 0 } : {}}
       transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] as [number, number, number, number] }}
