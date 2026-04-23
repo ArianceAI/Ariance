@@ -136,7 +136,7 @@ export default function FeatureSection({ variant }: { variant: Variant }) {
 
       <h2
         className="font-display font-extrabold tracking-[-0.03em] leading-[1.05]"
-        style={{ fontSize: 'clamp(2rem, 4vw, 3rem)', color: 'var(--ink)' }}
+        style={{ fontSize: 'clamp(2.4rem, 5vw, 3.8rem)', color: 'var(--ink)' }}
       >
         {c.title}{' '}
         <span

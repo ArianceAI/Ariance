@@ -44,8 +44,11 @@ const testimonials = [
 function TestimonialCard({ t, index }: { t: typeof testimonials[0]; index: number }) {
   return (
     <motion.div
-      className="sticky w-full"
-      style={{ top: `${88 + index * 28}px` }}
+      className="w-full"
+      initial={{ opacity: 0, y: 24 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true, amount: 0.2 }}
+      transition={{ duration: 0.5, delay: index * 0.1, ease: [0.22, 1, 0.36, 1] as [number, number, number, number] }}
     >
       <Card
         className="w-full overflow-hidden"
@@ -113,7 +116,6 @@ function TestimonialCard({ t, index }: { t: typeof testimonials[0]; index: numbe
 
 export default function Testimonials() {
   const { open } = useContactModal();
-  const stackHeight = `calc(100vh + ${testimonials.length * 120}px)`;
 
   return (
     <section
@@ -226,8 +228,8 @@ export default function Testimonials() {
             </div>
           </div>
 
-          {/* ── Right: stacking testimonial cards ── */}
-          <div className="relative flex flex-col gap-4" style={{ height: stackHeight }}>
+          {/* ── Right: testimonial cards ── */}
+          <div className="flex flex-col gap-4">
             {testimonials.map((t, i) => (
               <TestimonialCard key={t.name} t={t} index={i} />
             ))}
