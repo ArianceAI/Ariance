@@ -1,6 +1,6 @@
 import type { Metadata } from 'next';
-import Link from 'next/link';
 import { Bot, Lightbulb, Check, ArrowRight, Zap } from 'lucide-react';
+import { ContactButton } from '@/components/ui/contact-modal-provider';
 
 export const metadata: Metadata = {
   title: 'Diensten — Ariance AI Oplossingen',
@@ -137,7 +137,7 @@ export default function DienstenPage() {
             return (
               <div key={service.id} id={service.id} className="scroll-mt-24">
                 <div
-                  className={`grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16 items-start ${
+                  className={`grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16 items-center ${
                     index % 2 === 1 ? 'lg:grid-flow-dense' : ''
                   }`}
                 >
@@ -209,8 +209,7 @@ export default function DienstenPage() {
                       ))}
                     </ul>
 
-                    <Link
-                      href="/contact"
+                    <ContactButton
                       className="inline-flex items-center gap-2 font-display font-semibold text-sm px-6 py-3.5 rounded-full transition-[transform,box-shadow] duration-300 hover:-translate-y-0.5"
                       style={{
                         background: `linear-gradient(135deg, ${service.accent} 0%, rgba(${service.accentRgb},0.8) 100%)`,
@@ -220,7 +219,7 @@ export default function DienstenPage() {
                     >
                       Vraag een offerte aan
                       <ArrowRight size={15} />
-                    </Link>
+                    </ContactButton>
                   </div>
 
                   {/* Included card */}
@@ -307,8 +306,7 @@ export default function DienstenPage() {
             Plan een gratis oriëntatiegesprek. We luisteren naar uw situatie en adviseren
             eerlijk wat het beste bij uw bedrijf past.
           </p>
-          <Link
-            href="/contact"
+          <ContactButton
             className="inline-flex items-center gap-2 font-display font-semibold text-sm px-7 py-4 rounded-full transition-[transform,box-shadow] duration-300 hover:-translate-y-0.5"
             style={{
               background: 'linear-gradient(135deg, #818cf8 0%, #6d62f0 100%)',
@@ -318,7 +316,7 @@ export default function DienstenPage() {
           >
             Gratis gesprek inplannen
             <ArrowRight size={16} />
-          </Link>
+          </ContactButton>
         </div>
       </div>
     </div>

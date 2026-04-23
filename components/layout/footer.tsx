@@ -1,5 +1,8 @@
+'use client';
+
 import Link from 'next/link';
 import { MapPin, Mail, Phone, Clock, ArrowUpRight } from 'lucide-react';
+import { useContactModal } from '@/components/ui/contact-modal-provider';
 
 const navLinks = [
   { href: '/',                   label: 'Home' },
@@ -20,6 +23,7 @@ const contactItems = [
 ];
 
 export default function Footer() {
+  const { open } = useContactModal();
   return (
     <footer
       className="relative overflow-hidden"
@@ -58,8 +62,8 @@ export default function Footer() {
                 Van automatisering tot private AI — in weken live, niet maanden.
               </p>
 
-              <Link
-                href="/contact"
+              <button
+                onClick={open}
                 className="group inline-flex items-center gap-2 font-display font-semibold text-[13px] px-5 py-2.5 rounded-full transition-[transform,box-shadow] duration-300 hover:-translate-y-0.5"
                 style={{
                   background: 'var(--amber)',
@@ -69,7 +73,7 @@ export default function Footer() {
               >
                 Plan een gesprek
                 <ArrowUpRight size={14} className="transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
-              </Link>
+              </button>
             </div>
 
             {/* Nav (3) */}

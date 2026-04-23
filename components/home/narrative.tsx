@@ -1,9 +1,9 @@
 'use client';
 
 import { useRef } from 'react';
-import Link from 'next/link';
 import { motion, useInView } from 'framer-motion';
 import { ArrowRight, Check } from 'lucide-react';
+import { useContactModal } from '@/components/ui/contact-modal-provider';
 
 const points = [
   { title: 'Focus op resultaten', desc: 'Geen vage rapporten of buzzwords. Wij leveren werkende oplossingen die direct meetbaar resultaat opleveren.' },
@@ -14,6 +14,7 @@ const points = [
 export default function Narrative() {
   const ref = useRef(null);
   const inView = useInView(ref, { once: true, margin: '-80px' });
+  const { open } = useContactModal();
 
   return (
     <section
@@ -130,8 +131,8 @@ export default function Narrative() {
           animate={inView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.7, delay: 0.45 }}
         >
-          <Link
-            href="/contact"
+          <button
+            onClick={open}
             className="group inline-flex items-center gap-2 font-display font-bold text-[15px] px-8 py-4 rounded-full transition-[transform,box-shadow] duration-300 hover:-translate-y-0.5"
             style={{
               background: 'linear-gradient(135deg, #818cf8 0%, #6d62f0 100%)',
@@ -141,7 +142,7 @@ export default function Narrative() {
           >
             Plan een gesprek
             <ArrowRight size={15} className="transition-transform duration-300 group-hover:translate-x-1" />
-          </Link>
+          </button>
         </motion.div>
       </div>
     </section>

@@ -4,6 +4,7 @@ import { useRef, useState } from 'react';
 import Link from 'next/link';
 import { motion, type Variants } from 'framer-motion';
 import { ArrowRight, Zap } from 'lucide-react';
+import { useContactModal } from '@/components/ui/contact-modal-provider';
 
 const container: Variants = {
   hidden: {},
@@ -15,10 +16,14 @@ const fadeUp: Variants = {
 };
 
 function MagneticButton({
-  href, children, variant = 'primary',
-}: { href: string; children: React.ReactNode; variant?: 'primary' | 'ghost' }) {
+  onClick, href, children, variant = 'primary',
+}: { onClick?: () => void; href?: string; children: React.ReactNode; variant?: 'primary' | 'ghost' }) {
   const ref = useRef<HTMLDivElement>(null);
   const [pos, setPos] = useState({ x: 0, y: 0 });
+  const btnClass = "group inline-flex items-center gap-2.5 font-display font-bold text-[15px] px-7 py-4 rounded-full transition-[transform,box-shadow] duration-300 hover:-translate-y-0.5";
+  const btnStyle = variant === 'primary'
+    ? { background: 'linear-gradient(135deg, #818cf8 0%, #c084fc 100%)', color: '#0d0c18', boxShadow: '0 14px 40px rgba(129,140,248,0.38), inset 0 1px 0 rgba(255,255,255,0.25)' }
+    : { background: 'transparent', color: 'var(--ink)', border: '1px solid rgba(13,12,24,0.18)' };
 
   return (
     <motion.div
@@ -32,25 +37,11 @@ function MagneticButton({
       transition={{ type: 'spring', stiffness: 160, damping: 14 }}
       className="inline-flex"
     >
-      <Link
-        href={href}
-        className="group inline-flex items-center gap-2.5 font-display font-bold text-[15px] px-7 py-4 rounded-full transition-[transform,box-shadow] duration-300 hover:-translate-y-0.5"
-        style={
-          variant === 'primary'
-            ? {
-                background: 'linear-gradient(135deg, #818cf8 0%, #c084fc 100%)',
-                color: '#0d0c18',
-                boxShadow: '0 14px 40px rgba(129,140,248,0.38), inset 0 1px 0 rgba(255,255,255,0.25)',
-              }
-            : {
-                background: 'transparent',
-                color: 'var(--ink)',
-                border: '1px solid rgba(13,12,24,0.18)',
-              }
-        }
-      >
-        {children}
-      </Link>
+      {onClick ? (
+        <button onClick={onClick} className={btnClass} style={btnStyle}>{children}</button>
+      ) : (
+        <Link href={href!} className={btnClass} style={btnStyle}>{children}</Link>
+      )}
     </motion.div>
   );
 }
@@ -166,6 +157,7 @@ function OrbitalDiagram() {
 }
 
 export default function Hero() {
+  const { open } = useContactModal();
   return (
     <section
       className="relative overflow-hidden pt-32 pb-24 md:pt-44 md:pb-36"
@@ -256,7 +248,7 @@ export default function Hero() {
 
             {/* CTAs */}
             <motion.div variants={fadeUp} className="flex flex-col sm:flex-row gap-3 mb-10">
-              <MagneticButton href="/contact">
+              <MagneticButton onClick={open}>
                 Plan een gesprek
                 <ArrowRight size={15} className="transition-transform duration-300 group-hover:translate-x-1" />
               </MagneticButton>

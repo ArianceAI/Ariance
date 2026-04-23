@@ -4,6 +4,7 @@ import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { Menu, X, ArrowUpRight } from 'lucide-react';
+import { useContactModal } from '@/components/ui/contact-modal-provider';
 
 const navLinks = [
   { href: '/',         label: 'Home' },
@@ -15,6 +16,7 @@ export default function Navbar() {
   const [isOpen, setIsOpen]     = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const pathname = usePathname();
+  const { open } = useContactModal();
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 24);
@@ -66,8 +68,8 @@ export default function Navbar() {
                 </Link>
               );
             })}
-            <Link
-              href="/contact"
+            <button
+              onClick={open}
               className="ml-4 group inline-flex items-center gap-2 font-display text-[13px] font-semibold px-5 py-2.5 rounded-full transition-all duration-300 hover:-translate-y-0.5"
               style={{
                 background: 'var(--amber)',
@@ -77,7 +79,7 @@ export default function Navbar() {
             >
               Plan een gesprek
               <ArrowUpRight size={14} className="transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
-            </Link>
+            </button>
           </nav>
 
           {/* Mobile toggle */}
@@ -118,8 +120,8 @@ export default function Navbar() {
               </Link>
             );
           })}
-          <Link
-            href="/contact"
+          <button
+            onClick={() => { open(); setIsOpen(false); }}
             className="mt-3 inline-flex items-center justify-center gap-2 font-display font-semibold text-sm px-5 py-3.5 rounded-full"
             style={{
               background: 'var(--amber)',
@@ -128,7 +130,7 @@ export default function Navbar() {
             }}
           >
             Plan een gesprek <ArrowUpRight size={15} />
-          </Link>
+          </button>
         </div>
       </div>
     </header>

@@ -1,16 +1,16 @@
 'use client';
 
 import { useRef, useState } from 'react';
-import Link from 'next/link';
 import { motion, useInView } from 'framer-motion';
 import { ArrowRight, Phone, Mail } from 'lucide-react';
+import { useContactModal } from '@/components/ui/contact-modal-provider';
 
 function MagneticBtn({
-  href, children, variant = 'primary', tel = false,
-}: { href: string; children: React.ReactNode; variant?: 'primary' | 'ghost'; tel?: boolean }) {
+  onClick, href, children, variant = 'primary', tel = false,
+}: { onClick?: () => void; href?: string; children: React.ReactNode; variant?: 'primary' | 'ghost'; tel?: boolean }) {
   const ref = useRef<HTMLDivElement>(null);
   const [pos, setPos] = useState({ x: 0, y: 0 });
-  const Tag: any = tel ? 'a' : Link;
+  const Tag: any = tel ? 'a' : (onClick ? 'button' : 'a');
 
   return (
     <motion.div
@@ -26,6 +26,7 @@ function MagneticBtn({
     >
       <Tag
         href={href}
+        onClick={onClick}
         className="group inline-flex items-center gap-2.5 font-display font-semibold text-[14px] px-7 py-4 rounded-full transition-[transform,box-shadow] duration-300 hover:-translate-y-0.5"
         style={
           variant === 'primary'
@@ -50,6 +51,7 @@ function MagneticBtn({
 export default function CtaSection() {
   const ref = useRef(null);
   const inView = useInView(ref, { once: true, margin: '-80px' });
+  const { open } = useContactModal();
 
   return (
     <section
@@ -142,7 +144,7 @@ export default function CtaSection() {
             animate={inView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.7, delay: 0.35 }}
           >
-            <MagneticBtn href="/contact">
+            <MagneticBtn onClick={open}>
               Plan een gratis gesprek
               <ArrowRight size={15} className="transition-transform duration-300 group-hover:translate-x-1" />
             </MagneticBtn>
