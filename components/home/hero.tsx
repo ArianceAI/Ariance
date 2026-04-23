@@ -197,8 +197,8 @@ export default function Hero() {
 
             {/* Headline — Myna word-by-word blur reveal */}
             <h1
-              className="font-display font-extrabold leading-[0.96] tracking-[-0.04em] mb-7"
-              style={{ fontSize: 'clamp(2.8rem, 7vw, 5.6rem)', color: 'var(--ink)' }}
+              className="font-display font-extrabold leading-[1.05] tracking-[-0.03em] mb-7"
+              style={{ fontSize: 'clamp(2rem, 4vw, 3.2rem)', color: 'var(--ink)' }}
             >
               {headlineWords.map((word, i) => {
                 const isAccent = word === 'kosten,';
