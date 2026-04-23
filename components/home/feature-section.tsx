@@ -123,20 +123,21 @@ export default function FeatureSection({ variant }: { variant: Variant }) {
   const TextContent = (
     <div className="space-y-6">
       <span
-        className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full mono-label"
+        className="inline-flex items-center gap-2 px-4 py-2 rounded-full font-display font-bold"
         style={{
+          fontSize: '1.1rem',
           background: `rgba(${c.accentRgb},0.08)`,
           border: `1px solid rgba(${c.accentRgb},0.22)`,
           color: c.accent,
         }}
       >
-        <Zap size={11} />
+        <Zap size={14} />
         {c.badge}
       </span>
 
       <h2
         className="font-display font-extrabold tracking-[-0.03em] leading-[1.05]"
-        style={{ fontSize: 'clamp(3rem, 7vw, 5.5rem)', color: 'var(--ink)' }}
+        style={{ fontSize: 'clamp(2rem, 4vw, 3rem)', color: 'var(--ink)' }}
       >
         {c.title}{' '}
         <span
