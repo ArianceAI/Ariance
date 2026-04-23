@@ -1,6 +1,5 @@
 import Hero from '@/components/home/hero';
 import UspBar from '@/components/home/usp-bar';
-import ServicesSection from '@/components/home/services-section';
 import FeatureSection from '@/components/home/feature-section';
 import Narrative from '@/components/home/narrative';
 import HowItWorks from '@/components/home/how-it-works';
@@ -12,8 +11,8 @@ export default function HomePage() {
     <>
       <Hero />
       <UspBar />
-      <ServicesSection />
-      <FeatureSection />
+      <FeatureSection variant="automatisering" />
+      <FeatureSection variant="consultancy" />
       <Narrative />
       <HowItWorks />
       <SocialProof />

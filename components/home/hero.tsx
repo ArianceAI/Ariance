@@ -156,15 +156,23 @@ export default function Hero() {
       className="relative overflow-hidden"
       style={{ background: 'var(--bg-0)' }}
     >
-      {/* Ambient glows */}
-      <div
-        className="absolute -top-40 -left-40 w-[700px] h-[700px] rounded-full pointer-events-none"
-        style={{ background: 'radial-gradient(circle, rgba(129,140,248,0.11) 0%, transparent 60%)', filter: 'blur(60px)' }}
-      />
-      <div
-        className="absolute -bottom-20 -right-20 w-[500px] h-[500px] rounded-full pointer-events-none"
-        style={{ background: 'radial-gradient(circle, rgba(192,132,252,0.07) 0%, transparent 60%)', filter: 'blur(60px)' }}
-      />
+      {/* Aurora background */}
+      <div className="absolute inset-0 overflow-hidden pointer-events-none">
+        <div
+          className="absolute -inset-[10px] opacity-30 will-change-transform animate-aurora"
+          style={{
+            backgroundImage: [
+              'repeating-linear-gradient(100deg, #ffffff 0%, #ffffff 7%, transparent 10%, transparent 12%, #ffffff 16%)',
+              'repeating-linear-gradient(100deg, #818cf8 10%, #a5b4fc 15%, #c4b5fd 20%, #e9d5ff 25%, #93c5fd 30%)',
+            ].join(','),
+            backgroundSize: '300%, 200%',
+            backgroundPosition: '50% 50%, 50% 50%',
+            filter: 'blur(10px)',
+            maskImage: 'radial-gradient(ellipse at 80% 0%, black 10%, transparent 70%)',
+            WebkitMaskImage: 'radial-gradient(ellipse at 80% 0%, black 10%, transparent 70%)',
+          }}
+        />
+      </div>
       <div className="absolute inset-0 bg-grid opacity-50 pointer-events-none" />
       <div className="noise" />
 

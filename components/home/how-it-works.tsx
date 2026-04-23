@@ -1,246 +1,227 @@
 'use client';
 
-import { useRef, useState } from 'react';
-import { motion, useInView, AnimatePresence } from 'framer-motion';
-import { MessageSquare, Wrench, TrendingUp, Check, ChevronRight } from 'lucide-react';
+import { useCallback, useEffect, useState } from 'react';
+import { AnimatePresence, motion, type Variants } from 'framer-motion';
+import { Check } from 'lucide-react';
 
 const steps = [
   {
-    num: '01',
-    icon: MessageSquare,
-    title: 'A.I. Roadmap',
-    description:
-      'Het begint met een plan. We brengen samen uw bedrijfsprocessen in kaart, identificeren AI-kansen en maken een concrete roadmap inclusief concurrentieanalyse.',
+    id: '01',
+    name: 'Stap 1',
+    title: 'Gratis intakegesprek',
+    description: 'We starten altijd met een vrijblijvend kennismakingsgesprek. U vertelt over uw bedrijf, uw uitdagingen en uw doelen — wij luisteren en stellen de juiste vragen.',
+    img: 'https://images.unsplash.com/photo-1600880292203-757bb62b4baf?q=80&w=1740&auto=format&fit=crop',
+    img2: 'https://images.unsplash.com/photo-1552664730-d307ca884978?q=80&w=1740&auto=format&fit=crop',
     accent: '#818cf8',
     accentRgb: '129,140,248',
-    points: ['Brainstormen & ideeën', 'Plan van uitvoering', 'Concurrentieanalyse'],
   },
   {
-    num: '02',
-    icon: Wrench,
-    title: 'Uitvoering',
-    description:
-      'De strategie wordt omgezet in actie — dat is waar de magie plaatsvindt. Wekelijkse updates en volledige transparantie over voortgang en resultaten.',
+    id: '02',
+    name: 'Stap 2',
+    title: 'Analyse & strategie',
+    description: 'We analyseren uw processen en brengen de AI-kansen in kaart. U ontvangt een concreet adviesrapport met een prioriteitenmatrix en businesscase per kans.',
+    img: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=1740&auto=format&fit=crop',
+    img2: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?q=80&w=1715&auto=format&fit=crop',
     accent: '#c084fc',
     accentRgb: '192,132,252',
-    points: ['Implementatie', 'Monitoring', 'Stakeholder betrokkenheid'],
   },
   {
-    num: '03',
-    icon: TrendingUp,
-    title: 'Growth & Scale',
-    description:
-      'We blijven A.I.-tools inzetten om exponentiële groei te stimuleren. Data-gedreven optimalisaties en een schaalbare infrastructuur die met uw bedrijf meegroeit.',
-    accent: '#d8b4fe',
-    accentRgb: '216,180,254',
-    points: ['Data-driven beslissingen', 'Optimalisaties', 'Schaalbare infrastructuur'],
+    id: '03',
+    name: 'Stap 3',
+    title: 'Bouwen & testen',
+    description: 'Ariance bouwt de AI-workflows op maat, integreert ze met uw bestaande tools en test alles grondig. U bent bij elke stap betrokken en ziet de voortgang live.',
+    img: 'https://images.unsplash.com/photo-1498050108023-c5249f4df085?q=80&w=1742&auto=format&fit=crop',
+    img2: 'https://images.unsplash.com/photo-1587620962725-abab7fe55159?q=80&w=1740&auto=format&fit=crop',
+    accent: '#818cf8',
+    accentRgb: '129,140,248',
   },
-];
+  {
+    id: '04',
+    name: 'Stap 4',
+    title: 'Live & nazorg',
+    description: 'Na de livegang begeleiden we uw team en houden we de workflows in de gaten. De eerste maand nazorg is altijd inbegrepen — zodat alles soepel blijft draaien.',
+    img: 'https://images.unsplash.com/photo-1559136555-9303baea8ebd?q=80&w=1740&auto=format&fit=crop',
+    img2: 'https://images.unsplash.com/photo-1556761175-5973dc0f32e7?q=80&w=1732&auto=format&fit=crop',
+    accent: '#c084fc',
+    accentRgb: '192,132,252',
+  },
+] as const;
+
+const stepVariants: Variants = {
+  inactive: { scale: 0.95, opacity: 0.65 },
+  active: { scale: 1, opacity: 1 },
+};
+
+function useAutoCycle(total: number, interval = 5000) {
+  const [current, setCurrent] = useState(0);
+  useEffect(() => {
+    const t = setTimeout(() => setCurrent((p) => (p + 1) % total), interval);
+    return () => clearTimeout(t);
+  }, [current, total, interval]);
+  const set = useCallback((i: number) => setCurrent(i % total), [total]);
+  return { current, set };
+}
 
 export default function HowItWorks() {
-  const ref = useRef(null);
-  const inView = useInView(ref, { once: true, margin: '-80px' });
-  const [activeStep, setActiveStep] = useState(0);
+  const { current: step, set: setStep } = useAutoCycle(steps.length);
+  const s = steps[step];
 
   return (
     <section
-      id="werkwijze"
-      className="relative overflow-hidden py-24 md:py-32"
+      className="relative overflow-hidden py-20 md:py-28"
       style={{ background: 'var(--bg-0)' }}
     >
-      {/* Ambient */}
       <div
-        className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[300px] pointer-events-none"
+        className="absolute top-0 left-1/2 -translate-x-1/2 w-[700px] h-[400px] pointer-events-none"
         style={{
-          background: 'radial-gradient(ellipse, rgba(129,140,248,0.06) 0%, transparent 70%)',
-          filter: 'blur(50px)',
+          background: 'radial-gradient(ellipse, rgba(129,140,248,0.07) 0%, transparent 65%)',
+          filter: 'blur(40px)',
         }}
       />
 
-      <div className="relative max-w-6xl mx-auto px-6 lg:px-8">
+      <div className="relative max-w-5xl mx-auto px-6 lg:px-8">
         {/* Header */}
-        <motion.div
-          ref={ref}
-          className="max-w-2xl mb-16"
-          initial={{ opacity: 0, y: 24 }}
-          animate={inView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
-        >
+        <div className="text-center mb-12">
           <span
-            className="inline-flex items-center gap-2 px-3 py-1 rounded-full mono-label mb-5"
+            className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full mono-label mb-5"
             style={{
               background: 'rgba(129,140,248,0.08)',
               border: '1px solid rgba(129,140,248,0.22)',
-              color: 'var(--accent)',
+              color: 'var(--accent-solid)',
             }}
           >
-            <span className="w-1.5 h-1.5 rounded-full" style={{ background: 'var(--accent)' }} />
-            Werkwijze
+            <span className="w-1.5 h-1.5 rounded-full animate-pulse" style={{ background: 'var(--accent-solid)' }} />
+            Onze werkwijze
           </span>
           <h2
-            className="font-display font-extrabold tracking-[-0.03em] leading-[0.98] mb-5"
-            style={{ fontSize: 'clamp(2rem, 4.2vw, 3.2rem)', color: 'var(--ink)' }}
+            className="font-display font-extrabold tracking-[-0.03em] leading-[1.0]"
+            style={{ fontSize: 'clamp(2rem, 4vw, 3rem)', color: 'var(--ink)' }}
           >
-            Een eenvoudig,{' '}
-            <span className="text-gradient-emerald">doeltreffend</span><br />
-            3-stappen proces.
+            Van gesprek naar{' '}
+            <span
+              style={{
+                background: 'linear-gradient(135deg, #818cf8 0%, #c084fc 100%)',
+                WebkitBackgroundClip: 'text',
+                backgroundClip: 'text',
+                WebkitTextFillColor: 'transparent',
+              }}
+            >
+              werkende AI.
+            </span>
           </h2>
-          <p className="text-base md:text-[17px] leading-[1.65]" style={{ color: 'var(--muted-d)' }}>
-            Geen eindeloze trajecten, geen dure rapporten die niemand leest.
-            Binnen enkele weken staat er iets wat échte waarde oplevert.
-          </p>
-        </motion.div>
+        </div>
 
-        {/* Interactive steps layout */}
-        <motion.div
-          className="grid grid-cols-1 lg:grid-cols-5 gap-4 lg:gap-8"
-          initial={{ opacity: 0, y: 32 }}
-          animate={inView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.8, delay: 0.2, ease: [0.22, 1, 0.36, 1] }}
+        {/* Card */}
+        <div
+          className="relative w-full overflow-hidden rounded-3xl mb-8"
+          style={{
+            border: '1px solid rgba(129,140,248,0.16)',
+            background: 'var(--bg-cream)',
+            boxShadow: '0 8px 40px rgba(129,140,248,0.08)',
+          }}
         >
-          {/* Left — step selector */}
-          <div className="lg:col-span-2 flex flex-col gap-3">
-            {steps.map((step, i) => {
-              const Icon = step.icon;
-              const isActive = i === activeStep;
-              return (
-                <button
-                  key={step.num}
-                  onClick={() => setActiveStep(i)}
-                  className="group relative text-left rounded-2xl p-5 transition-all duration-300 w-full"
+          <div
+            className="absolute top-0 left-0 right-0 h-[2px] rounded-t-3xl transition-all duration-700"
+            style={{ background: `linear-gradient(90deg, transparent, ${s.accent}, transparent)` }}
+          />
+
+          <div className="p-8 md:p-12 min-h-[420px] flex flex-col md:flex-row gap-8 md:gap-12">
+            {/* Text */}
+            <div className="md:w-[45%] flex flex-col justify-center">
+              <AnimatePresence mode="wait">
+                <motion.div
+                  key={step}
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, y: -20 }}
+                  transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1] as [number, number, number, number] }}
+                  className="flex flex-col gap-4"
+                >
+                  <span className="mono-label" style={{ color: s.accent }}>{s.name}</span>
+                  <h3
+                    className="font-display font-extrabold tracking-tight leading-tight"
+                    style={{ fontSize: 'clamp(1.5rem, 3vw, 2rem)', color: 'var(--ink)' }}
+                  >
+                    {s.title}
+                  </h3>
+                  <p className="text-[15px] leading-[1.7]" style={{ color: 'var(--muted-d)' }}>
+                    {s.description}
+                  </p>
+                </motion.div>
+              </AnimatePresence>
+            </div>
+
+            {/* Images */}
+            <div className="md:w-[55%] relative min-h-[240px] md:min-h-0">
+              <AnimatePresence mode="wait">
+                <motion.div
+                  key={step}
+                  className="absolute inset-0"
+                  initial={{ opacity: 0, scale: 0.96 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  exit={{ opacity: 0, scale: 0.96 }}
+                  transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] as [number, number, number, number] }}
+                >
+                  <img
+                    src={s.img}
+                    alt={s.title}
+                    className="absolute rounded-2xl object-cover"
+                    style={{
+                      width: '60%', height: '75%', top: '5%', left: '0%',
+                      border: '1px solid rgba(129,140,248,0.14)',
+                      boxShadow: '0 8px 30px rgba(0,0,0,0.10)',
+                    }}
+                  />
+                  <img
+                    src={s.img2}
+                    alt={s.title}
+                    className="absolute rounded-2xl object-cover"
+                    style={{
+                      width: '52%', height: '65%', bottom: '0%', right: '0%',
+                      border: '1px solid rgba(129,140,248,0.14)',
+                      boxShadow: '0 8px 30px rgba(0,0,0,0.10)',
+                    }}
+                  />
+                </motion.div>
+              </AnimatePresence>
+            </div>
+          </div>
+        </div>
+
+        {/* Step nav */}
+        <nav className="flex flex-wrap items-center justify-center gap-2.5">
+          {steps.map((st, i) => {
+            const done = step > i;
+            const active = step === i;
+            return (
+              <motion.button
+                key={st.id}
+                variants={stepVariants}
+                initial="inactive"
+                animate={active ? 'active' : 'inactive'}
+                transition={{ duration: 0.3 }}
+                onClick={() => setStep(i)}
+                className="flex items-center gap-2.5 px-4 py-2 rounded-full font-display font-semibold text-sm transition-colors duration-300"
+                style={{
+                  background: active ? `rgba(${st.accentRgb},0.12)` : 'transparent',
+                  border: active ? `1px solid rgba(${st.accentRgb},0.30)` : '1px solid rgba(13,12,24,0.10)',
+                  color: active ? st.accent : 'var(--muted-d)',
+                }}
+              >
+                <span
+                  className="w-5 h-5 rounded-full flex items-center justify-center text-[11px] font-bold shrink-0"
                   style={{
-                    background: isActive
-                      ? `linear-gradient(135deg, rgba(${step.accentRgb},0.08) 0%, rgba(${step.accentRgb},0.03) 100%)`
-                      : 'transparent',
-                    border: `1px solid ${isActive ? `rgba(${step.accentRgb},0.30)` : 'rgba(13,12,24,0.08)'}`,
-                    boxShadow: isActive ? `0 4px 20px rgba(${step.accentRgb},0.12)` : 'none',
+                    background: done ? st.accent : active ? `rgba(${st.accentRgb},0.20)` : 'rgba(13,12,24,0.07)',
+                    color: done ? '#fff' : active ? st.accent : 'var(--muted-d)',
                   }}
                 >
-                  <div className="flex items-center gap-4">
-                    {/* Icon circle */}
-                    <div
-                      className="w-11 h-11 rounded-xl flex items-center justify-center shrink-0 transition-all duration-300"
-                      style={{
-                        background: isActive ? step.accent : `rgba(${step.accentRgb},0.08)`,
-                        boxShadow: isActive ? `0 8px 20px rgba(${step.accentRgb},0.30)` : 'none',
-                      }}
-                    >
-                      <Icon
-                        size={18}
-                        strokeWidth={1.8}
-                        style={{ color: isActive ? '#ffffff' : step.accent, transition: 'color 0.3s' }}
-                      />
-                    </div>
-
-                    <div className="flex-1 min-w-0">
-                      <div className="mono-label mb-0.5" style={{ color: step.accent }}>
-                        Stap {step.num}
-                      </div>
-                      <div
-                        className="font-display font-bold text-[15px] transition-colors duration-300"
-                        style={{ color: isActive ? 'var(--ink)' : 'var(--muted-d)' }}
-                      >
-                        {step.title}
-                      </div>
-                    </div>
-
-                    <ChevronRight
-                      size={16}
-                      className="shrink-0 transition-transform duration-300"
-                      style={{
-                        color: isActive ? step.accent : 'rgba(13,12,24,0.25)',
-                        transform: isActive ? 'rotate(90deg)' : 'rotate(0deg)',
-                      }}
-                    />
-                  </div>
-                </button>
-              );
-            })}
-          </div>
-
-          {/* Right — detail panel */}
-          <div className="lg:col-span-3 relative min-h-[320px]">
-            <AnimatePresence mode="wait">
-              {steps.map((step, i) => {
-                if (i !== activeStep) return null;
-                const Icon = step.icon;
-                return (
-                  <motion.div
-                    key={step.num}
-                    initial={{ opacity: 0, x: 20 }}
-                    animate={{ opacity: 1, x: 0 }}
-                    exit={{ opacity: 0, x: -16 }}
-                    transition={{ duration: 0.38, ease: [0.22, 1, 0.36, 1] }}
-                    className="rounded-3xl p-8 md:p-10 h-full"
-                    style={{
-                      background: `linear-gradient(145deg, rgba(${step.accentRgb},0.06) 0%, #ffffff 55%)`,
-                      border: `1px solid rgba(${step.accentRgb},0.20)`,
-                      boxShadow: `0 8px 40px rgba(${step.accentRgb},0.10), 0 2px 8px rgba(0,0,0,0.04)`,
-                    }}
-                  >
-                    {/* Top accent line */}
-                    <div
-                      className="absolute top-0 left-0 right-0 h-[2px] rounded-t-3xl"
-                      style={{
-                        background: `linear-gradient(90deg, transparent, ${step.accent}, transparent)`,
-                      }}
-                    />
-
-                    {/* Icon */}
-                    <div
-                      className="w-16 h-16 rounded-2xl flex items-center justify-center mb-6"
-                      style={{
-                        background: step.accent,
-                        boxShadow: `0 12px 30px rgba(${step.accentRgb},0.35)`,
-                      }}
-                    >
-                      <Icon size={26} strokeWidth={1.6} style={{ color: '#ffffff' }} />
-                    </div>
-
-                    {/* Num + title */}
-                    <div className="mono-label mb-2" style={{ color: step.accent }}>
-                      Stap {step.num}
-                    </div>
-                    <h3
-                      className="font-display text-2xl font-bold mb-4 tracking-tight"
-                      style={{ color: 'var(--ink)' }}
-                    >
-                      {step.title}
-                    </h3>
-                    <p className="text-[15px] leading-[1.7] mb-7" style={{ color: 'var(--muted-d)' }}>
-                      {step.description}
-                    </p>
-
-                    {/* Points */}
-                    <ul className="flex flex-col gap-3">
-                      {step.points.map((pt, j) => (
-                        <motion.li
-                          key={pt}
-                          initial={{ opacity: 0, x: -8 }}
-                          animate={{ opacity: 1, x: 0 }}
-                          transition={{ delay: j * 0.09, duration: 0.3, ease: 'easeOut' }}
-                          className="flex items-center gap-3 text-[14px]"
-                          style={{ color: 'var(--muted-d)' }}
-                        >
-                          <span
-                            className="w-5 h-5 rounded-full flex items-center justify-center shrink-0"
-                            style={{
-                              background: `rgba(${step.accentRgb},0.12)`,
-                              border: `1px solid rgba(${step.accentRgb},0.25)`,
-                            }}
-                          >
-                            <Check size={11} style={{ color: step.accent }} strokeWidth={2.5} />
-                          </span>
-                          {pt}
-                        </motion.li>
-                      ))}
-                    </ul>
-                  </motion.div>
-                );
-              })}
-            </AnimatePresence>
-          </div>
-        </motion.div>
+                  {done ? <Check size={10} strokeWidth={3} /> : i + 1}
+                </span>
+                <span className="hidden sm:inline">{st.name}</span>
+              </motion.button>
+            );
+          })}
+        </nav>
       </div>
     </section>
   );
