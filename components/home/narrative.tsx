@@ -94,9 +94,9 @@ export default function Narrative() {
               transition={{ duration: 0.8, delay: i * 0.12, ease: [0.22, 1, 0.36, 1] }}
               className="relative rounded-2xl p-8"
               style={{
-                background: 'linear-gradient(145deg, #0d0c18 0%, #1a1828 100%)',
-                border: '1px solid rgba(129,140,248,0.14)',
-                boxShadow: '0 20px 50px rgba(0,0,0,0.18)',
+                background: 'linear-gradient(145deg, rgba(129,140,248,0.04) 0%, #ffffff 60%)',
+                border: '1px solid rgba(129,140,248,0.16)',
+                boxShadow: '0 4px 24px rgba(0,0,0,0.06)',
               }}
             >
               {/* Top accent */}

@@ -37,8 +37,7 @@ function MagneticBtn({
             : {
                 background: 'transparent',
                 color: 'var(--ink)',
-                border: '1px solid rgba(250,250,249,0.22)',
-                color: '#fafaf9',
+                border: '1px solid rgba(13,12,24,0.18)',
               }
         }
       >
@@ -56,7 +55,7 @@ export default function CtaSection() {
     <section
       ref={ref}
       className="relative overflow-hidden py-28 md:py-40"
-      style={{ background: '#0d0c18' }}
+      style={{ background: 'var(--bg-cream)' }}
     >
       <div className="noise" />
 
@@ -69,7 +68,7 @@ export default function CtaSection() {
           className="w-[800px] h-[500px] rounded-full"
           style={{
             background:
-              'radial-gradient(ellipse 80% 60% at 50% 80%, rgba(129,140,248,0.28) 0%, rgba(192,132,252,0.12) 45%, transparent 72%)',
+              'radial-gradient(ellipse 80% 60% at 50% 80%, rgba(129,140,248,0.14) 0%, rgba(192,132,252,0.06) 45%, transparent 72%)',
             filter: 'blur(30px)',
           }}
         />
@@ -119,8 +118,7 @@ export default function CtaSection() {
             className="font-display font-extrabold leading-[0.95] tracking-[-0.035em] mb-7 max-w-3xl mx-auto"
             style={{
               fontSize: 'clamp(2.4rem, 6vw, 4.6rem)',
-              color: '#fafaf9',
-              textShadow: '0 0 80px rgba(129,140,248,0.20)',
+              color: 'var(--ink)',
             }}
           >
             Let&apos;s{' '}
@@ -129,7 +127,7 @@ export default function CtaSection() {
 
           <motion.p
             className="text-lg md:text-xl leading-[1.65] mb-12 max-w-xl mx-auto"
-            style={{ color: 'rgba(250,250,249,0.60)' }}
+            style={{ color: 'var(--muted-d)' }}
             initial={{ opacity: 0 }}
             animate={inView ? { opacity: 1 } : {}}
             transition={{ duration: 0.7, delay: 0.2 }}
@@ -156,19 +154,19 @@ export default function CtaSection() {
 
           <motion.div
             className="flex flex-wrap items-center justify-center gap-x-8 gap-y-3 pt-10"
-            style={{ borderTop: '1px solid rgba(250,250,249,0.10)' }}
+            style={{ borderTop: '1px solid rgba(13,12,24,0.10)' }}
             initial={{ opacity: 0 }}
             animate={inView ? { opacity: 1 } : {}}
             transition={{ duration: 0.7, delay: 0.5 }}
           >
-            <span className="mono-label flex items-center gap-2" style={{ color: 'rgba(250,250,249,0.60)' }}>
+            <span className="mono-label flex items-center gap-2" style={{ color: 'var(--muted-d)' }}>
               <Mail size={12} style={{ color: 'var(--accent)' }} />
               arianceautomation@gmail.com
             </span>
-            <span className="mono-label" style={{ color: 'rgba(250,250,249,0.60)' }}>
+            <span className="mono-label" style={{ color: 'var(--muted-d)' }}>
               ∙ ma–vr · 9:00–17:00
             </span>
-            <span className="mono-label" style={{ color: 'rgba(250,250,249,0.60)' }}>
+            <span className="mono-label" style={{ color: 'var(--muted-d)' }}>
               ∙ alkmaar, nederland
             </span>
           </motion.div>

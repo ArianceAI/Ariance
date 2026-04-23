@@ -98,8 +98,9 @@ export default function Navbar() {
           isOpen ? 'max-h-[340px] opacity-100' : 'max-h-0 opacity-0'
         }`}
         style={{
-          background: 'rgba(13,12,24,0.98)',
-          borderTop: '1px solid rgba(129,140,248,0.08)',
+          background: 'rgba(255,255,255,0.98)',
+          borderTop: '1px solid rgba(129,140,248,0.12)',
+          boxShadow: '0 8px 30px rgba(13,12,24,0.08)',
         }}
       >
         <div className="max-w-6xl mx-auto px-6 py-6 flex flex-col gap-1">

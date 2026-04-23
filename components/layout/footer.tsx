@@ -23,7 +23,7 @@ export default function Footer() {
   return (
     <footer
       className="relative overflow-hidden"
-      style={{ background: '#0d0c18', borderTop: '1px solid rgba(129,140,248,0.10)' }}
+      style={{ background: 'var(--bg-cream)', borderTop: '1px solid rgba(129,140,248,0.14)' }}
     >
       {/* Ambient glow bottom */}
       <div
@@ -37,7 +37,7 @@ export default function Footer() {
       {/* Main */}
       <div
         className="relative border-b"
-        style={{ borderColor: 'rgba(240,239,230,0.06)' }}
+        style={{ borderColor: 'rgba(13,12,24,0.08)' }}
       >
         <div className="max-w-6xl mx-auto px-6 lg:px-8 py-16 md:py-20">
           <div className="grid grid-cols-1 md:grid-cols-12 gap-10 md:gap-12">
@@ -158,10 +158,10 @@ export default function Footer() {
 
       {/* Bottom */}
       <div className="relative max-w-6xl mx-auto px-6 lg:px-8 py-6 flex flex-col sm:flex-row items-center justify-between gap-3">
-        <p className="mono-label" style={{ color: 'rgba(122,139,130,0.7)' }}>
+        <p className="mono-label" style={{ color: 'var(--muted-l)' }}>
           © {new Date().getFullYear()} Ariance · Alle rechten voorbehouden
         </p>
-        <p className="mono-label" style={{ color: 'rgba(122,139,130,0.7)' }}>
+        <p className="mono-label" style={{ color: 'var(--muted-l)' }}>
           Opgericht 2025 · Alkmaar, nederland
         </p>
       </div>
