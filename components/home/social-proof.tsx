@@ -1,7 +1,7 @@
 'use client';
 
 import { useEffect, useRef, useState } from 'react';
-import { motion, useAnimation, useInView } from 'framer-motion';
+import { motion, useInView } from 'framer-motion';
 import { Quote, Star } from 'lucide-react';
 import { Separator } from '@/components/ui/separator';
 
@@ -51,12 +51,6 @@ export default function SocialProof() {
   const [activeIndex, setActiveIndex] = useState(0);
   const sectionRef = useRef(null);
   const isInView = useInView(sectionRef, { once: true, amount: 0.2 });
-  const controls = useAnimation();
-
-  useEffect(() => {
-    if (isInView) controls.start('visible');
-  }, [isInView, controls]);
-
   useEffect(() => {
     const interval = setInterval(() => {
       setActiveIndex((i) => (i + 1) % testimonials.length);
@@ -87,7 +81,7 @@ export default function SocialProof() {
       <div className="relative max-w-6xl mx-auto px-6 lg:px-8">
         <motion.div
           initial="hidden"
-          animate={controls}
+          animate={isInView ? 'visible' : 'hidden'}
           variants={containerVariants}
           className="grid grid-cols-1 md:grid-cols-2 gap-16 lg:gap-24 items-center"
         >

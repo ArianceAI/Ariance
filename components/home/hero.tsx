@@ -1,7 +1,7 @@
 'use client';
 
 import * as React from 'react';
-import { motion, useAnimation, useInView } from 'framer-motion';
+import { motion, useInView } from 'framer-motion';
 import { ArrowRight, Clock, TrendingDown, Target, Zap } from 'lucide-react';
 import { useContactModal } from '@/components/ui/contact-modal-provider';
 
