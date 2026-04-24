@@ -1,5 +1,5 @@
 import type { Metadata } from 'next';
-import { Bot, Check, ArrowRight, Zap, Mail, FileText, BarChart2, MessageSquare, Clock, Database, Calendar } from 'lucide-react';
+import { ArrowRight, Zap, Mail, FileText, BarChart2, MessageSquare, Clock, Database, Calendar } from 'lucide-react';
 import { ContactButton } from '@/components/ui/contact-modal-provider';
 import Link from 'next/link';
 import FeatureSection from '@/components/home/feature-section';
@@ -10,32 +10,14 @@ export const metadata: Metadata = {
     'Ariance bouwt AI-automatiseringsoplossingen voor het Nederlandse MKB. Van e-mailverwerking tot rapportages - werkende AI in weken.',
 };
 
-const benefits = [
-  'E-mailverwerking en -sortering automatisch afhandelen',
-  'Rapportages automatisch samenstellen en versturen',
-  'Data-invoer en -extractie zonder menselijke tussenkomst',
-  'Klantcommunicatie en -opvolging op autopilot',
-  'Integratie met bestaande tools zoals Microsoft 365 of Google Workspace',
-  'Documentverwerking en archivering geautomatiseerd',
-];
-
-const included = [
-  'Procesanalyse en kansenscan',
-  'Maatwerk automatiseringsflows',
-  'Integratie met uw bestaande software',
-  'Testfase en finetuning',
-  'Technische documentatie',
-  '1 maand nazorg inclusief',
-];
-
 const useCases = [
-  { icon: Mail,        title: 'E-mailverwerking',   desc: 'Automatisch sorteren & beantwoorden',    accent: '#818cf8', rgb: '129,140,248' },
-  { icon: BarChart2,   title: 'Rapportages',         desc: 'Wekelijkse cijfers zonder handwerk',     accent: '#c084fc', rgb: '192,132,252' },
-  { icon: FileText,    title: 'Documentverwerking',  desc: 'Facturen & contracten automatisch',      accent: '#818cf8', rgb: '129,140,248' },
-  { icon: MessageSquare, title: 'Klantopvolging',    desc: 'Follow-ups op autopilot',                accent: '#c084fc', rgb: '192,132,252' },
-  { icon: Database,    title: 'Data-extractie',      desc: 'Invoer zonder menselijke tussenkomst',   accent: '#818cf8', rgb: '129,140,248' },
-  { icon: Calendar,    title: 'Agendabeheer',        desc: 'Afspraken inplannen automatisch',        accent: '#c084fc', rgb: '192,132,252' },
-  { icon: Clock,       title: 'Tijdregistratie',     desc: 'Urenstaten automatisch verwerken',       accent: '#818cf8', rgb: '129,140,248' },
+  { icon: Mail,           title: 'E-mailverwerking',  desc: 'Automatisch sorteren & beantwoorden',    accent: '#818cf8', rgb: '129,140,248' },
+  { icon: BarChart2,      title: 'Rapportages',        desc: 'Wekelijkse cijfers zonder handwerk',     accent: '#c084fc', rgb: '192,132,252' },
+  { icon: FileText,       title: 'Documentverwerking', desc: 'Facturen & contracten automatisch',      accent: '#818cf8', rgb: '129,140,248' },
+  { icon: MessageSquare,  title: 'Klantopvolging',     desc: 'Follow-ups op autopilot',                accent: '#c084fc', rgb: '192,132,252' },
+  { icon: Database,       title: 'Data-extractie',     desc: 'Invoer zonder menselijke tussenkomst',   accent: '#818cf8', rgb: '129,140,248' },
+  { icon: Calendar,       title: 'Agendabeheer',       desc: 'Afspraken inplannen automatisch',        accent: '#c084fc', rgb: '192,132,252' },
+  { icon: Clock,          title: 'Tijdregistratie',    desc: 'Urenstaten automatisch verwerken',       accent: '#818cf8', rgb: '129,140,248' },
 ];
 
 export default function AiAutomatiseringPage() {
@@ -130,98 +112,18 @@ export default function AiAutomatiseringPage() {
         </div>
       </div>
 
-      {/* Main content */}
-      <div className="max-w-6xl mx-auto px-6 lg:px-8 py-16 md:py-24">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-start mb-20 md:mb-28">
+      {/* Combined: voordelen + scroll-animatie */}
+      <FeatureSection variant="automatisering" />
 
-          {/* Left - benefits */}
-          <div>
-            <div
-              className="w-12 h-12 rounded-2xl flex items-center justify-center mb-6"
-              style={{ background: 'rgba(129,140,248,0.10)', border: '1px solid rgba(129,140,248,0.22)' }}
-            >
-              <Bot size={22} style={{ color: '#818cf8' }} />
-            </div>
-
-            <h2
-              className="font-display font-extrabold tracking-tight leading-tight mb-4"
-              style={{ fontSize: 'clamp(1.6rem, 3vw, 2.2rem)', color: 'var(--ink)' }}
-            >
-              Wat automatiseren wij?
-            </h2>
-            <p
-              className="text-base leading-relaxed mb-8"
-              style={{ color: 'var(--muted-d)' }}
-            >
-              Repetitieve taken zijn de grootste tijdvreters in elk bedrijf. Ariance identificeert
-              welke processen geautomatiseerd kunnen worden en bouwt AI-workflows die dit voor u
-              doen.
-            </p>
-
-            <ul className="flex flex-col gap-3">
-              {benefits.map((benefit) => (
-                <li
-                  key={benefit}
-                  className="flex items-start gap-2.5 text-sm"
-                  style={{ color: 'var(--muted-d)' }}
-                >
-                  <Check size={15} className="mt-0.5 shrink-0" style={{ color: '#818cf8' }} />
-                  {benefit}
-                </li>
-              ))}
-            </ul>
-
-            <ContactButton
-              className="mt-8 inline-flex items-center gap-2 font-display font-semibold text-sm px-6 py-3.5 rounded-full transition-[transform,box-shadow] duration-300 hover:-translate-y-0.5"
-              style={{
-                background: 'linear-gradient(135deg, #818cf8 0%, rgba(129,140,248,0.8) 100%)',
-                color: '#0d0c18',
-                boxShadow: '0 12px 30px rgba(129,140,248,0.28)',
-              }}
-            >
-              Vraag een offerte aan
-              <ArrowRight size={15} />
-            </ContactButton>
-          </div>
-
-          {/* Right - included card */}
-          <div
-            className="rounded-3xl p-8"
-            style={{
-              background: 'linear-gradient(145deg, rgba(129,140,248,0.04) 0%, var(--bg-cream) 60%)',
-              border: '1px solid rgba(129,140,248,0.16)',
-              boxShadow: '0 4px 24px rgba(129,140,248,0.08)',
-            }}
-          >
-            <h3
-              className="font-display font-bold text-sm uppercase tracking-wider mb-6"
-              style={{ color: 'var(--ink)' }}
-            >
-              Wat is inbegrepen
-            </h3>
-            <ul className="flex flex-col gap-4">
-              {included.map((item) => (
-                <li key={item} className="flex items-start gap-3">
-                  <div
-                    className="w-6 h-6 rounded-full flex items-center justify-center shrink-0 mt-0.5"
-                    style={{ background: 'rgba(129,140,248,0.12)', border: '1px solid rgba(129,140,248,0.25)' }}
-                  >
-                    <Check size={12} style={{ color: '#818cf8' }} strokeWidth={2.5} />
-                  </div>
-                  <span className="text-sm leading-relaxed" style={{ color: 'var(--muted-d)' }}>
-                    {item}
-                  </span>
-                </li>
-              ))}
-            </ul>
-          </div>
-        </div>
-
-        {/* Use cases */}
-        <div>
+      {/* Use cases grid */}
+      <div
+        className="relative py-16 md:py-20"
+        style={{ background: 'var(--bg-cream)' }}
+      >
+        <div className="max-w-6xl mx-auto px-6 lg:px-8">
           <h2
             className="font-display font-extrabold tracking-tight mb-3"
-            style={{ fontSize: 'clamp(1.6rem, 3vw, 2.2rem)', color: 'var(--ink)' }}
+            style={{ fontSize: 'clamp(1.8rem, 3.5vw, 2.6rem)', color: 'var(--ink)' }}
           >
             Veelvoorkomende toepassingen
           </h2>
@@ -237,7 +139,7 @@ export default function AiAutomatiseringPage() {
                   key={uc.title}
                   className="flex items-center gap-3 px-5 py-4 rounded-2xl"
                   style={{
-                    background: 'var(--bg-cream)',
+                    background: '#ffffff',
                     border: `1px solid rgba(${uc.rgb},0.14)`,
                   }}
                 >
@@ -262,13 +164,10 @@ export default function AiAutomatiseringPage() {
         </div>
       </div>
 
-      {/* Animated detail section (from homepage) */}
-      <FeatureSection variant="automatisering" />
-
       {/* Bottom CTA */}
       <div
         className="relative overflow-hidden py-16 md:py-24"
-        style={{ background: 'var(--bg-cream)' }}
+        style={{ background: 'var(--bg-0)' }}
       >
         <div
           className="absolute inset-0 flex items-center justify-center pointer-events-none"
@@ -290,7 +189,7 @@ export default function AiAutomatiseringPage() {
         <div className="relative max-w-6xl mx-auto px-6 lg:px-8 text-center">
           <h2
             className="font-display font-extrabold tracking-tight mb-4"
-            style={{ fontSize: 'clamp(1.6rem, 3.5vw, 2.4rem)', color: 'var(--ink)' }}
+            style={{ fontSize: 'clamp(1.8rem, 3.5vw, 2.8rem)', color: 'var(--ink)' }}
           >
             Klaar om uren terug te winnen?
           </h2>
