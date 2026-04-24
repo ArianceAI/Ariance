@@ -95,7 +95,7 @@ export default function HowItWorks() {
           </span>
           <h2
             className="font-display font-extrabold tracking-[-0.03em] leading-[1.0]"
-            style={{ fontSize: 'clamp(2rem, 4vw, 3rem)', color: 'var(--ink)' }}
+            style={{ fontSize: 'clamp(2.5rem, 5.5vw, 4rem)', color: 'var(--ink)' }}
           >
             Van gesprek naar{' '}
             <span

@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import { Bot, Check, ArrowRight, Zap, Mail, FileText, BarChart2, MessageSquare, Clock, Database, Calendar } from 'lucide-react';
 import { ContactButton } from '@/components/ui/contact-modal-provider';
 import Link from 'next/link';
+import FeatureSection from '@/components/home/feature-section';
 
 export const metadata: Metadata = {
   title: 'AI Automatisering - Ariance',
@@ -260,6 +261,9 @@ export default function AiAutomatiseringPage() {
           </div>
         </div>
       </div>
+
+      {/* Animated detail section (from homepage) */}
+      <FeatureSection variant="automatisering" />
 
       {/* Bottom CTA */}
       <div

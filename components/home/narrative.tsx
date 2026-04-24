@@ -69,7 +69,7 @@ export default function Narrative() {
           </span>
           <h2
             className="font-display font-extrabold tracking-[-0.03em] leading-[0.98] mb-5"
-            style={{ fontSize: 'clamp(2rem, 4.5vw, 3.4rem)', color: 'var(--ink-dark)' }}
+            style={{ fontSize: 'clamp(2.5rem, 5.5vw, 4rem)', color: 'var(--ink-dark)' }}
           >
             Waarom samenwerken
             <br />

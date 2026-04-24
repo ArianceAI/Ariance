@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import { Lightbulb, Check, ArrowRight, Zap, Users, Search, Map, TrendingUp, ShieldCheck, Presentation } from 'lucide-react';
 import { ContactButton } from '@/components/ui/contact-modal-provider';
 import Link from 'next/link';
+import FeatureSection from '@/components/home/feature-section';
 
 export const metadata: Metadata = {
   title: 'AI Consultancy - Ariance',
@@ -258,6 +259,9 @@ export default function AiConsultancyPage() {
           </div>
         </div>
       </div>
+
+      {/* Animated detail section (from homepage) */}
+      <FeatureSection variant="consultancy" />
 
       {/* Bottom CTA */}
       <div

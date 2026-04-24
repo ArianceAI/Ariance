@@ -282,10 +282,9 @@ export default function Hero() {
       </div>
 
       {/* ── Feature cards (Myna-style grid) ── */}
-      <div style={{ background: 'var(--bg-cream)', borderTop: '1px solid rgba(13,12,24,0.05)' }}>
       <div
         ref={featuresRef}
-        className="relative max-w-6xl mx-auto px-6 lg:px-8 pb-20 md:pb-28 pt-2"
+        className="relative max-w-6xl mx-auto px-6 lg:px-8 pb-20 md:pb-28"
       >
         {/* Section divider */}
         <div
@@ -305,7 +304,7 @@ export default function Hero() {
                 className="group flex flex-col items-center text-center p-8 relative"
                 style={{
                   border: '1px solid rgba(13,12,24,0.07)',
-                  background: 'var(--bg-2)',
+                  background: 'var(--bg-0)',
                 }}
               >
                 {/* Hover background */}
@@ -346,7 +345,6 @@ export default function Hero() {
             );
           })}
         </div>
-      </div>
       </div>
     </section>
   );

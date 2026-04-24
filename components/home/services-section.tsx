@@ -232,7 +232,7 @@ export default function ServicesSection() {
 
           <h2
             className="font-display font-extrabold tracking-[-0.03em] leading-[0.97] mb-4"
-            style={{ fontSize: 'clamp(2rem, 4.5vw, 3.2rem)', color: 'var(--ink)' }}
+            style={{ fontSize: 'clamp(2.5rem, 5.5vw, 4rem)', color: 'var(--ink)' }}
           >
             Twee diensten.{' '}
             <span
