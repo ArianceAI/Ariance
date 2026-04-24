@@ -1,4 +1,4 @@
-'use client';
+﻿'use client';
 
 import Link from 'next/link';
 import { MapPin, Mail, Phone, Clock, ArrowUpRight } from 'lucide-react';
@@ -11,15 +11,15 @@ const navLinks = [
 ];
 
 const servicesLinks = [
-  { href: '/diensten#automatisering', label: 'AI Automatisering' },
-  { href: '/diensten#consultancy',    label: 'AI Consultancy' },
+  { href: '/diensten/ai-automatisering', label: 'AI Automatisering' },
+  { href: '/diensten/ai-consultancy',    label: 'AI Consultancy' },
 ];
 
 const contactItems = [
   { icon: MapPin, content: 'Jan van Goyenstraat 29\n1823 GC Alkmaar', href: null },
   { icon: Mail,   content: 'arianceautomation@gmail.com',              href: 'mailto:arianceautomation@gmail.com' },
   { icon: Phone,  content: '+31 6 14455066',                           href: 'tel:+31614455066' },
-  { icon: Clock,  content: 'Ma – Vr: 9:00 – 17:00',                    href: null },
+  { icon: Clock,  content: 'Ma - Vr: 9:00 - 17:00',                    href: null },
 ];
 
 export default function Footer() {
@@ -59,7 +59,7 @@ export default function Footer() {
               </Link>
               <p className="text-sm leading-[1.75] max-w-sm mb-7" style={{ color: 'var(--muted-d)' }}>
                 Praktische AI-oplossingen voor het Nederlandse MKB.
-                Van automatisering tot private AI — in weken live, niet maanden.
+                Van automatisering tot private AI - in weken live, niet maanden.
               </p>
 
               <button

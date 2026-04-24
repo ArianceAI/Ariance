@@ -1,4 +1,4 @@
-'use client';
+﻿'use client';
 
 import { useCallback, useEffect, useState } from 'react';
 import { AnimatePresence, motion, type Variants } from 'framer-motion';
@@ -9,7 +9,7 @@ const steps = [
     id: '01',
     name: 'Stap 1',
     title: 'Gratis intakegesprek',
-    description: 'We starten altijd met een vrijblijvend kennismakingsgesprek. U vertelt over uw bedrijf, uw uitdagingen en uw doelen — wij luisteren en stellen de juiste vragen.',
+    description: 'We starten altijd met een vrijblijvend kennismakingsgesprek. U vertelt over uw bedrijf, uw uitdagingen en uw doelen - wij luisteren en stellen de juiste vragen.',
     img: 'https://images.unsplash.com/photo-1600880292203-757bb62b4baf?q=80&w=1740&auto=format&fit=crop',
     img2: 'https://images.unsplash.com/photo-1552664730-d307ca884978?q=80&w=1740&auto=format&fit=crop',
     accent: '#818cf8',
@@ -39,7 +39,7 @@ const steps = [
     id: '04',
     name: 'Stap 4',
     title: 'Live & nazorg',
-    description: 'Na de livegang begeleiden we uw team en houden we de workflows in de gaten. De eerste maand nazorg is altijd inbegrepen — zodat alles soepel blijft draaien.',
+    description: 'Na de livegang begeleiden we uw team en houden we de workflows in de gaten. De eerste maand nazorg is altijd inbegrepen - zodat alles soepel blijft draaien.',
     img: 'https://images.unsplash.com/photo-1559136555-9303baea8ebd?q=80&w=1740&auto=format&fit=crop',
     img2: 'https://images.unsplash.com/photo-1556761175-5973dc0f32e7?q=80&w=1732&auto=format&fit=crop',
     accent: '#c084fc',

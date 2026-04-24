@@ -1,65 +1,37 @@
 import type { Metadata } from 'next';
-import { Bot, Lightbulb, Check, ArrowRight, Zap } from 'lucide-react';
-import { ContactButton } from '@/components/ui/contact-modal-provider';
+import Link from 'next/link';
+import { Workflow, Compass, ArrowRight, Zap } from 'lucide-react';
 
 export const metadata: Metadata = {
-  title: 'Diensten — Ariance AI Oplossingen',
+  title: 'Diensten - Ariance AI Oplossingen',
   description:
-    'Ontdek de AI-diensten van Ariance: AI automatisering en AI consultancy voor het Nederlandse MKB.',
+    'Ontdek de AI-diensten van Ariance: AI Automatisering en AI Consultancy voor het Nederlandse MKB.',
 };
 
 const services = [
   {
-    id: 'automatisering',
-    icon: Bot,
+    num: '01',
+    icon: Workflow,
     title: 'AI Automatisering',
-    tagline: 'Bespaar uren. Elke week opnieuw.',
-    accentRgb: '129,140,248',
-    accent: '#818cf8',
+    tagline: 'Uren terugwinnen. Elke week.',
     description:
-      'Repetitieve taken zijn de grootste tijdvreters in elk bedrijf. Ariance identificeert welke processen geautomatiseerd kunnen worden en bouwt AI-workflows die dit voor u doen — betrouwbaar, snel en schaalbaar.',
-    benefits: [
-      'E-mailverwerking en -sortering automatisch afhandelen',
-      'Rapportages automatisch samenstellen en versturen',
-      'Data-invoer en -extractie zonder menselijke tussenkomst',
-      'Klantcommunicatie en -opvolging op autopilot',
-      'Integratie met bestaande tools zoals Microsoft 365 of Google Workspace',
-      'Documentverwerking en archivering geautomatiseerd',
-    ],
-    included: [
-      'Procesanalyse en kansenscan',
-      'Maatwerk automatiseringsflows',
-      'Integratie met uw bestaande software',
-      'Testfase en finetuning',
-      'Technische documentatie',
-      '1 maand nazorg inclusief',
-    ],
+      'Repetitieve taken verdwijnen van uw werklijst. E-mailverwerking, rapportages, klantopvolging - uw team focust op werk dat echt waarde toevoegt.',
+    href: '/diensten/ai-automatisering',
+    accent: '#818cf8',
+    accentRgb: '129,140,248',
+    label: 'Meest gevraagd',
   },
   {
-    id: 'consultancy',
-    icon: Lightbulb,
+    num: '02',
+    icon: Compass,
     title: 'AI Consultancy',
     tagline: 'De juiste AI-strategie voor uw bedrijf.',
-    accentRgb: '192,132,252',
-    accent: '#c084fc',
     description:
-      'Weet u dat AI waardevol kan zijn, maar weet u niet waar te beginnen? Ariance biedt helder en eerlijk advies. We analyseren uw bedrijf en vertellen u precies welke AI-toepassingen zinvol zijn — en welke niet.',
-    benefits: [
-      'Objectief advies zonder verkooppraatjes',
-      'Concrete AI-roadmap afgestemd op uw budget',
-      'Inzicht in welke processen de beste ROI opleveren',
-      'Technologieselectie en leveranciersbeoordeling',
-      'Risico-inventarisatie en privacy-advies (AVG)',
-      'Begeleiding bij AI-implementatie van anderen',
-    ],
-    included: [
-      'Intakegesprek (gratis, vrijblijvend)',
-      'Procesanalyse en interviews met medewerkers',
-      'Schriftelijk AI-adviesrapport',
-      'Prioriteitenmatrix met businesscase per kans',
-      'Implementatieplan op hoofdlijnen',
-      'Presentatie aan directie/management',
-    ],
+      'Objectief advies zonder verkooppraatjes. Een concrete AI-roadmap en prioriteitenmatrix afgestemd op uw budget en ambities.',
+    href: '/diensten/ai-consultancy',
+    accent: '#c084fc',
+    accentRgb: '192,132,252',
+    label: null,
   },
 ];
 
@@ -67,16 +39,15 @@ export default function DienstenPage() {
   return (
     <div style={{ background: 'var(--bg-0)' }}>
 
-      {/* ── Page header ── */}
+      {/* Header */}
       <div
         className="relative overflow-hidden pt-32 pb-20 md:pt-44 md:pb-28"
         style={{ background: 'var(--bg-cream)' }}
       >
-        {/* Ambient glow */}
         <div
           className="absolute -top-40 -right-40 w-[600px] h-[600px] rounded-full pointer-events-none"
           style={{
-            background: 'radial-gradient(circle, rgba(129,140,248,0.12) 0%, transparent 60%)',
+            background: 'radial-gradient(circle, rgba(129,140,248,0.10) 0%, transparent 60%)',
             filter: 'blur(60px)',
           }}
         />
@@ -100,13 +71,14 @@ export default function DienstenPage() {
             }}
           >
             <Zap size={11} />
-            Wat wij bieden
+            Onze diensten
           </span>
+
           <h1
             className="font-display font-extrabold tracking-[-0.03em] leading-[0.96] mb-5 max-w-2xl"
             style={{ fontSize: 'clamp(2.4rem, 5.5vw, 4rem)', color: 'var(--ink)' }}
           >
-            AI Automatisering{' '}
+            Twee diensten.{' '}
             <span
               style={{
                 background: 'linear-gradient(135deg, #818cf8 0%, #c084fc 100%)',
@@ -116,207 +88,112 @@ export default function DienstenPage() {
                 color: 'transparent',
               }}
             >
-              &amp; Consultancy
+              Een aanspreekpunt.
             </span>
           </h1>
           <p
             className="text-base md:text-lg leading-relaxed max-w-xl"
             style={{ color: 'var(--muted-d)' }}
           >
-            Van eerste adviesgesprek tot werkende oplossing — Ariance begeleidt u bij elke stap
-            richting een slimmer, efficiënter bedrijf.
+            Van eerste adviesgesprek tot werkende oplossing - Ariance begeleidt u bij elke stap
+            richting een slimmer, efficienter bedrijf.
           </p>
         </div>
       </div>
 
-      {/* ── Service details ── */}
+      {/* Service cards */}
       <div className="max-w-6xl mx-auto px-6 lg:px-8 py-16 md:py-24">
-        <div className="flex flex-col gap-20 md:gap-28">
-          {services.map((service, index) => {
-            const Icon = service.icon;
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+          {services.map((s) => {
+            const Icon = s.icon;
             return (
-              <div key={service.id} id={service.id} className="scroll-mt-24">
+              <Link
+                key={s.title}
+                href={s.href}
+                className="group relative flex flex-col rounded-3xl overflow-hidden transition-[transform,box-shadow] duration-300 hover:-translate-y-1"
+                style={{
+                  background: '#ffffff',
+                  border: `1px solid rgba(${s.accentRgb},0.20)`,
+                  boxShadow: `0 4px 24px rgba(${s.accentRgb},0.07), 0 1px 4px rgba(0,0,0,0.04)`,
+                }}
+              >
+                {/* Top stripe */}
                 <div
-                  className={`grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16 items-center ${
-                    index % 2 === 1 ? 'lg:grid-flow-dense' : ''
-                  }`}
+                  className="h-1 w-full"
+                  style={{ background: `linear-gradient(90deg, ${s.accent} 0%, rgba(${s.accentRgb},0.4) 100%)` }}
+                />
+
+                <div
+                  className="relative px-8 pt-8 pb-6 flex-1 overflow-hidden"
+                  style={{ background: `linear-gradient(160deg, rgba(${s.accentRgb},0.05) 0%, transparent 60%)` }}
                 >
-                  {/* Text side */}
-                  <div className={index % 2 === 1 ? 'lg:col-start-2' : ''}>
+                  {/* Decorative number */}
+                  <span
+                    className="absolute -top-2 right-6 font-display font-extrabold select-none pointer-events-none"
+                    style={{ fontSize: '7rem', lineHeight: 1, color: `rgba(${s.accentRgb},0.07)` }}
+                    aria-hidden
+                  >
+                    {s.num}
+                  </span>
+
+                  <div className="relative">
+                    {s.label ? (
+                      <span
+                        className="inline-flex items-center gap-1 px-2.5 py-1 rounded-full font-mono text-[10px] tracking-wider uppercase font-semibold mb-4"
+                        style={{
+                          background: `rgba(${s.accentRgb},0.12)`,
+                          border: `1px solid rgba(${s.accentRgb},0.30)`,
+                          color: s.accent,
+                        }}
+                      >
+                        <Zap size={9} />
+                        {s.label}
+                      </span>
+                    ) : (
+                      <div className="mb-4 h-7" />
+                    )}
+
                     <div
-                      className="w-12 h-12 rounded-2xl flex items-center justify-center mb-6"
-                      style={{
-                        background: `rgba(${service.accentRgb},0.10)`,
-                        border: `1px solid rgba(${service.accentRgb},0.22)`,
-                      }}
+                      className="w-14 h-14 rounded-2xl flex items-center justify-center mb-5 transition-all duration-400 group-hover:scale-110"
+                      style={{ background: `rgba(${s.accentRgb},0.10)`, border: `1px solid rgba(${s.accentRgb},0.22)` }}
                     >
-                      <Icon size={22} style={{ color: service.accent }} />
+                      <Icon size={24} style={{ color: s.accent }} strokeWidth={1.7} />
                     </div>
 
-                    <span
-                      className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full mb-4"
-                      style={{
-                        fontFamily: 'var(--font-mono)',
-                        fontSize: '11px',
-                        letterSpacing: '0.08em',
-                        textTransform: 'uppercase',
-                        fontWeight: 500,
-                        background: `rgba(${service.accentRgb},0.08)`,
-                        border: `1px solid rgba(${service.accentRgb},0.22)`,
-                        color: service.accent,
-                      }}
-                    >
-                      <span
-                        className="w-1.5 h-1.5 rounded-full"
-                        style={{ background: service.accent }}
-                      />
-                      {service.tagline}
-                    </span>
-
                     <h2
-                      className="font-display font-extrabold tracking-tight leading-tight mb-4"
-                      style={{ fontSize: 'clamp(1.6rem, 3vw, 2.2rem)', color: 'var(--ink)' }}
+                      className="font-display font-extrabold tracking-tight mb-1"
+                      style={{ fontSize: 'clamp(1.4rem, 2.5vw, 1.75rem)', color: 'var(--ink)' }}
                     >
-                      {service.title}
+                      {s.title}
                     </h2>
-                    <p
-                      className="text-base leading-relaxed mb-8"
-                      style={{ color: 'var(--muted-d)' }}
-                    >
-                      {service.description}
+                    <p className="font-display font-semibold text-sm mb-4" style={{ color: s.accent }}>
+                      {s.tagline}
                     </p>
-
-                    <h3
-                      className="font-display font-bold text-sm uppercase tracking-wider mb-4"
-                      style={{ color: 'var(--ink)' }}
-                    >
-                      Voordelen
-                    </h3>
-                    <ul className="flex flex-col gap-2.5 mb-8">
-                      {service.benefits.map((benefit) => (
-                        <li
-                          key={benefit}
-                          className="flex items-start gap-2.5 text-sm"
-                          style={{ color: 'var(--muted-d)' }}
-                        >
-                          <Check
-                            size={15}
-                            className="mt-0.5 shrink-0"
-                            style={{ color: service.accent }}
-                          />
-                          {benefit}
-                        </li>
-                      ))}
-                    </ul>
-
-                    <ContactButton
-                      className="inline-flex items-center gap-2 font-display font-semibold text-sm px-6 py-3.5 rounded-full transition-[transform,box-shadow] duration-300 hover:-translate-y-0.5"
-                      style={{
-                        background: `linear-gradient(135deg, ${service.accent} 0%, rgba(${service.accentRgb},0.8) 100%)`,
-                        color: '#0d0c18',
-                        boxShadow: `0 12px 30px rgba(${service.accentRgb},0.28)`,
-                      }}
-                    >
-                      Vraag een offerte aan
-                      <ArrowRight size={15} />
-                    </ContactButton>
-                  </div>
-
-                  {/* Included card */}
-                  <div
-                    className={`rounded-3xl p-8 ${index % 2 === 1 ? 'lg:col-start-1' : ''}`}
-                    style={{
-                      background: `linear-gradient(145deg, rgba(${service.accentRgb},0.04) 0%, var(--bg-cream) 60%)`,
-                      border: `1px solid rgba(${service.accentRgb},0.16)`,
-                      boxShadow: `0 4px 24px rgba(${service.accentRgb},0.08)`,
-                    }}
-                  >
-                    <h3
-                      className="font-display font-bold text-sm uppercase tracking-wider mb-6"
-                      style={{ color: 'var(--ink)' }}
-                    >
-                      Wat is inbegrepen
-                    </h3>
-                    <ul className="flex flex-col gap-4">
-                      {service.included.map((item) => (
-                        <li key={item} className="flex items-start gap-3">
-                          <div
-                            className="w-6 h-6 rounded-full flex items-center justify-center shrink-0 mt-0.5"
-                            style={{
-                              background: `rgba(${service.accentRgb},0.12)`,
-                              border: `1px solid rgba(${service.accentRgb},0.25)`,
-                            }}
-                          >
-                            <Check size={12} style={{ color: service.accent }} strokeWidth={2.5} />
-                          </div>
-                          <span className="text-sm leading-relaxed" style={{ color: 'var(--muted-d)' }}>
-                            {item}
-                          </span>
-                        </li>
-                      ))}
-                    </ul>
+                    <p className="text-[14.5px] leading-[1.7]" style={{ color: 'var(--muted-d)' }}>
+                      {s.description}
+                    </p>
                   </div>
                 </div>
 
-                {index < services.length - 1 && (
+                <div className="px-8 pb-8 pt-4">
                   <div
-                    className="mt-20 md:mt-28 h-px"
-                    style={{ background: 'linear-gradient(90deg, transparent, rgba(129,140,248,0.20), transparent)' }}
-                  />
-                )}
-              </div>
+                    className="flex items-center justify-between w-full px-6 py-3.5 rounded-full font-display font-semibold text-sm"
+                    style={{
+                      background: `linear-gradient(135deg, ${s.accent} 0%, rgba(${s.accentRgb},0.75) 100%)`,
+                      color: '#0d0c18',
+                      boxShadow: `0 10px 30px rgba(${s.accentRgb},0.25)`,
+                    }}
+                  >
+                    <span>Bekijk {s.title}</span>
+                    <ArrowRight
+                      size={15}
+                      className="transition-transform duration-300 group-hover:translate-x-1"
+                    />
+                  </div>
+                </div>
+              </Link>
             );
           })}
-        </div>
-      </div>
-
-      {/* ── Bottom CTA ── */}
-      <div
-        className="relative overflow-hidden py-16 md:py-24"
-        style={{ background: 'var(--bg-cream)' }}
-      >
-        <div
-          className="absolute inset-0 flex items-center justify-center pointer-events-none"
-          aria-hidden
-        >
-          <div
-            className="w-[600px] h-[300px] rounded-full"
-            style={{
-              background: 'radial-gradient(ellipse, rgba(129,140,248,0.12) 0%, transparent 70%)',
-              filter: 'blur(40px)',
-            }}
-          />
-        </div>
-        <div
-          className="absolute inset-x-0 top-0 h-px"
-          style={{ background: 'linear-gradient(90deg, transparent, rgba(129,140,248,0.25), transparent)' }}
-        />
-
-        <div className="relative max-w-6xl mx-auto px-6 lg:px-8 text-center">
-          <h2
-            className="font-display font-extrabold tracking-tight mb-4"
-            style={{ fontSize: 'clamp(1.6rem, 3.5vw, 2.4rem)', color: 'var(--ink)' }}
-          >
-            Niet zeker welke dienst past?
-          </h2>
-          <p
-            className="text-base leading-relaxed mb-8 max-w-lg mx-auto"
-            style={{ color: 'var(--muted-d)' }}
-          >
-            Plan een gratis oriëntatiegesprek. We luisteren naar uw situatie en adviseren
-            eerlijk wat het beste bij uw bedrijf past.
-          </p>
-          <ContactButton
-            className="inline-flex items-center gap-2 font-display font-semibold text-sm px-7 py-4 rounded-full transition-[transform,box-shadow] duration-300 hover:-translate-y-0.5"
-            style={{
-              background: 'linear-gradient(135deg, #818cf8 0%, #6d62f0 100%)',
-              color: '#0d0c18',
-              boxShadow: '0 14px 40px rgba(129,140,248,0.28)',
-            }}
-          >
-            Gratis gesprek inplannen
-            <ArrowRight size={16} />
-          </ContactButton>
         </div>
       </div>
     </div>

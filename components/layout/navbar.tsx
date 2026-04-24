@@ -6,7 +6,10 @@ import { usePathname } from 'next/navigation';
 import { Menu, X, ArrowUpRight } from 'lucide-react';
 import { useContactModal } from '@/components/ui/contact-modal-provider';
 
-const navLinks: { href: string; label: string }[] = [];
+const navLinks: { href: string; label: string }[] = [
+  { href: '/diensten/ai-automatisering', label: 'AI Automatisering' },
+  { href: '/diensten/ai-consultancy',    label: 'AI Consultancy' },
+];
 
 export default function Navbar() {
   const [isOpen, setIsOpen]     = useState(false);

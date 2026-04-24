@@ -1,5 +1,5 @@
 import Hero from '@/components/home/hero';
-import FeatureSection from '@/components/home/feature-section';
+import ServicesSection from '@/components/home/services-section';
 import Narrative from '@/components/home/narrative';
 import HowItWorks from '@/components/home/how-it-works';
 import Testimonials from '@/components/home/testimonials';
@@ -9,8 +9,7 @@ export default function HomePage() {
   return (
     <>
       <Hero />
-      <FeatureSection variant="automatisering" />
-      <FeatureSection variant="consultancy" />
+      <ServicesSection />
       <Narrative />
       <HowItWorks />
       <Testimonials />

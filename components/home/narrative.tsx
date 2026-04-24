@@ -1,4 +1,4 @@
-'use client';
+﻿'use client';
 
 import { useRef } from 'react';
 import { motion, useInView } from 'framer-motion';
@@ -8,7 +8,7 @@ import { useContactModal } from '@/components/ui/contact-modal-provider';
 const points = [
   { title: 'Focus op resultaten', desc: 'Geen vage rapporten of buzzwords. Wij leveren werkende oplossingen die direct meetbaar resultaat opleveren.' },
   { title: 'Innovatie door passie', desc: 'AI is ons vak en onze passie. Wij blijven op de hoogte van de nieuwste ontwikkelingen zodat uw bedrijf dat niet hoeft.' },
-  { title: 'Direct contact', desc: 'U praat altijd rechtstreeks met Léon — geen accountmanagers, geen wachtrijen. Snel schakelen wanneer dat nodig is.' },
+  { title: 'Direct contact', desc: 'U praat altijd rechtstreeks met Léon - geen accountmanagers, geen wachtrijen. Snel schakelen wanneer dat nodig is.' },
 ];
 
 export default function Narrative() {
@@ -79,7 +79,7 @@ export default function Narrative() {
             className="text-base md:text-[17px] leading-[1.7] max-w-xl mx-auto"
             style={{ color: 'var(--muted-l)' }}
           >
-            Begeef je vol vertrouwen door het complexe landschap van A.I. — met
+            Begeef je vol vertrouwen door het complexe landschap van A.I. - met
             Ariance als betrouwbare gids. Wij zetten ons volledig in om de beste
             oplossingen te leveren voor jouw bedrijf.
           </p>

@@ -1,149 +1,191 @@
 'use client';
 
-import { useRef, useState } from 'react';
+import { useRef } from 'react';
 import Link from 'next/link';
 import { motion, useInView } from 'framer-motion';
-import { Workflow, Compass, ArrowUpRight } from 'lucide-react';
+import { Workflow, Compass, Check, ArrowRight, Zap } from 'lucide-react';
 
 const services = [
   {
-    icon: Workflow,
     num: '01',
+    icon: Workflow,
     title: 'AI Automatisering',
+    tagline: 'Uren terugwinnen. Elke week.',
     description:
-      'Laat repetitieve taken verdwijnen. E-mailverwerking, rapportages, data-invoer en klantopvolging draaien zelfstandig op de achtergrond.',
-    href: '/diensten#automatisering',
+      'Repetitieve taken verdwijnen van uw werklijst. E-mailverwerking, rapportages, data-invoer en klantopvolging draaien zelfstandig op de achtergrond.',
+    benefits: [
+      'E-mailverwerking & -sortering automatisch',
+      'Rapportages zonder handmatig werk',
+      'Klantopvolging op autopilot',
+      'Integratie met Microsoft 365 & Google',
+    ],
+    href: '/diensten/ai-automatisering',
     accent: '#818cf8',
     accentRgb: '129,140,248',
     label: 'Meest gevraagd',
   },
   {
-    icon: Compass,
     num: '02',
+    icon: Compass,
     title: 'AI Consultancy',
+    tagline: 'De juiste AI-strategie voor uw bedrijf.',
     description:
-      'Objectief advies over waar AI écht iets oplevert voor uw bedrijf — en waar niet. Met een concrete roadmap en prioriteitenmatrix.',
-    href: '/diensten#consultancy',
+      'Objectief advies over waar AI echt iets oplevert. Geen verkooppraatjes - een concrete roadmap en prioriteitenmatrix afgestemd op uw budget.',
+    benefits: [
+      'Gratis & vrijblijvend intakegesprek',
+      'Concrete AI-roadmap op maat',
+      'ROI per kans berekend',
+      'AVG & privacy advies inbegrepen',
+    ],
+    href: '/diensten/ai-consultancy',
     accent: '#c084fc',
     accentRgb: '192,132,252',
     label: null,
   },
 ];
 
-function TiltCard({ s, delay }: { s: typeof services[0]; delay: number }) {
-  const ref = useRef<HTMLAnchorElement>(null);
-  const wrapRef = useRef(null);
-  const [t, setT] = useState({ x: 0, y: 0 });
-  const [hovered, setHovered] = useState(false);
-  const inView = useInView(wrapRef, { once: true, margin: '-40px' });
+function ServiceCard({ s, delay }: { s: typeof services[0]; delay: number }) {
+  const ref = useRef(null);
+  const inView = useInView(ref, { once: true, margin: '-40px' });
   const Icon = s.icon;
-
-  const onMove = (e: React.MouseEvent) => {
-    const r = ref.current!.getBoundingClientRect();
-    const x = (e.clientX - r.left) / r.width  - 0.5;
-    const y = (e.clientY - r.top)  / r.height - 0.5;
-    setT({ x: -y * 7, y: x * 7 });
-  };
 
   return (
     <motion.div
-      ref={wrapRef}
-      initial={{ opacity: 0, y: 48 }}
+      ref={ref}
+      initial={{ opacity: 0, y: 56 }}
       animate={inView ? { opacity: 1, y: 0 } : {}}
-      transition={{ duration: 0.8, delay, ease: [0.22, 1, 0.36, 1] }}
+      transition={{ duration: 0.75, delay, ease: [0.22, 1, 0.36, 1] }}
+      className="relative flex flex-col rounded-3xl overflow-hidden"
+      style={{
+        background: '#ffffff',
+        border: `1px solid rgba(${s.accentRgb},0.20)`,
+        boxShadow: `0 4px 24px rgba(${s.accentRgb},0.07), 0 1px 4px rgba(0,0,0,0.04)`,
+      }}
     >
-      <Link
-        ref={ref}
-        href={s.href}
-        onMouseMove={onMove}
-        onMouseEnter={() => setHovered(true)}
-        onMouseLeave={() => { setT({ x: 0, y: 0 }); setHovered(false); }}
-        className="group relative block overflow-hidden rounded-3xl"
-        style={{
-          background: hovered
-            ? `linear-gradient(145deg, rgba(${s.accentRgb},0.06) 0%, #ffffff 60%)`
-            : '#ffffff',
-          border: `1px solid ${hovered ? `rgba(${s.accentRgb},0.35)` : 'rgba(13,12,24,0.08)'}`,
-          padding: '32px',
-          transform: `perspective(900px) rotateX(${t.x}deg) rotateY(${t.y}deg) ${hovered ? 'translateY(-4px)' : ''}`,
-          transition: hovered
-            ? 'transform 0.15s ease, background 0.4s ease, border-color 0.4s ease, box-shadow 0.4s ease'
-            : 'transform 0.6s cubic-bezier(0.22,1,0.36,1), background 0.4s ease, border-color 0.4s ease, box-shadow 0.4s ease',
-          boxShadow: hovered
-            ? `0 24px 60px rgba(${s.accentRgb},0.20), 0 4px 12px rgba(0,0,0,0.08)`
-            : '0 2px 12px rgba(0,0,0,0.06), 0 1px 0 rgba(13,12,24,0.04)',
-        }}
+      {/* Colored top stripe */}
+      <div
+        className="h-1 w-full"
+        style={{ background: `linear-gradient(90deg, ${s.accent} 0%, rgba(${s.accentRgb},0.4) 100%)` }}
+      />
+
+      {/* Card header */}
+      <div
+        className="relative px-8 pt-8 pb-6 overflow-hidden"
+        style={{ background: `linear-gradient(160deg, rgba(${s.accentRgb},0.05) 0%, transparent 60%)` }}
       >
-        {/* Top accent line */}
-        <div
-          className="absolute top-0 left-0 right-0 h-[2px] transition-opacity duration-500"
-          style={{
-            background: `linear-gradient(90deg, transparent, ${s.accent}, transparent)`,
-            opacity: hovered ? 1 : 0.3,
-          }}
-        />
-
-        {/* Decorative orb */}
-        <div
-          className="absolute -right-10 -top-10 w-40 h-40 rounded-full pointer-events-none transition-opacity duration-500"
-          style={{
-            background: `radial-gradient(circle, rgba(${s.accentRgb},0.18) 0%, transparent 70%)`,
-            filter: 'blur(20px)',
-            opacity: hovered ? 1 : 0.3,
-          }}
-        />
-
-        {/* Optional label */}
-        {s.label && (
-          <div
-            className="absolute top-6 right-6 mono-label px-2.5 py-1 rounded-full"
-            style={{
-              background: `rgba(${s.accentRgb},0.12)`,
-              color: s.accent,
-              border: `1px solid rgba(${s.accentRgb},0.3)`,
-            }}
-          >
-            {s.label}
-          </div>
-        )}
-
-        {/* Num */}
-        <div className="mono-label mb-6" style={{ color: hovered ? s.accent : 'var(--muted-d)' }}>
-          {s.num} — service
-        </div>
-
-        {/* Icon */}
-        <div
-          className="w-14 h-14 rounded-2xl flex items-center justify-center mb-6 transition-all duration-400"
-          style={{
-            background: hovered ? s.accent : `rgba(${s.accentRgb},0.1)`,
-            boxShadow: hovered ? `0 12px 24px rgba(${s.accentRgb},0.3)` : 'none',
-          }}
+        {/* Decorative number */}
+        <span
+          className="absolute -top-2 right-6 font-display font-extrabold select-none pointer-events-none"
+          style={{ fontSize: '7rem', lineHeight: 1, color: `rgba(${s.accentRgb},0.07)` }}
+          aria-hidden
         >
-          <Icon size={22} style={{ color: hovered ? 'var(--ink-dark)' : s.accent, transition: 'color 0.4s' }} strokeWidth={1.8} />
+          {s.num}
+        </span>
+
+        <div className="relative flex items-start justify-between gap-4">
+          <div>
+            {/* Mono label */}
+            <span
+              className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full font-mono text-[10px] tracking-widest uppercase font-medium mb-4"
+              style={{
+                background: `rgba(${s.accentRgb},0.10)`,
+                border: `1px solid rgba(${s.accentRgb},0.22)`,
+                color: s.accent,
+              }}
+            >
+              <span className="w-1.5 h-1.5 rounded-full" style={{ background: s.accent }} />
+              {s.title}
+            </span>
+
+            {/* Icon */}
+            <div
+              className="w-14 h-14 rounded-2xl flex items-center justify-center mb-5"
+              style={{
+                background: `rgba(${s.accentRgb},0.10)`,
+                border: `1px solid rgba(${s.accentRgb},0.22)`,
+              }}
+            >
+              <Icon size={24} style={{ color: s.accent }} strokeWidth={1.7} />
+            </div>
+          </div>
+
+          {/* Optional badge */}
+          {s.label && (
+            <span
+              className="shrink-0 mt-1 inline-flex items-center gap-1 px-2.5 py-1 rounded-full font-mono text-[10px] tracking-wider uppercase font-semibold"
+              style={{
+                background: `rgba(${s.accentRgb},0.12)`,
+                border: `1px solid rgba(${s.accentRgb},0.30)`,
+                color: s.accent,
+              }}
+            >
+              <Zap size={9} />
+              {s.label}
+            </span>
+          )}
         </div>
 
         <h3
-          className="font-display text-xl md:text-[1.35rem] font-bold mb-3 tracking-tight transition-colors duration-400"
-          style={{ color: hovered ? s.accent : 'var(--ink)' }}
+          className="font-display font-extrabold tracking-tight mb-2"
+          style={{ fontSize: 'clamp(1.4rem, 2.5vw, 1.75rem)', color: 'var(--ink)' }}
         >
           {s.title}
         </h3>
-        <p className="text-[14.5px] leading-[1.65] mb-6" style={{ color: 'var(--muted-d)' }}>
+        <p className="font-display font-semibold text-sm" style={{ color: s.accent }}>
+          {s.tagline}
+        </p>
+      </div>
+
+      {/* Divider */}
+      <div
+        className="mx-8 h-px"
+        style={{ background: `rgba(${s.accentRgb},0.12)` }}
+      />
+
+      {/* Body */}
+      <div className="px-8 pt-6 pb-4 flex-1">
+        <p className="text-[14.5px] leading-[1.7] mb-6" style={{ color: 'var(--muted-d)' }}>
           {s.description}
         </p>
 
-        <div
-          className="inline-flex items-center gap-1.5 font-display text-[13px] font-semibold transition-colors duration-300"
-          style={{ color: hovered ? s.accent : 'rgba(13,12,24,0.35)' }}
+        <ul className="flex flex-col gap-3">
+          {s.benefits.map((benefit) => (
+            <li key={benefit} className="flex items-start gap-2.5">
+              <div
+                className="w-5 h-5 rounded-full flex items-center justify-center shrink-0 mt-0.5"
+                style={{
+                  background: `rgba(${s.accentRgb},0.12)`,
+                  border: `1px solid rgba(${s.accentRgb},0.25)`,
+                }}
+              >
+                <Check size={11} style={{ color: s.accent }} strokeWidth={2.5} />
+              </div>
+              <span className="text-[13.5px] leading-[1.5]" style={{ color: 'var(--muted-d)' }}>
+                {benefit}
+              </span>
+            </li>
+          ))}
+        </ul>
+      </div>
+
+      {/* CTA */}
+      <div className="px-8 pb-8 pt-6">
+        <Link
+          href={s.href}
+          className="group flex items-center justify-between w-full px-6 py-3.5 rounded-full font-display font-semibold text-sm transition-[transform,box-shadow] duration-300 hover:-translate-y-0.5"
+          style={{
+            background: `linear-gradient(135deg, ${s.accent} 0%, rgba(${s.accentRgb},0.75) 100%)`,
+            color: '#0d0c18',
+            boxShadow: `0 10px 30px rgba(${s.accentRgb},0.25)`,
+          }}
         >
-          <span>Meer over {s.title.split(' ')[0].toLowerCase()}</span>
-          <ArrowUpRight
-            size={14}
-            className="transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
+          <span>Bekijk {s.title}</span>
+          <ArrowRight
+            size={15}
+            className="transition-transform duration-300 group-hover:translate-x-1"
           />
-        </div>
-      </Link>
+        </Link>
+      </div>
     </motion.div>
   );
 }
@@ -158,12 +200,12 @@ export default function ServicesSection() {
       className="relative overflow-hidden py-24 md:py-32"
       style={{ background: 'var(--bg-0)' }}
     >
-      {/* Ambient */}
+      {/* Ambient glow */}
       <div
-        className="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[400px] pointer-events-none"
+        className="absolute top-0 left-1/2 -translate-x-1/2 w-[900px] h-[500px] pointer-events-none"
         style={{
-          background: 'radial-gradient(ellipse, rgba(129,140,248,0.08) 0%, transparent 65%)',
-          filter: 'blur(40px)',
+          background: 'radial-gradient(ellipse, rgba(129,140,248,0.07) 0%, transparent 65%)',
+          filter: 'blur(50px)',
         }}
       />
 
@@ -171,48 +213,53 @@ export default function ServicesSection() {
         {/* Header */}
         <motion.div
           ref={ref}
-          className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-14"
+          className="mb-14 max-w-2xl"
           initial={{ opacity: 0, y: 28 }}
           animate={inView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
         >
-          <div className="max-w-xl">
+          <span
+            className="inline-flex items-center gap-2 px-3 py-1 rounded-full font-mono text-[10px] tracking-widest uppercase font-medium mb-5"
+            style={{
+              background: 'rgba(129,140,248,0.08)',
+              border: '1px solid rgba(129,140,248,0.22)',
+              color: 'var(--accent-solid)',
+            }}
+          >
+            <span className="w-1.5 h-1.5 rounded-full bg-[var(--accent-solid)]" />
+            Onze diensten
+          </span>
+
+          <h2
+            className="font-display font-extrabold tracking-[-0.03em] leading-[0.97] mb-4"
+            style={{ fontSize: 'clamp(2rem, 4.5vw, 3.2rem)', color: 'var(--ink)' }}
+          >
+            Twee diensten.{' '}
             <span
-              className="inline-flex items-center gap-2 px-3 py-1 rounded-full mono-label mb-5"
               style={{
-                background: 'rgba(129,140,248,0.08)',
-                border: '1px solid rgba(129,140,248,0.22)',
-                color: 'var(--accent)',
+                background: 'linear-gradient(135deg, #818cf8 0%, #c084fc 100%)',
+                WebkitBackgroundClip: 'text',
+                backgroundClip: 'text',
+                WebkitTextFillColor: 'transparent',
               }}
             >
-              <span className="w-1.5 h-1.5 rounded-full" style={{ background: 'var(--accent)' }} />
-              Onze diensten
+              Een aanspreekpunt.
             </span>
-            <h2
-              className="font-display font-extrabold tracking-[-0.03em] leading-[0.98] mb-4"
-              style={{ fontSize: 'clamp(2rem, 4.2vw, 3.2rem)', color: 'var(--ink)' }}
-            >
-              Twee diensten.<br />
-              <span className="text-gradient-emerald">Eén aanspreekpunt.</span>
-            </h2>
-            <p className="text-base md:text-[17px] leading-[1.65]" style={{ color: 'var(--muted-d)' }}>
-              Van eerste adviesgesprek tot werkende automatisering —
-              u hoeft niet aan te kloppen bij meerdere partijen.
-            </p>
-          </div>
-          <Link
-            href="/diensten"
-            className="group inline-flex items-center gap-1.5 font-display text-sm font-semibold self-start md:self-end shrink-0"
-            style={{ color: 'var(--accent)' }}
+          </h2>
+
+          <p
+            className="text-base md:text-[17px] leading-[1.65]"
+            style={{ color: 'var(--muted-d)' }}
           >
-            Alle diensten bekijken
-            <ArrowUpRight size={15} className="transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
-          </Link>
+            Van eerste adviesgesprek tot werkende automatisering - u hoeft niet aan te kloppen
+            bij meerdere partijen.
+          </p>
         </motion.div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
+        {/* Service cards */}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           {services.map((s, i) => (
-            <TiltCard key={s.title} s={s} delay={i * 0.08} />
+            <ServiceCard key={s.title} s={s} delay={i * 0.10} />
           ))}
         </div>
       </div>

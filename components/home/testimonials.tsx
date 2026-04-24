@@ -1,4 +1,4 @@
-'use client';
+﻿'use client';
 
 import { motion } from 'framer-motion';
 import { Star } from 'lucide-react';
@@ -24,7 +24,7 @@ const testimonials = [
   {
     name: 'YouradviesgroepBV',
     title: 'Directeur · Financieel advies, Amsterdam',
-    quote: 'Met de private AI-omgeving kunnen we veilig interne kennis raadplegen en adviesrapporten sneller opstellen — zonder dat gevoelige data de deur uitgaat. Volledig AVG-compliant.',
+    quote: 'Met de private AI-omgeving kunnen we veilig interne kennis raadplegen en adviesrapporten sneller opstellen - zonder dat gevoelige data de deur uitgaat. Volledig AVG-compliant.',
     avatar: 'https://images.unsplash.com/photo-1560250097-0b93528c311a?q=80&w=400&auto=format&fit=crop',
     rating: 5.0,
     accent: '#c084fc',
@@ -171,7 +171,7 @@ export default function Testimonials() {
             </h2>
 
             <p className="text-base md:text-[17px] leading-[1.65]" style={{ color: 'var(--muted-d)', maxWidth: '380px' }}>
-              Van administratiekantoren tot adviesbureaus — Nederlandse bedrijven vertrouwen
+              Van administratiekantoren tot adviesbureaus - Nederlandse bedrijven vertrouwen
               op Ariance voor praktische AI-oplossingen.
             </p>
 

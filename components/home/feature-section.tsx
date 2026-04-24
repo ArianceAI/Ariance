@@ -1,4 +1,4 @@
-'use client';
+﻿'use client';
 
 import * as React from 'react';
 import { Card, CardContent } from '@/components/ui/card';
@@ -35,7 +35,7 @@ const config = {
     accent: '#818cf8',
     title: 'Repetitieve taken',
     titleAccent: 'op autopilot.',
-    description: 'Ariance bouwt AI-workflows die uw dagelijkse taken zelfstandig uitvoeren — van e-mailverwerking tot rapportages. Uw team wint uren terug en focust op werk dat écht waarde toevoegt.',
+    description: 'Ariance bouwt AI-workflows die uw dagelijkse taken zelfstandig uitvoeren - van e-mailverwerking tot rapportages. Uw team wint uren terug en focust op werk dat écht waarde toevoegt.',
     badges: ['Microsoft 365', 'Google Workspace', 'AVG-compliant', '+70% tijdsbesparing'],
     items: automatiseringItems,
     flip: false,
@@ -46,7 +46,7 @@ const config = {
     accent: '#c084fc',
     title: 'De juiste AI-strategie',
     titleAccent: 'voor uw bedrijf.',
-    description: 'Weet u dat AI waardevol kan zijn, maar weet u niet waar te beginnen? Ariance geeft eerlijk advies — geen verkooppraatjes. We analyseren uw bedrijf en bouwen een concrete roadmap.',
+    description: 'Weet u dat AI waardevol kan zijn, maar weet u niet waar te beginnen? Ariance geeft eerlijk advies - geen verkooppraatjes. We analyseren uw bedrijf en bouwen een concrete roadmap.',
     badges: ['Objectief advies', 'Concrete roadmap', 'AVG & privacy', 'Gratis intakegesprek'],
     items: consultancyItems,
     flip: true,

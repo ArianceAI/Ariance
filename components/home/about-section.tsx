@@ -1,4 +1,4 @@
-'use client';
+﻿'use client';
 
 import { useRef } from 'react';
 import Link from 'next/link';
@@ -23,7 +23,7 @@ const cases = [
     sector: 'Financieel advies · Amsterdam',
     title: 'Hoe YouradviesgroepBV veilig AI inzet voor interne kennisdeling zonder AVG-risico',
     description:
-      'Private AI-omgeving die volledig lokaal draait. Adviseurs raadplegen interne kennis en stellen rapporten sneller op — zonder dat gevoelige data de deur uitgaat.',
+      'Private AI-omgeving die volledig lokaal draait. Adviseurs raadplegen interne kennis en stellen rapporten sneller op - zonder dat gevoelige data de deur uitgaat.',
     result: '100% AVG',
     resultLabel: 'compliant',
     accent: '#c084fc',
@@ -80,7 +80,7 @@ export default function AboutSection() {
           </h2>
           <p className="text-base md:text-[17px] leading-[1.65] max-w-xl" style={{ color: 'var(--muted-d)' }}>
             Wij geloven in transparantie en de kracht van gedeelde kennis. Concrete
-            resultaten voor Nederlandse bedrijven — geen vage beloften.
+            resultaten voor Nederlandse bedrijven - geen vage beloften.
           </p>
         </motion.div>
 

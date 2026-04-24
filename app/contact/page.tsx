@@ -1,4 +1,4 @@
-'use client';
+﻿'use client';
 
 import { useState } from 'react';
 import { MapPin, Mail, Phone, Clock, Send, Zap } from 'lucide-react';
@@ -287,8 +287,8 @@ export default function ContactPage() {
                   <div>
                     <div className="text-xs font-semibold text-[#0F1117] mb-0.5">Openingstijden</div>
                     <div className="text-sm text-gray-500 leading-relaxed">
-                      Maandag – Vrijdag<br />
-                      9:00 – 17:00
+                      Maandag - Vrijdag<br />
+                      9:00 - 17:00
                     </div>
                   </div>
                 </li>

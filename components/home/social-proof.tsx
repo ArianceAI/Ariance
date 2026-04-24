@@ -1,4 +1,4 @@
-'use client';
+﻿'use client';
 
 import { useEffect, useRef, useState } from 'react';
 import { motion, useInView } from 'framer-motion';
@@ -29,7 +29,7 @@ const testimonials = [
     company: 'YouradviesgroepBV',
     sector: 'Financieel advies · Amsterdam',
     content:
-      'Met de private AI-omgeving kunnen we veilig interne kennis raadplegen en adviesrapporten sneller opstellen — zonder dat gevoelige data de deur uitgaat. Volledig AVG-compliant.',
+      'Met de private AI-omgeving kunnen we veilig interne kennis raadplegen en adviesrapporten sneller opstellen - zonder dat gevoelige data de deur uitgaat. Volledig AVG-compliant.',
     rating: 5,
     metric: '100% AVG',
     metricLabel: 'compliant',
@@ -112,7 +112,7 @@ export default function SocialProof() {
               className="text-base md:text-[17px] leading-[1.65] mb-8 max-w-sm"
               style={{ color: 'var(--muted-d)' }}
             >
-              Van administratiekantoren tot adviesbureaus — Nederlandse bedrijven vertrouwen
+              Van administratiekantoren tot adviesbureaus - Nederlandse bedrijven vertrouwen
               op Ariance voor praktische AI-oplossingen.
             </p>
 

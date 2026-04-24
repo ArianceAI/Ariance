@@ -99,18 +99,6 @@ export default function CtaSection() {
           animate={inView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.9, ease: [0.22, 1, 0.36, 1] }}
         >
-          <span
-            className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full mono-label mb-8"
-            style={{
-              background: 'rgba(129,140,248,0.08)',
-              border: '1px solid rgba(129,140,248,0.28)',
-              color: 'var(--accent)',
-            }}
-          >
-            <span className="w-1.5 h-1.5 rounded-full animate-pulse" style={{ background: 'var(--accent)' }} />
-            Stel je vragen
-          </span>
-
           <h2
             className="font-display font-extrabold leading-[0.95] tracking-[-0.035em] mb-7 max-w-3xl mx-auto"
             style={{
@@ -118,8 +106,8 @@ export default function CtaSection() {
               color: 'var(--ink)',
             }}
           >
-            Let&apos;s{' '}
-            <span className="text-gradient-emerald">talk!</span>
+            Stel je{' '}
+            <span className="text-gradient-emerald">vragen!</span>
           </h2>
 
           <motion.p
@@ -161,7 +149,7 @@ export default function CtaSection() {
               arianceautomation@gmail.com
             </span>
             <span className="mono-label" style={{ color: 'var(--muted-d)' }}>
-              ∙ ma–vr · 9:00–17:00
+              ∙ ma-vr · 9:00-17:00
             </span>
             <span className="mono-label" style={{ color: 'var(--muted-d)' }}>
               ∙ alkmaar, nederland

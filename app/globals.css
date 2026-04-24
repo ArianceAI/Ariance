@@ -56,7 +56,11 @@
 
 @layer base {
   * { @apply border-border; }
-  html { scroll-behavior: smooth; }
+  html {
+    scroll-behavior: smooth;
+    overflow-x: hidden;
+    max-width: 100%;
+  }
   body {
     @apply antialiased;
     font-family: var(--font-body);
@@ -64,6 +68,8 @@
     color: var(--ink);
     font-feature-settings: "ss01", "cv11", "calt";
     -webkit-font-smoothing: antialiased;
+    overflow-x: hidden;
+    max-width: 100%;
   }
   h1, h2, h3, h4, h5, h6 {
     font-family: var(--font-display);

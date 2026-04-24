@@ -124,7 +124,7 @@ function OrbitalDiagram() {
         { label: '∙ automatisering', top: '18%', left: '6%',  color: '#818cf8', delay: '0s',   cls: 'animate-float' },
         { label: '∙ strategie',      top: '8%',  right: '14%', color: '#c084fc', delay: '0s',   cls: 'animate-float-slow' },
         { label: '∙ consultancy',    bottom: '14%', right: '6%', color: '#818cf8', delay: '1.2s', cls: 'animate-float' },
-        { label: '∙ workflows',      bottom: '22%', left: '2%',  color: '#9333ea', delay: '0.6s', cls: 'animate-float-slow' },
+        { label: '∙ AI',             bottom: '22%', left: '2%',  color: '#9333ea', delay: '0.6s', cls: 'animate-float-slow' },
       ].map((fl) => (
         <div
           key={fl.label}
@@ -231,7 +231,7 @@ export default function Hero() {
               style={{ color: 'var(--muted-d)' }}
             >
               Ariance levert AI Automatisering en AI Consultancy voor het Nederlandse MKB.
-              Focus op waardevollere taken — werkende oplossingen in weken.
+              Focus op waardevollere taken - werkende oplossingen in weken.
             </motion.p>
 
             {/* Trust labels — Myna spring stagger */}
@@ -282,9 +282,10 @@ export default function Hero() {
       </div>
 
       {/* ── Feature cards (Myna-style grid) ── */}
+      <div style={{ background: 'var(--bg-cream)', borderTop: '1px solid rgba(13,12,24,0.05)' }}>
       <div
         ref={featuresRef}
-        className="relative max-w-6xl mx-auto px-6 lg:px-8 pb-20 md:pb-28"
+        className="relative max-w-6xl mx-auto px-6 lg:px-8 pb-20 md:pb-28 pt-2"
       >
         {/* Section divider */}
         <div
@@ -304,7 +305,7 @@ export default function Hero() {
                 className="group flex flex-col items-center text-center p-8 relative"
                 style={{
                   border: '1px solid rgba(13,12,24,0.07)',
-                  background: 'var(--bg-0)',
+                  background: 'var(--bg-2)',
                 }}
               >
                 {/* Hover background */}
@@ -345,6 +346,7 @@ export default function Hero() {
             );
           })}
         </div>
+      </div>
       </div>
     </section>
   );
