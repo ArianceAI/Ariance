@@ -49,14 +49,17 @@ export default function Footer() {
 
             {/* Brand column (5) */}
             <div className="md:col-span-5">
-              <Link href="/" className="inline-flex mb-6 group">
+              <Link href="/" className="inline-flex items-center gap-2.5 mb-6 group">
                 <Image
                   src="/logo.png"
                   alt="Ariance"
-                  width={140}
-                  height={42}
-                  className="h-10 w-auto transition-opacity duration-300 group-hover:opacity-80"
+                  width={40}
+                  height={40}
+                  className="h-10 w-10 transition-opacity duration-300 group-hover:opacity-80"
                 />
+                <span className="font-display text-xl font-extrabold tracking-tight" style={{ color: 'var(--ink)' }}>
+                  ariance<span style={{ color: 'var(--accent)' }}>.</span>
+                </span>
               </Link>
               <p className="text-sm leading-[1.75] max-w-sm mb-7" style={{ color: 'var(--muted-d)' }}>
                 Praktische AI-oplossingen voor het Nederlandse MKB.

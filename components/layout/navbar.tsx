@@ -37,15 +37,18 @@ export default function Navbar() {
         <div className={`flex items-center justify-between transition-[height] duration-400 ${scrolled ? 'h-[60px]' : 'h-[76px]'}`}>
 
           {/* Logo */}
-          <Link href="/" className="flex items-center group">
+          <Link href="/" className="flex items-center gap-2.5 group">
             <Image
               src="/logo.png"
               alt="Ariance"
-              width={120}
+              width={36}
               height={36}
-              className="h-9 w-auto transition-opacity duration-300 group-hover:opacity-80"
+              className="h-9 w-9 transition-opacity duration-300 group-hover:opacity-80"
               priority
             />
+            <span className="font-display text-[1.15rem] font-extrabold tracking-tight text-[var(--ink)]">
+              ariance<span className="text-[var(--accent)]">.</span>
+            </span>
           </Link>
 
           {/* Desktop nav */}
