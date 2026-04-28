@@ -46,8 +46,8 @@ export default function Navbar() {
               className="h-9 w-9 transition-opacity duration-300 group-hover:opacity-80"
               priority
             />
-            <span className="font-display text-[1.15rem] font-extrabold tracking-tight text-[var(--ink)]">
-              ariance<span className="text-[var(--accent)]">.</span>
+            <span style={{ fontFamily: "'Outfit', sans-serif", fontSize: '1.2rem', fontWeight: 700, letterSpacing: '-0.01em', color: 'var(--ink)' }}>
+              Ariance
             </span>
           </Link>
 

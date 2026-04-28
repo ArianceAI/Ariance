@@ -57,8 +57,8 @@ export default function Footer() {
                   height={40}
                   className="h-10 w-10 transition-opacity duration-300 group-hover:opacity-80"
                 />
-                <span className="font-display text-xl font-extrabold tracking-tight" style={{ color: 'var(--ink)' }}>
-                  ariance<span style={{ color: 'var(--accent)' }}>.</span>
+                <span style={{ fontFamily: "'Outfit', sans-serif", fontSize: '1.25rem', fontWeight: 700, letterSpacing: '-0.01em', color: 'var(--ink)' }}>
+                  Ariance
                 </span>
               </Link>
               <p className="text-sm leading-[1.75] max-w-sm mb-7" style={{ color: 'var(--muted-d)' }}>
