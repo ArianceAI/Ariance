@@ -1,6 +1,7 @@
 ﻿'use client';
 
 import Link from 'next/link';
+import Image from 'next/image';
 import { MapPin, Mail, Phone, Clock, ArrowUpRight } from 'lucide-react';
 import { useContactModal } from '@/components/ui/contact-modal-provider';
 
@@ -48,14 +49,14 @@ export default function Footer() {
 
             {/* Brand column (5) */}
             <div className="md:col-span-5">
-              <Link href="/" className="inline-flex items-center gap-2.5 mb-6 group">
-                <span className="relative">
-                  <span className="block w-2.5 h-2.5 rounded-full bg-[var(--accent)] transition-transform duration-500 group-hover:scale-150" />
-                  <span className="absolute inset-0 rounded-full bg-[var(--accent)] animate-pulse-glow" />
-                </span>
-                <span className="font-display text-xl font-extrabold tracking-tight" style={{ color: 'var(--ink)' }}>
-                  ariance<span style={{ color: 'var(--accent)' }}>.</span>
-                </span>
+              <Link href="/" className="inline-flex mb-6 group">
+                <Image
+                  src="/logo.png"
+                  alt="Ariance"
+                  width={140}
+                  height={42}
+                  className="h-10 w-auto transition-opacity duration-300 group-hover:opacity-80"
+                />
               </Link>
               <p className="text-sm leading-[1.75] max-w-sm mb-7" style={{ color: 'var(--muted-d)' }}>
                 Praktische AI-oplossingen voor het Nederlandse MKB.

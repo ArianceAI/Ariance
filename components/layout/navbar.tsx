@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
 import { usePathname } from 'next/navigation';
 import { Menu, X, ArrowUpRight } from 'lucide-react';
 import { useContactModal } from '@/components/ui/contact-modal-provider';
@@ -35,15 +36,16 @@ export default function Navbar() {
       <div className="max-w-6xl mx-auto px-6 lg:px-8">
         <div className={`flex items-center justify-between transition-[height] duration-400 ${scrolled ? 'h-[60px]' : 'h-[76px]'}`}>
 
-          {/* Logo — Ariance mark */}
-          <Link href="/" className="flex items-center gap-2.5 group">
-            <span className="relative">
-              <span className="block w-2.5 h-2.5 rounded-full bg-[var(--accent)] transition-transform duration-500 group-hover:scale-[1.6]" />
-              <span className="absolute inset-0 rounded-full bg-[var(--accent)] animate-pulse-glow" />
-            </span>
-            <span className="font-display text-[1.15rem] font-extrabold tracking-tight text-[var(--ink)]">
-              ariance<span className="text-[var(--accent)]">.</span>
-            </span>
+          {/* Logo */}
+          <Link href="/" className="flex items-center group">
+            <Image
+              src="/logo.png"
+              alt="Ariance"
+              width={120}
+              height={36}
+              className="h-9 w-auto transition-opacity duration-300 group-hover:opacity-80"
+              priority
+            />
           </Link>
 
           {/* Desktop nav */}
